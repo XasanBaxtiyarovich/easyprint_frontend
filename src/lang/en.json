@@ -1,0 +1,66 @@
+{
+    "bar": {
+        "users": "Users"
+    },
+    "table": {
+        "email": "Email",
+        "firstname": "Name",
+        "lastname": "Surname",
+        "active": "Activity",
+        "role": "Role",
+        "function": "Function"
+    },
+    "user_menu": {
+        "my_profile": "My profile",
+        "settings": "Settings",
+        "logout": "Log out"
+    },
+    "my_profil": {
+        "profil_title": "Profile Details",
+        "upload_btn": "Upload new photo",
+        "reset_btn": "Reset",
+        "firstname": "First name",
+        "lastname": "Last name",
+        "email": "Email",
+        "save_btn": "Save changes",
+        "cancle_btn": "Cancle",
+        "password_title": "Reset password",
+        "password": "Password",
+        "new_password": "New Password",
+        "confirm_password": "Confirm Password",
+        "delete_acount_title": "Delete Account",
+        "delete_acount_des1": "Are you sure you want to delete your account?",
+        "delete_acount_des2": "Once you delete your account, there is no going back. Please be certain.",
+        "delete_confirm": "I confirm my account deactivation",
+        "deactivate_btn": "Deactivate Account"
+    },
+    "create": {
+        "title": "Create user",
+        "firstname": "First name",
+        "lastname": "Last name",
+        "email": "Email",
+        "password": "Password",
+        "role": "Role",
+        "create": "Create"
+    },
+    "edit": {
+        "profil_title": "Profile Details",
+        "upload_btn": "Upload new photo",
+        "reset_btn": "Reset",
+        "firstname": "First name",
+        "lastname": "Last name",
+        "email": "Email",
+        "save_btn": "Save changes",
+        "cancle_btn": "Cancle",
+        "role": "Role",
+        "deactivate_title": "Deactivate or activate",
+        "deactiveted_confirm": "Are you sure ?",
+        "deactivate": "Deactivate",
+        "activate": "Activate"
+    },
+    "delete": {
+        "remove": "Are you sure to delete?",
+        "yes": "Yes",
+        "no": "No"
+    }
+}

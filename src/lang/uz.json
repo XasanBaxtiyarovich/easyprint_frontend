@@ -1,0 +1,66 @@
+{
+    "bar": {
+        "users": "Foydalanuvchilar"
+    },
+    "user_menu": {
+        "my_profile": "Mening profilim",
+        "settings": "Sozlamalar",
+        "logout": "Chiqish"
+    },
+    "table": {
+        "firstname": "Ism",
+        "lastname": "Familiya",
+        "email": "Elektron pochta",
+        "active": "Faoligi",
+        "role": "Roli",
+        "function": "Funksiyalar"
+    },
+    "my_profil": {
+        "profil_title": "Profil tafsilotlari",
+        "upload_btn": "Yangi rasm yuklash",
+        "reset_btn": "Ortga",
+        "firstname": "Ism",
+        "lastname": "Familiya",
+        "email": "Elektron pochta",
+        "save_btn": "O'zgarishlarni saqlash",
+        "cancle_btn": "Ortga",
+        "password_title": "Parolni o'zgartirish",
+        "password": "Parol",
+        "new_password": "Yangi parol",
+        "confirm_password": "Parolni tasdiqlang",
+        "delete_acount_title": "Accountni o'chirish",
+        "delete_acount_des1": "Accountingizni oʻchirib tashlamoqchimisiz?",
+        "delete_acount_des2": "Accountni o'chirib tashlaganingizdan so'ng, orqaga qaytib bo'lmaydi. Iltimos, ishonch hosil qiling.",
+        "delete_confirm": "Men accountmni o'chirishni tasdiqlayman",
+        "deactivate_btn": "Accountni o'chirish"
+    },
+    "create": {
+        "title": "Foydalanuvchi yaratish",
+        "firstname": "Ism",
+        "lastname": "Familiya",
+        "email": "Elektron pochta",
+        "password": "Parol",
+        "role": "Roli",
+        "create": "Yaratish"
+    },
+    "edit": {
+        "profil_title": "Profil tafsilotlari",
+        "upload_btn": "Yangi rasm yuklash",
+        "reset_btn": "Ortga",
+        "firstname": "Ism",
+        "lastname": "Familiya",
+        "email": "Elektron pochta",
+        "save_btn": "O'zgarishlarni saqlash",
+        "cancle_btn": "Ortga",
+        "role": "Roli",
+        "deactivate_title": "O'chirish yoki faollashtirish",
+        "deactiveted_confirm": "Ishonchingiz komilmi ?",
+        "deactivate": "O'chirish",
+        "activate": "Faollashtirish"
+    },
+    "delete": {
+        "remove": "Oʻchirishga ishonchingiz komilmi?",
+        "yes": "Ha",
+        "no": "Yoq"
+    }
+}

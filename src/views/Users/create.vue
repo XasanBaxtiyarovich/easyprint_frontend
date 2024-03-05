@@ -1,0 +1,138 @@
+<template>
+    <div class="layout-wrapper layout-content-navbar">
+        <div class="layout-container">
+            <layout-menu/>
+            <div v-if="MobileMenu">
+                <layout-menu-mobile :closeSideBar="closeSideBar"></layout-menu-mobile>
+            </div>
+            <div class="layout-page">
+                <header-main :showSideBar="showSideBar"/>
+                <div class="container" style="margin-top: 100px; padding: 0px 75px;">
+                    <div class="col-xl">
+                        <div class="card mb-4">
+                            <div class="card-header d-flex justify-content-between align-items-center">
+                                <h5 class="mb-0">{{ $t('create.title') }}</h5>
+                            </div>
+                            <div class="card-body">
+                                <form>
+                                    <div class="mb-3">
+                                        <input class="form-control" type="file" @change="getImage">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label" for="basic-default-fullname">{{ $t('create.firstname') }}</label>
+                                        <input type="text" class="form-control" v-model="firstname" placeholder="John" />
+                                    </div>                       
+                                    <div class="mb-3">
+                                        <label class="form-label" for="basic-default-fullname">{{ $t('create.lastname') }}</label>
+                                        <input type="text" class="form-control" v-model="lastname" placeholder="Doe" />
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label" for="basic-default-email">{{ $t('create.email') }}</label>
+                                        <div class="input-group input-group-merge">
+                                        <input
+                                            type="text"
+                                            v-model="email"
+                                            class="form-control"
+                                            placeholder="john.doe"
+                                            aria-label="john.doe"
+                                            aria-describedby="basic-default-email2" />
+                                        <span class="input-group-text">@example.com</span>
+                                        </div>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label" for="basic-default-fullname">{{ $t('create.password') }}</label>
+                                        <input type="password" class="form-control" v-model="password" placeholder="* * * * * *" />
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label" for="country">{{ $t('create.role') }}</label>
+                                        <select v-model="role" class="select2 form-select">
+                                            <option v-for="r in roles" :key="r.id" :value="r.id">{{ r.name }}</option>
+                                        </select>
+                                    </div>
+                                    <button @click="userCreate" class="btn btn-primary">{{ $t('create.create') }}</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>
+
+<script>
+import axios from 'axios';
+import {mapMutations, mapGetters} from 'vuex';
+
+export default {
+    data () {
+        return {
+            image: "",
+            email: "",
+            roles: [],
+            role: null,
+            password: "",
+            lastname: "",
+            firstname: "",
+            formData: new FormData(),
+        }
+    },
+
+    computed: {
+      ...mapGetters(['MobileMenu']),  
+    },
+
+    methods: {
+        getImage (e) {
+            this.formData.append("image", e.target.files[0]);
+        },
+
+        async getRoles () {
+            try {
+                const res = await axios.get('http://localhost:8000/api/role/findAll');
+
+                this.roles = res.data.roles; 
+            } catch (error) {
+                console.log(error);
+            }
+        },
+
+        async userCreate (e) {
+            e.preventDefault();
+
+            this.formData.append("role", this.role);
+            this.formData.append("email", this.email);
+            this.formData.append("lastname", this.lastname);
+            this.formData.append("password", this.password);
+            this.formData.append("firstname", this.firstname);
+
+            try {
+                const res = await axios.post('http://localhost:8000/api/users/create',
+                this.formData, 
+                {
+                    headers: {
+                        'Access-Control-Allow-Origin': '*',
+                        'Content-Type':'application/x-www-form-urlencoded'
+                    }
+                });
+
+                if (res.data.status == 201) {
+                    this.$toast.success('User created')
+                    setTimeout(() => {
+                        this.$router.push('/user/index')
+                    }, 1100 );
+                } 
+            } catch (error) {
+                if (error.response.data.message) this.$toast.error('Please enter the details correctly and provide a strong password');
+
+                console.log(error.response.data.message[0]);
+            }
+        },
+
+        ...mapMutations(['showSideBar', 'closeSideBar'])
+    },
+    mounted () {
+        this.getRoles();
+    }
+}
+</script>

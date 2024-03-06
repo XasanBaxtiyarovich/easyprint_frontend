@@ -49,7 +49,10 @@
                                             <option v-for="r in roles" :key="r.id" :value="r.id">{{ r.name }}</option>
                                         </select>
                                     </div>
-                                    <button @click="userCreate" class="btn btn-primary">{{ $t('create.create') }}</button>
+                                    <div class="mt-2">
+                                        <button @click="userCreate" class="btn btn-primary">{{ $t('create.create') }}</button>
+                                        <button @click="cancelFunc" class="btn btn-outline-secondary" style="margin-left: 5px;">{{ $t('edit.cancle_btn') }}</button>
+                                    </div>
                                 </form>
                             </div>
                         </div>
@@ -127,6 +130,10 @@ export default {
 
                 console.log(error.response.data.message[0]);
             }
+        },
+
+        cancelFunc () {
+            this.$router.push('/user/index')
         },
 
         ...mapMutations(['showSideBar', 'closeSideBar'])

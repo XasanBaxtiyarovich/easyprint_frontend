@@ -1,6 +1,7 @@
 {
     "bar": {
-        "users": "Foydalanuvchilar"
+        "users": "Foydalanuvchilar",
+        "roles": "Rolar"
     },
     "user_menu": {
         "my_profile": "Mening profilim",
@@ -62,5 +63,13 @@
         "remove": "Oʻchirishga ishonchingiz komilmi?",
         "yes": "Ha",
         "no": "Yoq"
+    },
+    "role": {
+        "date": "Yaratilgan sana",
+        "create": "Yangi rol yaratish",
+        "update": "Rol o'zgartirish",
+        "name": "Ism",
+        "new_name": "Yangi rol nomini kirting!",
+        "function": "Funksiyalar"
     }
 }

@@ -1,6 +1,7 @@
 {
     "bar": {
-        "users": "Users"
+        "users": "Users",
+        "roles": "Roles"
     },
     "table": {
         "email": "Email",
@@ -8,7 +9,7 @@
         "lastname": "Surname",
         "active": "Activity",
         "role": "Role",
-        "function": "Function"
+        "function": "Functions"
     },
     "user_menu": {
         "my_profile": "My profile",
@@ -62,5 +63,13 @@
         "remove": "Are you sure to delete?",
         "yes": "Yes",
         "no": "No"
+    },
+    "role": {
+        "date": "Date of creation",
+        "create": "Create new role",
+        "update": "Role changes",
+        "name": "Name",
+        "new_name": "Enter a new role name!",
+        "function": "Functions"
     }
 }

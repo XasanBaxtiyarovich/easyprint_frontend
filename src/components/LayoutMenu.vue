@@ -61,8 +61,12 @@
             <ul class="menu-inner py-1">
             <li class="menu-item">
                 <router-link to="/user/index" class="menu-link">
-                <i class="fa fa-users me-3"></i>
-                <div data-i18n="Basic">{{ $t('bar.users') }}</div>
+                    <i class="fa fa-users me-3"></i>
+                    <div data-i18n="Basic">{{ $t('bar.users') }}</div>
+                </router-link>
+                <router-link to="/role/index" class="menu-link">
+                    <i class="fa fa-user-tie me-3"></i>
+                    <div data-i18n="Basic">{{ $t('bar.roles') }}</div>
                 </router-link>
             </li>
             </ul>

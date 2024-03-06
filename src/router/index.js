@@ -9,6 +9,10 @@ import UserINdex from '../views/Users/Index.vue';
 import UserCreate from '../views/Users/create.vue';
 import MyAccount from '../views/Users/myAccount.vue';
 
+import RoleEdit from '../views/Roles/edit.vue';
+import RoleIndex from '../views/Roles/Index.vue';
+import RoleCreate from '../views/Roles/create.vue';
+
 
 const routes = [
   {
@@ -63,7 +67,31 @@ const routes = [
     beforeEnter(){
       return isAuthorized()
     }
-  }
+  },
+  {
+    path: '/role/index',
+    name: 'role-index',
+    component: RoleIndex,
+    beforeEnter(){
+      return isAuthorized()
+    }
+  },
+  {
+    path: '/role/create',
+    name: 'role-create',
+    component: RoleCreate,
+    beforeEnter(){
+      return isAuthorized()
+    }
+  },
+  {
+    path: '/role/edit/:id',
+    name: 'role-edit',
+    component: RoleEdit,
+    beforeEnter(){
+      return isAuthorized()
+    }
+  },
 ]
 
 function isAuthorized () {

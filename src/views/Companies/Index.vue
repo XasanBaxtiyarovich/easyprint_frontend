@@ -23,8 +23,8 @@
                 </div>
                 <div class="container" style="margin-top: 90px; padding: 0px 75px;">
                     <div style="display: flex; justify-content: end; width: 100%;">
-                        <router-link to="/role/create" class="btn btn-primary">
-                            <span class="fa fa-user-tie"></span>
+                        <router-link to="/company/create" class="btn btn-primary">
+                            <span class="fa fa-building"></span>
                             
                             &nbsp;
                             
@@ -36,22 +36,27 @@
                             <table class="table card-table">
                                 <thead>
                                     <tr>
-                                        <th>{{ $t('role.name') }}</th>
-                                        <th>{{ $t('role.date') }}</th>
-                                        <th>{{ $t('role.function') }}</th>
+                                        <th>{{ $t('company.name') }}</th>
+                                        <th>{{ $t('company.delivery_price') }}</th>
+                                        <th>{{ $t('company.print') }}</th>
+                                        <th>{{ $t('company.function') }}</th>
                                     </tr>
                                 </thead>
                                 <tbody class="table-border-bottom-0">
-                                    <tr v-for="role in roles" :key="role.id">
+                                    <tr v-for="company in companies" :key="company.id">
                                         <td>
-                                            <span class="fw-medium">{{ role.name }}</span>
+                                            <span class="fw-medium">{{ company.name }}</span>
                                         </td>
                                         <td>
-                                            <span>{{ role.created_at.split('T')[0] }}</span>
+                                            <span>{{ company.delivery_price }}</span>
                                         </td>
                                         <td>
-                                            <router-link :to="'/role/edit/'+role.id" class="ms-3"><i class="fa fa-edit"></i></router-link>
-                                            <a class="ms-3" style="color: red;" @click="deleteModal(role.id)"><i class="fa fa-trash"></i></a>
+                                            <span v-if="company.print === true" class="badge bg-label-success me-1">{{ $t('company.print_out') }}</span>
+                                            <span v-else class="badge bg-label-danger me-1">{{ $t('company.doesnt_print') }}</span>
+                                        </td>
+                                        <td>
+                                            <router-link :to="'/company/edit/'+company.id" class="ms-3"><i class="fa fa-edit"></i></router-link>
+                                            <a class="ms-3" style="color: red;" @click="deleteModal(company.id)"><i class="fa fa-trash"></i></a>
                                         </td>
                                     </tr>
                                 </tbody>
@@ -71,8 +76,8 @@ import {mapMutations, mapGetters} from 'vuex';
 export default {
     data () {
         return {
-            roles: [],
-            role_id: null,
+            companies: [],
+            company_id: null,
             delete_modal: false,
         }
     },
@@ -82,11 +87,11 @@ export default {
     },
     
     methods: {
-        async getRoles () {
+        async getCompanies () {
             try {
-                const res = await axios.get('http://localhost:8000/api/role/findAll');
+                const res = await axios.get('http://localhost:8000/api/company/findAll');
                 
-                this.roles = res.data.roles;
+                this.companies = res.data.companies;
             } catch (error) {
                 console.log(error);   
             }
@@ -94,9 +99,9 @@ export default {
 
         async deleteFunc () {
             try {
-                const res = await axios.delete(`http://localhost:8000/api/role/delete/${this.role_id}`);
+                const res = await axios.delete(`http://localhost:8000/api/company/remove/${this.company_id}`);
 
-                if (res.data == 200) this.$toast.success('Role deleted successfully');
+                if (res.data == 200) this.$toast.success('Company deleted successfully');
 
                 if (res.data != 200) this.$toast.error('Internal server error');
 
@@ -111,7 +116,7 @@ export default {
         },
 
         deleteModal (id) {
-            this.role_id = id;
+            this.company_id = id;
 
             this.delete_modal = true;
         },
@@ -119,11 +124,12 @@ export default {
         closeModal () {
             this.delete_modal = false;
         },
+        
         ...mapMutations(['showSideBar', 'closeSideBar'])
     },
 
     mounted() {
-        this.getRoles();
+        this.getCompanies();
     }
 }
 </script>

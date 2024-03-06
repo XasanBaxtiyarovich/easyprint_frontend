@@ -1,7 +1,8 @@
 {
     "bar": {
         "users": "Foydalanuvchilar",
-        "roles": "Rolar"
+        "roles": "Rolar",
+        "companies": "Kompaniyalar"
     },
     "user_menu": {
         "my_profile": "Mening profilim",
@@ -70,6 +71,16 @@
         "update": "Rol o'zgartirish",
         "name": "Ism",
         "new_name": "Yangi rol nomini kirting!",
+        "function": "Funksiyalar"
+    },
+    "company": {
+        "add": "Kompaniya qo'shish",
+        "name": "Kompaniya nomi",
+        "delivery_price": "Yetkazib berish narxi",
+        "print": "Chop etish",
+        "doesnt_print": "Chop etmaydi",
+        "print_out": "Chop etadi",
+        "company_print": "Kompaniya kiyimlarga rasm yoki yozuv chop etadimi ?",
         "function": "Funksiyalar"
     }
 }

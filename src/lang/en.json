@@ -1,7 +1,8 @@
 {
     "bar": {
         "users": "Users",
-        "roles": "Roles"
+        "roles": "Roles",
+        "companies": "Companies"
     },
     "table": {
         "email": "Email",
@@ -70,6 +71,16 @@
         "update": "Role changes",
         "name": "Name",
         "new_name": "Enter a new role name!",
+        "function": "Functions"
+    },
+    "company": {
+        "add": "Add company",
+        "name": "Company name",
+        "delivery_price": "Delivery price",
+        "print": "Print",
+        "doesnt_print": "Doesn't print",
+        "print_out": "Prints",
+        "company_print": "Does the company print pictures or text on the clothes ?",
         "function": "Functions"
     }
 }

@@ -66,7 +66,11 @@
                 </router-link>
                 <router-link to="/role/index" class="menu-link">
                     <i class="fa fa-user-tie me-3"></i>
-                    <div data-i18n="Basic">{{ $t('bar.roles') }}</div>
+                    <div data-i18n="Basic" style="margin-left: 5px;">{{ $t('bar.roles') }}</div>
+                </router-link>
+                <router-link to="/company/index" class="menu-link">
+                    <i class="fa fa-building me-3"></i>
+                    <div data-i18n="Basic" style="margin-left: 5px;">{{ $t('bar.companies') }}</div>
                 </router-link>
             </li>
             </ul>

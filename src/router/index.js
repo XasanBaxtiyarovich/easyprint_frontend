@@ -13,6 +13,9 @@ import RoleEdit from '../views/Roles/edit.vue';
 import RoleIndex from '../views/Roles/Index.vue';
 import RoleCreate from '../views/Roles/create.vue';
 
+import CompanyEdit from '../views/Companies/edit.vue';
+import CompanyIndex from '../views/Companies/Index.vue';
+import CompanyCreate from '../views/Companies/create.vue';
 
 const routes = [
   {
@@ -88,6 +91,30 @@ const routes = [
     path: '/role/edit/:id',
     name: 'role-edit',
     component: RoleEdit,
+    beforeEnter(){
+      return isAuthorized()
+    }
+  },
+  {
+    path: '/company/index',
+    name: 'company-index',
+    component: CompanyIndex,
+    beforeEnter(){
+      return isAuthorized()
+    }
+  },
+  {
+    path: '/company/create',
+    name: 'company-create',
+    component: CompanyCreate,
+    beforeEnter(){
+      return isAuthorized()
+    }
+  },
+  {
+    path: '/company/edit/:id',
+    name: 'company-edit',
+    component: CompanyEdit,
     beforeEnter(){
       return isAuthorized()
     }

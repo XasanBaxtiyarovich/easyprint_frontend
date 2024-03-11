@@ -75,6 +75,10 @@
                     <i class="fa fa-building me-3"></i>
                     <div data-i18n="Basic" style="margin-left: 5px;">{{ $t('bar.companies') }}</div>
                 </router-link>
+                <router-link to="/category/index" class="menu-link">
+                    <i class="fa fa-building me-3"></i>
+                    <div data-i18n="Basic" style="margin-left: 5px;">{{ $t('bar.categories') }}</div>
+                </router-link>
             </li>
             </ul>
         </div>

@@ -17,6 +17,10 @@ import CompanyEdit from '../views/Companies/edit.vue';
 import CompanyIndex from '../views/Companies/Index.vue';
 import CompanyCreate from '../views/Companies/create.vue';
 
+import CategoryEdit from '../views/Categories/edit.vue';
+import CategoryINdex from '../views/Categories/Index.vue';
+import CategoryCreate from '../views/Categories/create.vue';
+
 const routes = [
   {
     path: '/',
@@ -115,6 +119,30 @@ const routes = [
     path: '/company/edit/:id',
     name: 'company-edit',
     component: CompanyEdit,
+    beforeEnter(){
+      return isAuthorized()
+    }
+  },
+  {
+    path: '/category/index',
+    name: 'category-index',
+    component: CategoryINdex,
+    beforeEnter(){
+      return isAuthorized()
+    }
+  },
+  {
+    path: '/category/create',
+    name: 'category-create',
+    component: CategoryCreate,
+    beforeEnter(){
+      return isAuthorized()
+    }
+  },
+  {
+    path: '/category/edit/:id',
+    name: 'category-edit',
+    component: CategoryEdit,
     beforeEnter(){
       return isAuthorized()
     }

@@ -2,7 +2,8 @@
     "bar": {
         "users": "Foydalanuvchilar",
         "roles": "Rolar",
-        "companies": "Kompaniyalar"
+        "companies": "Kompaniyalar",
+        "categories": "Kategoriyalar"
     },
     "user_menu": {
         "my_profile": "Mening profilim",
@@ -83,6 +84,12 @@
         "company_print": "Kompaniya kiyimlarga rasm yoki yozuv chop etadimi ?",
         "function": "Funksiyalar"
     },
+    "category": {
+        "add": "Kategoriya qo'shish",
+        "name": "Kategoriya nomi",
+        "created_at": "Yaratilingan sana",
+        "functions": "Funksiyalar"
+    },
     "toast": {
         "company": {
             "created": "Kompaniya qoshildi",
@@ -105,6 +112,12 @@
         "password_edited": "Parol almashtirildi",
         "password_error": "Ishonchli parol kiriting",
         "created_error": "Ma'lumotlaringizni to'g'ri kiriting va ishonchli parol kiriting"
+    },
+    "category": {
+        "deleted": "Kategoriya o'chirildi",
+        "created": "Kategoriya muvaffaqiyatli qo'shildi",
+        "name_already": "Kategoriya nomi allaqachon mavjud",
+        "name_validate": "Kategoriya nomini tekshirishda xato"
     }
 }
 }

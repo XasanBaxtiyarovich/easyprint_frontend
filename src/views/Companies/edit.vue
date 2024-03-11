@@ -11,7 +11,7 @@
                     <div class="row">
                         <div class="col-md-12">
                             <div class="card mt-3">
-                                <h5 class="card-header">{{ $t('role.update') }}</h5>
+                                <h5 class="card-header">{{ $t('company.update') }}</h5>
                                 <div class="card-body">
                                     <form  @submit="submitFunct" id="formAccountSettings" method="POST">
                                         <div class="row">
@@ -118,9 +118,8 @@ export default {
         },
 
         cancelFunc () {
-            this.name = this.company.name;
-            this.print = this.company.print;
-            this.delivery_price = this.company.delivery_price;
+            this.$router.push('/company/index')
+
         },
 
         ...mapMutations(['showSideBar', 'closeSideBar'])

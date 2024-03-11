@@ -81,6 +81,7 @@
         "print": "Print",
         "doesnt_print": "Doesn't print",
         "print_out": "Prints",
+        "update": "Company changes",
         "company_print": "Does the company print pictures or text on the clothes ?",
         "function": "Functions"
     },
@@ -88,7 +89,8 @@
         "add": "Add category",
         "name": "Category name",
         "created_at": "Date of creation",
-        "functions": "Functions"
+        "functions": "Functions",
+        "update": "Category changes"
     },
     "toast": {
         "company": {
@@ -115,6 +117,7 @@
         },
         "category": {
             "deleted": "Category deleted",
+            "edited": "Category data edited",
             "created": "Category added successfully",
             "name_already": "Category name already exists",
             "name_validate": "Name validate error"

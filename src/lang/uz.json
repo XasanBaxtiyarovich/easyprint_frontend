@@ -79,6 +79,8 @@
         "name": "Kompaniya nomi",
         "delivery_price": "Yetkazib berish narxi",
         "print": "Chop etish",
+        "update": "Kompaniyani o'zgartirish",
+
         "doesnt_print": "Chop etmaydi",
         "print_out": "Chop etadi",
         "company_print": "Kompaniya kiyimlarga rasm yoki yozuv chop etadimi ?",
@@ -88,7 +90,8 @@
         "add": "Kategoriya qo'shish",
         "name": "Kategoriya nomi",
         "created_at": "Yaratilingan sana",
-        "functions": "Funksiyalar"
+        "functions": "Funksiyalar",
+        "update": "Kategoriya o'zgartirish"
     },
     "toast": {
         "company": {
@@ -97,27 +100,28 @@
             "shipping_number": "Yetkazib berish narxini sonda kirting",
             "edited": "Kompaniya malumotlari o'zgartirildi",
             "deleted": "Kompaniya o'chirildi"
-    },
-    "role": {
-        "created": "Rol qoshildi",
-        "name_already": "Rol nomi allaqachon mavjud",
-        "edited": "Rol o'zgartirildi",
-        "deleted": "Rol o'chirildi"
-    },
-    "user": {
-        "created": "Foydalanuvchi yaratilindi",
-        "edited": "Foydalanuvchi o'zgartirildi",
-        "deleted": "Foydalanuvchi o'chirildi",
-        "data_edited": "Maʼlumotlar yangilandi",
-        "password_edited": "Parol almashtirildi",
-        "password_error": "Ishonchli parol kiriting",
-        "created_error": "Ma'lumotlaringizni to'g'ri kiriting va ishonchli parol kiriting"
-    },
-    "category": {
-        "deleted": "Kategoriya o'chirildi",
-        "created": "Kategoriya muvaffaqiyatli qo'shildi",
-        "name_already": "Kategoriya nomi allaqachon mavjud",
-        "name_validate": "Kategoriya nomini tekshirishda xato"
-    }
+        },
+        "role": {
+            "created": "Rol qoshildi",
+            "name_already": "Rol nomi allaqachon mavjud",
+            "edited": "Rol o'zgartirildi",
+            "deleted": "Rol o'chirildi"
+        },
+        "user": {
+            "created": "Foydalanuvchi yaratilindi",
+            "edited": "Foydalanuvchi o'zgartirildi",
+            "deleted": "Foydalanuvchi o'chirildi",
+            "data_edited": "Maʼlumotlar yangilandi",
+            "password_edited": "Parol almashtirildi",
+            "password_error": "Ishonchli parol kiriting",
+            "created_error": "Ma'lumotlaringizni to'g'ri kiriting va ishonchli parol kiriting"
+        },
+        "category": {
+            "deleted": "Kategoriya o'chirildi",
+            "created": "Kategoriya muvaffaqiyatli qo'shildi",
+            "edited": "Kategoriya malumotlari o'zgartirildi",
+            "name_already": "Kategoriya nomi allaqachon mavjud",
+            "name_validate": "Kategoriya nomini tekshirishda xato"
+        }
 }
 }

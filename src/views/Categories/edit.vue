@@ -11,12 +11,12 @@
                     <div class="row">
                         <div class="col-md-12">
                             <div class="card mt-3">
-                                <h5 class="card-header">{{ $t('role.update') }}</h5>
+                                <h5 class="card-header">{{ $t('category.update') }}</h5>
                                 <div class="card-body">
                                     <form  @submit="submitFunct" id="formAccountSettings" method="POST">
                                         <div class="row">
                                             <div class="mb-3">
-                                                <label class="form-label" for="basic-default-fullname">{{ $t('company.name') }}</label>
+                                                <label class="form-label" for="basic-default-fullname">{{ $t('category.name') }}</label>
                                                 <input type="text" class="form-control" v-model="name" placeholder="Hoodies" />
                                             </div>    
                                         </div>
@@ -76,12 +76,12 @@ export default {
                 });
 
                 if (res.data.status == 200) {
-                    this.$toast.success(this.$t('toast.company.edited'))
+                    this.$toast.success(this.$t('toast.category.edited'))
                     setTimeout(() => {
                         this.$router.push('/category/index')
                     }, 1100 );
                 } else if (res.data.status == 409) {
-                    this.$toast.error(this.$t('toast.company.name_already'))
+                    this.$toast.error(this.$t('toast.category.name_already'))
                 } else {
                     this.$toast.error('Internal server error')
                 }

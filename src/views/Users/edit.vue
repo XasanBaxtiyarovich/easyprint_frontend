@@ -192,7 +192,10 @@ export default {
                 });
 
                 if (res.data.status == 200) {
-                    this.$router.push('/user/index')
+                    this.$toast.success(this.$t('toast.user.edited'))
+                    setTimeout(() => {
+                        this.$router.push('/user/index')
+                    }, 1100 );
                 }
             } catch (error) {
                 if (error.response.data.message) this.$toast.error('Internal server error');

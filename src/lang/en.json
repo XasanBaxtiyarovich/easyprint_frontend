@@ -82,5 +82,29 @@
         "print_out": "Prints",
         "company_print": "Does the company print pictures or text on the clothes ?",
         "function": "Functions"
+    },
+    "toast": {
+        "company": {
+            "created": "Company added successfully",
+            "name_already": "Company name already exists",
+            "shipping_number": "Enter the shipping cost in Number",
+            "edited": "Company data edited",
+            "deleted": "Company deleted"
+        },
+        "role": {
+            "created": "Role added successfully",
+            "name_already": "Role name already exists",
+            "edited": "Role edited",
+            "deleted": "Role deleted"
+        },
+        "user": {
+            "created": "User Created",
+            "edited": "User edited",
+            "deleted": "User deleted",
+            "data_edited": "Data updated",
+            "password_edited": "Password edited",
+            "password_error": "Enter a strong password",
+            "created_error": "Enter the details correctly and provide a strong password"
+        }
     }
 }

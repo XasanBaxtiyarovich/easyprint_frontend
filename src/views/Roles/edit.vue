@@ -76,11 +76,18 @@ export default {
                     name: this.name
                 });
 
+                console.log(res);
+
                 if (res.data.status == 200) {
-                    this.$router.push('/role/index')
+                    this.$toast.success(this.$t('toast.role.edited'))
+                    setTimeout(() => {
+                        this.$router.push('/role/index')
+                    }, 1100 );
                 } else if (res.data.status == 409) {
-                    this.$toast.error('Role name already exists')
+                    this.$toast.error(this.$t('toast.role.name_already'))
                 } else {
+                    this.name = this.role.name;
+
                     this.$toast.error('Internal server error')
                 }
             } catch (error) {
@@ -90,6 +97,8 @@ export default {
 
         cancelFunc () {
             this.name = this.role.name;
+            this.$router.push('/role/index');
+
         },
 
         ...mapMutations(['showSideBar', 'closeSideBar'])

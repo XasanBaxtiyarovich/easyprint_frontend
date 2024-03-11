@@ -101,7 +101,7 @@ export default {
             try {
                 const res = await axios.delete(`http://localhost:8000/api/company/remove/${this.company_id}`);
 
-                if (res.data == 200) this.$toast.success('Company deleted successfully');
+                if (res.data == 200) this.$toast.success(this.$t('toast.company.deleted'));
 
                 if (res.data != 200) this.$toast.error('Internal server error');
 

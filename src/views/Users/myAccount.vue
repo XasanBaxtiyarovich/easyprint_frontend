@@ -207,7 +207,7 @@ export default {
                 localStorage.setItem('user', JSON.stringify(res.data.updated_user));
 
                 if (res.data.status == 200) {
-                    this.$toast.success('Data updated')
+                    this.$toast.success(this.$t('toast.user.data_edited'))
                     setTimeout(() => {
                         this.$router.push('/user/index')
                     }, 1100 );
@@ -249,7 +249,7 @@ export default {
                 localStorage.setItem('user', JSON.stringify(res.data.updatePasswordUser));
 
                 if (res.data.status == 200) {
-                    this.$toast.success('Password reseted successfully');
+                    this.$toast.success(this.$t('toast.user.password_edited'));
 
                     setTimeout(() => {
                         location.reload();
@@ -258,7 +258,7 @@ export default {
                     this.$toast.error(res.data.message);
                 }              
             } catch (error) {
-                if ( error.response.data.message[0] === 'new_password must be longer than or equal to 4 characters') this.$toast.error('Password validate error');
+                if ( error.response.data.message[0] === 'new_password must be longer than or equal to 4 characters') this.$toast.error(this.$t('toast.user.password_error'));
 
                 console.log(error);
             }

@@ -120,13 +120,13 @@ export default {
                 });
 
                 if (res.data.status == 201) {
-                    this.$toast.success('User created')
+                    this.$toast.success(this.$t('toast.user.created'));
                     setTimeout(() => {
                         this.$router.push('/user/index')
                     }, 1100 );
                 } 
             } catch (error) {
-                if (error.response.data.message) this.$toast.error('Please enter the details correctly and provide a strong password');
+                if (error.response.data.message) this.$toast.error(this.$t('toast.user.created_error'));
 
                 console.log(error.response.data.message[0]);
             }

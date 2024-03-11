@@ -59,12 +59,12 @@ export default {
                 });
 
                 if (res.data.status == 201) {
-                    this.$toast.success('Role created')
+                    this.$toast.success(this.$t('toast.role.created'))
                     setTimeout(() => {
                         this.$router.push('/role/index')
                     }, 1100 );
                 } else if (res.data.status == 409) {
-                    this.$toast.error('Role name already exists')
+                    this.$toast.error(this.$t('toast.role.name_already'))
                 } else {
                     this.$toast.error('Internal server error')
                 }

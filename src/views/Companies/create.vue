@@ -78,17 +78,17 @@ export default {
                 });
 
                 if (res.data.status == 201) {
-                    this.$toast.success('Company created')
+                    this.$toast.success(this.$t('toast.company.created'))
                     setTimeout(() => {
                         this.$router.push('/company/index')
                     }, 1100 );
                 } else if (res.data.status == 409) {
-                    this.$toast.error('Company name already exists')
+                    this.$toast.error(this.$t('toast.company.name_already'))
                 } else {
                     this.$toast.error('Internal server error')
                 }
             } catch (error) {
-                if (error.message == 'Request failed with status code 500') this.$toast.warning('Enter the shipping cost in Number')
+                if (error.message == 'Request failed with status code 500') this.$toast.warning(this.$t('toast.company.shipping_number'))
                 console.log(error);
             }
         },

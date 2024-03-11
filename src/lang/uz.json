@@ -82,5 +82,29 @@
         "print_out": "Chop etadi",
         "company_print": "Kompaniya kiyimlarga rasm yoki yozuv chop etadimi ?",
         "function": "Funksiyalar"
+    },
+    "toast": {
+        "company": {
+            "created": "Kompaniya qoshildi",
+            "name_already": "Kompaniya nomi allaqachon mavjud",
+            "shipping_number": "Yetkazib berish narxini sonda kirting",
+            "edited": "Kompaniya malumotlari o'zgartirildi",
+            "deleted": "Kompaniya o'chirildi"
+    },
+    "role": {
+        "created": "Rol qoshildi",
+        "name_already": "Rol nomi allaqachon mavjud",
+        "edited": "Rol o'zgartirildi",
+        "deleted": "Rol o'chirildi"
+    },
+    "user": {
+        "created": "Foydalanuvchi yaratilindi",
+        "edited": "Foydalanuvchi o'zgartirildi",
+        "deleted": "Foydalanuvchi o'chirildi",
+        "data_edited": "Maʼlumotlar yangilandi",
+        "password_edited": "Parol almashtirildi",
+        "password_error": "Ishonchli parol kiriting",
+        "created_error": "Ma'lumotlaringizni to'g'ri kiriting va ishonchli parol kiriting"
     }
+}
 }

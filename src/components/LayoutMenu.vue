@@ -73,8 +73,16 @@
                     <div data-i18n="Basic" style="margin-left: 5px;">{{ $t('bar.companies') }}</div>
                 </router-link>
                 <router-link to="/category/index" class="menu-link">
-                    <i class="fa fa-building me-3"></i>
+                    <i class="fa fa-list-alt me-3"></i>
                     <div data-i18n="Basic" style="margin-left: 5px;">{{ $t('bar.categories') }}</div>
+                </router-link>
+                <router-link to="/sub-category/index" class="menu-link">
+                    <i class="fa fa-list-alt me-3"></i>
+                    <div data-i18n="Basic" style="margin-left: 5px;">{{ $t('bar.sub-category') }}</div>
+                </router-link>
+                <router-link to="/product/index" class="menu-link">
+                    <i class="fas fa-tshirt me-3"></i>
+                    <div data-i18n="Basic" style="margin-left: 5px;">{{ $t('bar.product') }}</div>
                 </router-link>
             </li>
             </ul>

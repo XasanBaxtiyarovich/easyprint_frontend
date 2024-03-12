@@ -3,7 +3,9 @@
         "users": "Users",
         "roles": "Roles",
         "companies": "Companies",
-        "categories": "Categories"
+        "categories": "Categories",
+        "sub-category": "Sub Categories",
+        "product": "Products"
     },
     "table": {
         "email": "Email",
@@ -89,8 +91,22 @@
         "add": "Add category",
         "name": "Category name",
         "created_at": "Date of creation",
+        "updated_at": "Date of change",
         "functions": "Functions",
         "update": "Category changes"
+    },
+    "sub_category": {
+        "create": "Create sub category",
+        "name": "Select sex type",
+        "parent": "Select parent category"
+    },
+    "product": {
+        "name": "Name",
+        "manufacturer_country": "Manufacturer country",
+        "material_composition": "Material composition",
+        "price": "Price",
+        "status": "Status",
+        "functions": "Functions"
     },
     "toast": {
         "company": {
@@ -120,7 +136,13 @@
             "edited": "Category data edited",
             "created": "Category added successfully",
             "name_already": "Category name already exists",
-            "name_validate": "Name validate error"
+            "name_validate": "Validate error"
+        },
+        "sub_category": {
+            "name_already": "Sub category already exists"
+        },
+        "product": {
+            "deleted": "Product deleted"
         }
     }
 }

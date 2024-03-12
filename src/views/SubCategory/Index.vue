@@ -23,7 +23,7 @@
                 </div>
                 <div class="container" style="margin-top: 90px; padding: 0px 75px;">
                     <div style="display: flex; justify-content: end; width: 100%;">
-                        <router-link to="/category/create" class="btn btn-primary">
+                        <router-link to="/sub-category/create" class="btn btn-primary">
                             <span class="fa fa-list-alt"></span>
                             
                             &nbsp;
@@ -38,6 +38,7 @@
                                     <tr>
                                         <th>{{ this.$t('category.name') }}</th>
                                         <th>{{ this.$t('category.created_at') }}</th>
+                                        <th>{{ this.$t('category.updated_at') }}</th>
                                         <th>{{ this.$t('category.functions') }}</th>
                                     </tr>
                                 </thead>
@@ -50,7 +51,10 @@
                                             <span>{{ category.created_at.split('T')[0] }}</span>
                                         </td>
                                         <td>
-                                            <router-link :to="'/category/edit/'+category.id" class="ms-3"><i class="fa fa-edit"></i></router-link>
+                                            <span>{{ category.updated_at.split('T')[0] }}</span>
+                                        </td>
+                                        <td>
+                                            <router-link :to="'/sub-category/edit/'+category.id" class="ms-3"><i class="fa fa-edit"></i></router-link>
                                             <a class="ms-3" style="color: red;" @click="deleteModal(category.id)"><i class="fa fa-trash"></i></a>
                                         </td>
                                     </tr>
@@ -84,7 +88,7 @@ export default {
     methods: {
         async getCategories () {
             try {
-                const res = await axios.get('http://localhost:8000/api/category/findAllCategory');
+                const res = await axios.get('http://localhost:8000/api/category/findAllSubCategory');
                 
                 this.categories = res.data.categories;
             } catch (error) {

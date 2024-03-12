@@ -21,6 +21,12 @@ import CategoryEdit from '../views/Categories/edit.vue';
 import CategoryINdex from '../views/Categories/Index.vue';
 import CategoryCreate from '../views/Categories/create.vue';
 
+import SubCategoryEdit from '../views/SubCategory/edit.vue';
+import SubCategoryIndex from '../views/SubCategory/Index.vue';
+import SubCategoryCreate from '../views/SubCategory/create.vue';
+
+import ProductIndex from '../views/Products/Index.vue';
+
 const routes = [
   {
     path: '/',
@@ -143,6 +149,38 @@ const routes = [
     path: '/category/edit/:id',
     name: 'category-edit',
     component: CategoryEdit,
+    beforeEnter(){
+      return isAuthorized()
+    }
+  },
+  {
+    path: '/sub-category/index',
+    name: 'sub-category-index',
+    component: SubCategoryIndex,
+    beforeEnter(){
+      return isAuthorized()
+    }
+  },
+  {
+    path: '/sub-category/create',
+    name: 'sub-category-create',
+    component: SubCategoryCreate,
+    beforeEnter(){
+      return isAuthorized()
+    }
+  },
+  {
+    path: '/sub-category/edit/:id',
+    name: 'sub-category-edit',
+    component: SubCategoryEdit,
+    beforeEnter(){
+      return isAuthorized()
+    }
+  },
+  {
+    path: '/product/index',
+    name: 'product-index',
+    component: ProductIndex,
     beforeEnter(){
       return isAuthorized()
     }

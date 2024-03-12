@@ -23,8 +23,8 @@
                 </div>
                 <div class="container" style="margin-top: 90px; padding: 0px 75px;">
                     <div style="display: flex; justify-content: end; width: 100%;">
-                        <router-link to="/category/create" class="btn btn-primary">
-                            <span class="fa fa-list-alt"></span>
+                        <router-link to="/product/create" class="btn btn-primary">
+                            <span class="fas fa-tshirt"></span>
                             
                             &nbsp;
                             
@@ -36,22 +36,34 @@
                             <table class="table card-table">
                                 <thead>
                                     <tr>
-                                        <th>{{ this.$t('category.name') }}</th>
-                                        <th>{{ this.$t('category.created_at') }}</th>
-                                        <th>{{ this.$t('category.functions') }}</th>
+                                        <th>{{ this.$t('product.name') }}</th>
+                                        <th>{{ this.$t('product.manufacturer_country') }}</th>
+                                        <th>{{ this.$t('product.material_composition') }}</th>
+                                        <th>{{ this.$t('product.price') }}</th>
+                                        <th>{{ this.$t('product.status') }}</th>
+                                        <th>{{ this.$t('product.functions') }}</th>
                                     </tr>
                                 </thead>
                                 <tbody class="table-border-bottom-0">
-                                    <tr v-for="category in categories" :key="category.id">
+                                    <tr v-for="product in products" :key="product.id">
                                         <td>
-                                            <span class="fw-medium">{{ category.name }}</span>
+                                            <span class="fw-medium">{{ product.name }}</span>
+                                        </td>        
+                                        <td>
+                                            <span class="fw-medium">{{ product.manufacturer_country }}</span>
+                                        </td>         
+                                        <td>
+                                            <span class="fw-medium">{{ product.material_composition }}</span>
+                                        </td>        
+                                        <td>
+                                            <span class="fw-medium">{{ product.price }}</span>
+                                        </td>         
+                                        <td>
+                                            <span class="fw-medium">{{ product.status }}</span>
                                         </td>
                                         <td>
-                                            <span>{{ category.created_at.split('T')[0] }}</span>
-                                        </td>
-                                        <td>
-                                            <router-link :to="'/category/edit/'+category.id" class="ms-3"><i class="fa fa-edit"></i></router-link>
-                                            <a class="ms-3" style="color: red;" @click="deleteModal(category.id)"><i class="fa fa-trash"></i></a>
+                                            <router-link :to="'/product/edit/'+product.id" class="ms-3"><i class="fa fa-edit"></i></router-link>
+                                            <a class="ms-3" style="color: red;" @click="deleteModal(product.id)"><i class="fa fa-trash"></i></a>
                                         </td>
                                     </tr>
                                 </tbody>
@@ -71,8 +83,8 @@ import {mapMutations, mapGetters} from 'vuex';
 export default {
     data () {
         return {
-            categories: [],
-            category_id: null,
+            products: [],
+            product_id: null,
             delete_modal: false,
         }
     },
@@ -82,11 +94,11 @@ export default {
     },
     
     methods: {
-        async getCategories () {
+        async getProducts () {
             try {
-                const res = await axios.get('http://localhost:8000/api/category/findAllCategory');
+                const res = await axios.get('http://localhost:8000/api/product/findAll');
                 
-                this.categories = res.data.categories;
+                this.products = res.data.products;
             } catch (error) {
                 console.log(error);   
             }
@@ -94,9 +106,9 @@ export default {
 
         async deleteFunc () {
             try {
-                const res = await axios.delete(`http://localhost:8000/api/category/remove/${this.category_id}`);
+                const res = await axios.delete(`http://localhost:8000/api/product/remove/${this.product_id}`);
 
-                if (res.data == 200) this.$toast.success(this.$t('toast.category.deleted'));
+                if (res.data == 200) this.$toast.success(this.$t('toast.product.deleted'));
 
                 if (res.data != 200) this.$toast.error('Internal server error');
 
@@ -111,7 +123,7 @@ export default {
         },
 
         deleteModal (id) {
-            this.category_id = id;
+            this.product_id = id;
 
             this.delete_modal = true;
         },
@@ -119,12 +131,11 @@ export default {
         closeModal () {
             this.delete_modal = false;
         },
-        
         ...mapMutations(['showSideBar', 'closeSideBar'])
     },
 
     mounted() {
-        this.getCategories();
+        this.getProducts();
     }
 }
 </script>

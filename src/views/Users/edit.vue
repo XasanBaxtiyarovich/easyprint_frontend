@@ -25,7 +25,7 @@
                                             <label for="upload" class="btn btn-primary me-2 mb-4" tabindex="0">
                                             <span class="d-none d-sm-block">{{ $t('edit.upload_btn') }}</span>
                                             <i class="bx bx-upload d-block d-sm-none"></i>
-                                            <input
+                                            <input 
                                                 type="file"
                                                 id="upload"
                                                 ref="fileInput"

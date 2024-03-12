@@ -3,7 +3,9 @@
         "users": "Foydalanuvchilar",
         "roles": "Rolar",
         "companies": "Kompaniyalar",
-        "categories": "Kategoriyalar"
+        "categories": "Kategoriyalar",
+        "sub-category": "Sub Kategoriyalar",
+        "product": "Produktlar"
     },
     "user_menu": {
         "my_profile": "Mening profilim",
@@ -90,8 +92,22 @@
         "add": "Kategoriya qo'shish",
         "name": "Kategoriya nomi",
         "created_at": "Yaratilingan sana",
+        "updated_at": "O'zgartirilgan sana",
         "functions": "Funksiyalar",
         "update": "Kategoriya o'zgartirish"
+    },
+    "sub_category": {
+        "create": "Pastki kategoriya yaratish",
+        "name": "Jins turini tanlang",
+        "parent": "Ota toifasini tanlang"
+    },
+    "product": {
+        "name": "Ism",
+        "manufacturer_country": "Ishlab chiqaruvchi mamlakat",
+        "material_composition": "Material tarkibi",
+        "price": "Narx",
+        "status": "Status",
+        "functions": "Funksiyalar"
     },
     "toast": {
         "company": {
@@ -121,7 +137,13 @@
             "created": "Kategoriya muvaffaqiyatli qo'shildi",
             "edited": "Kategoriya malumotlari o'zgartirildi",
             "name_already": "Kategoriya nomi allaqachon mavjud",
-            "name_validate": "Kategoriya nomini tekshirishda xato"
+            "name_validate": "Kategoriya tekshirishda xato"
+        },
+        "sub_category": {
+            "name_already": "Kategoriya allaqachon mavjud"
+        },
+        "product": {
+            "deleted": "Product o'chirildi"
         }
 }
 }

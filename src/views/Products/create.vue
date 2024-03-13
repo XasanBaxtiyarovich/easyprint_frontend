@@ -46,7 +46,7 @@
                                         <label class="form-label" for="country">{{ this.$t('product.status') }}</label>
                                         <select required v-model="status" class="select2 form-select">
                                             <option value=1>Active</option>
-                                            <option value=2>Not active</option>
+                                            <option value=0>Not active</option>
                                         </select>
                                     </div>
                                     <div class="mb-3">
@@ -148,7 +148,7 @@ export default {
                 });
 
                 if (res.status == 201) {
-                    this.$toast.success('Product created');
+                    this.$toast.success(this.$t('product.created'));
                     setTimeout(() => {
                         this.$router.push('/product/index')
                     }, 1100 );

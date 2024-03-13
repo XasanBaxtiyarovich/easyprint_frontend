@@ -5,7 +5,8 @@
         "companies": "Companies",
         "categories": "Categories",
         "sub-category": "Sub Categories",
-        "product": "Products"
+        "product": "Products",
+        "size": "Size"
     },
     "table": {
         "email": "Email",
@@ -117,7 +118,26 @@
         "product_name": "Product name",
         "product_category": "Product category",
         "product_sub": "Product sub category",
-        "description": "Description"
+        "description": "Description",
+        "created": "Product created",
+        "updated": "Product Updated",
+        "deleted": "Product deleted"
+    },
+    "size": {
+        "title": {
+            "create": "Create size data",
+            "update": "Update size data"
+        },
+        "name": "Size",
+        "category": "Category",
+        "status": "Status",
+        "created_at": "Size created date",
+        "updated_at": "Size updated date",
+        "created": "Size created",
+        "updated": "Size changed",
+        "deleted": "Size deleted",
+        "already": "Size already exsist",
+        "create_error": "Enter the details correctly"
     },
     "toast": {
         "company": {

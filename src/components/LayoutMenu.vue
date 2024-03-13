@@ -84,6 +84,10 @@
                     <i class="fas fa-tshirt me-3"></i>
                     <div data-i18n="Basic">{{ $t('bar.product') }}</div>
                 </router-link>
+                <router-link to="/size/index" class="menu-link">
+                    <i class="fa-solid fa-expand me-3"></i>
+                    <div data-i18n="Basic" style="margin-left: 5px;">{{ $t('bar.size') }}</div>
+                </router-link>
             </li>
             </ul>
         </div>

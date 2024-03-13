@@ -10,7 +10,7 @@
                 <header-main :showSideBar="showSideBar"/>
                 <div class="container" style="margin-top: 90px; padding: 0px 75px;">
                     <div style="display: flex; justify-content: end; width: 100%;">
-                        <router-link to="/product/index" class="btn btn-outline-secondary" style="margin-left: 5px;">{{ $t('edit.cancle_btn') }}</router-link>
+                        <router-link to="/size/index" class="btn btn-outline-secondary" style="margin-left: 5px;">{{ $t('edit.cancle_btn') }}</router-link>
                     </div>
                     <div class="content-wrapper">
                         <div class="table-responsive" style="overflow: hidden;">
@@ -23,33 +23,25 @@
                                 </thead>
                                 <tbody class="table-border-bottom-0" >
                                     <tr>
-                                        <th>{{ this.$t('product.name') }}:</th>
-                                        <td>{{ this.product.name }}</td>
+                                        <th>{{ this.$t('size.name') }}:</th>
+                                        <td>{{ this.size.name }}</td>
                                     </tr>
                                     <tr>
-                                        <th>{{ this.$t('product.material_composition') }}:</th>
-                                        <td>{{ this.product.material_composition }}</td>
+                                        <th>{{ this.$t('size.category') }}:</th>
+                                        <td>{{ this.type_name }}</td>
                                     </tr>
                                     <tr>
-                                        <th>{{ this.$t('product.manufacturer_country') }}:</th>
-                                        <td>{{ this.product.manufacturer_country }}</td>
+                                        <th>{{ this.$t('size.status') }}:</th>
+                                        <span v-if="size.status == 1" class="badge bg-label-success me-1">Active</span>
+                                        <span v-else-if="size.status == 0" class="badge bg-label-danger me-1">Not Active</span>
                                     </tr>
                                     <tr>
-                                        <th>{{ this.$t('product.price') }}:</th>
-                                        <td>{{ this.product.price }}</td>
+                                        <th>{{ this.$t('size.created_at') }}:</th>
+                                        <td>{{ this.size.created_at }}</td>
                                     </tr>
                                     <tr>
-                                        <th>{{ this.$t('product.status') }}:</th>
-                                        <span v-if="product.status == 1" class="badge bg-label-success me-1">Active</span>
-                                        <span v-else-if="product.status == 0" class="badge bg-label-danger me-1">Not Active</span>
-                                    </tr>
-                                    <tr>
-                                        <th>{{ this.$t('product.image') }}:</th>
-                                        <td class="row">
-                                            <div class="me-2 col-lg-3 col-md-4 col-sm-6" v-for="image in product.images">
-                                                <img class="img-fluid" width="250px" height="250px" :src="image" alt="Product Image">
-                                            </div>
-                                        </td>
+                                        <th>{{ this.$t('size.updated_at') }}:</th>
+                                        <td>{{ this.size.updated_at }}</td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -69,9 +61,10 @@ import {mapMutations, mapGetters} from 'vuex';
 export default {
     data () {
         return {
-            product: {},
+            size: {},
+            type_name: "",
             delete_modal: false,
-            product_id: router.currentRoute.value.params.id
+            size_id: router.currentRoute.value.params.id
         }
     },
 
@@ -80,11 +73,15 @@ export default {
     },
     
     methods: {
-        async getProduct () {
+        async getSizeInfo () {
             try {
-                const res = await axios.get('http://localhost:8000/api/product/find/'+this.product_id);
+                const res_size = await axios.get('http://localhost:8000/api/size/find/'+this.size_id);
                 
-                this.product = res.data.product;
+                this.size = res_size.data.size;
+
+                const res_catygory = await axios.get('http://localhost:8000/api/category/find/'+this.size.category_id);
+
+                this.type_name = res_catygory.data.category.name;
             } catch (error) {
                 console.log(error);   
             }
@@ -94,7 +91,7 @@ export default {
     },
 
     mounted() {
-        this.getProduct();
+        this.getSizeInfo();
     }
 }
 </script>

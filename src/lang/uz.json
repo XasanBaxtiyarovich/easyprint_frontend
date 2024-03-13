@@ -5,7 +5,8 @@
         "companies": "Kompaniyalar",
         "categories": "Toifalar",
         "sub-category": "Pastki toifalar",
-        "product": "Mahsulotlar"
+        "product": "Mahsulotlar",
+        "size": "O'lcham"
     },
     "user_menu": {
         "my_profile": "Mening profilim",
@@ -118,7 +119,26 @@
         "product_name": "Mahsulot nomi",
         "product_category": "Mahsulot toifasi",
         "product_sub": "Mahsulot pastki toifasi",
-        "description": "tavsif"
+        "description": "Tavsif",
+        "created": "Mahsulot yaratilindi",
+        "updated": "Mahsulot o'zgartirildi",
+        "deleted": "Mahsulot ochirildi"
+    },
+    "size": {
+        "title": {
+            "create": "O'lcham ma'lumotlarini yaratish",
+            "update": "O'lcham ma'lumotlarini yangilash"
+        },
+        "name": "O'lcham",
+        "category": "Toifa",
+        "status": "Status",
+        "created_at": "O'lcham yaratilingan sana",
+        "updated_at": "O'lcham o'zgartirilgan sana",
+        "created": "O'lcham yaratilindi",
+        "updated": "O'lcham o'zgartirildi",
+        "deleted": "O'lcham ochirildi",
+        "already": "O'lcham allaqachon mavjud",
+        "create_error": "Malumotlarni to'g'ri kiriting"
     },
     "toast": {
         "company": {

@@ -30,6 +30,11 @@ import ProductEdit from '../views/Products/edit.vue';
 import ProductIndex from '../views/Products/Index.vue';
 import ProductCreate from '../views/Products/create.vue';
 
+import SizeShow from '../views/Sizes/show.vue';
+import SizeEdit from '../views/Sizes/edit.vue';
+import SizeIndex from '../views/Sizes/Index.vue';
+import SizeCreate from '../views/Sizes/create.vue';
+
 const routes = [
   {
     path: '/',
@@ -211,7 +216,39 @@ const routes = [
     beforeEnter(){
       return isAuthorized()
     }
-  }
+  },
+  {
+    path: '/size/index',
+    name: 'size-index',
+    component: SizeIndex,
+    beforeEnter(){
+      return isAuthorized()
+    }
+  },
+  {
+    path: '/size/show/:id',
+    name: 'size-show',
+    component: SizeShow,
+    beforeEnter(){
+      return isAuthorized()
+    }
+  },
+  {
+    path: '/size/create',
+    name: 'size-create',
+    component: SizeCreate,
+    beforeEnter(){
+      return isAuthorized()
+    }
+  },
+  {
+    path: '/size/edit/:id',
+    name: 'size-edit',
+    component: SizeEdit,
+    beforeEnter(){
+      return isAuthorized()
+    }
+  },
 ]
 
 function isAuthorized () {

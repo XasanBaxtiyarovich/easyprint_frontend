@@ -172,7 +172,7 @@ export default {
                 });
 
                 if (res.status == 201) {
-                    this.$toast.success('Product Updated');
+                    this.$toast.success(this.$t('product.updated'));
                     setTimeout(() => {
                         this.$router.push('/product/index')
                     }, 1100 );

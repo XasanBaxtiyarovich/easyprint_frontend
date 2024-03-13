@@ -4,7 +4,7 @@
         "roles": "Роли",
         "companies": "Компании",
         "categories": "Категории",
-        "sub-category": "Под категории",
+        "sub-category": "Подкатегории",
         "product": "Продукты"
     },
     "table": {
@@ -101,12 +101,23 @@
         "parent": "Выбрать родительскую категорию"
     },
     "product": {
-        "name": "Названий",
+        "title": {
+            "create": "Создать продукт",
+            "edit": "Редактировать продукт"
+        },
+        "attributes": "Атрибуты",
+        "informations": "Информации",
+        "name": "Названия",
+        "image": "Картинки",
         "manufacturer_country": "Страна производитель",
         "material_composition": "Состав материала",
         "price": "Цена",
         "status": "Статус",
-        "functions": "Функции"
+        "functions": "Функции",
+        "product_name": "Название продукта",
+        "product_category": "Категория продукта",
+        "product_sub": "Подкатегория продукта",
+        "description": "Описание"
     },
     "toast": {
             "company": {
@@ -142,7 +153,8 @@
                 "name_already": "Категория уже существует"
             },
             "product": {
-                "deleted": "Продукт удалена"
+                "deleted": "Продукт удалена",
+                "created_error": "Введите данные правильно"
             }
     }
 }

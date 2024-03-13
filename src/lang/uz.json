@@ -3,9 +3,9 @@
         "users": "Foydalanuvchilar",
         "roles": "Rolar",
         "companies": "Kompaniyalar",
-        "categories": "Kategoriyalar",
-        "sub-category": "Sub Kategoriyalar",
-        "product": "Produktlar"
+        "categories": "Toifalar",
+        "sub-category": "Pastki toifalar",
+        "product": "Mahsulotlar"
     },
     "user_menu": {
         "my_profile": "Mening profilim",
@@ -89,25 +89,36 @@
         "function": "Funksiyalar"
     },
     "category": {
-        "add": "Kategoriya qo'shish",
-        "name": "Kategoriya nomi",
+        "add": "Toifa qo'shish",
+        "name": "Toifa nomi",
         "created_at": "Yaratilingan sana",
         "updated_at": "O'zgartirilgan sana",
         "functions": "Funksiyalar",
-        "update": "Kategoriya o'zgartirish"
+        "update": "Toifani o'zgartirish"
     },
     "sub_category": {
-        "create": "Pastki kategoriya yaratish",
+        "create": "Pastki toifa yaratish",
         "name": "Jins turini tanlang",
         "parent": "Ota toifasini tanlang"
     },
     "product": {
-        "name": "Ism",
+        "title": {
+            "create": "Mahsulot yaratish",
+            "edit": "Mahsulotni tahrirlash"
+        },
+        "attributes": "Atributlar",
+        "informations": "Ma'lumotlar",
+        "name": "Nomi",
+        "image": "Rasmlar",
         "manufacturer_country": "Ishlab chiqaruvchi mamlakat",
         "material_composition": "Material tarkibi",
         "price": "Narx",
         "status": "Status",
-        "functions": "Funksiyalar"
+        "functions": "Funksiyalar",
+        "product_name": "Mahsulot nomi",
+        "product_category": "Mahsulot toifasi",
+        "product_sub": "Mahsulot pastki toifasi",
+        "description": "tavsif"
     },
     "toast": {
         "company": {
@@ -143,7 +154,8 @@
             "name_already": "Kategoriya allaqachon mavjud"
         },
         "product": {
-            "deleted": "Product o'chirildi"
+            "deleted": "Product o'chirildi",
+            "created_error": "Ma'lumotlarni to'g'ri kiriting"
         }
 }
 }

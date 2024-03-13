@@ -37,8 +37,7 @@
                                 <thead>
                                     <tr>
                                         <th>{{ this.$t('product.name') }}</th>
-                                        <th>{{ this.$t('product.manufacturer_country') }}</th>
-                                        <th>{{ this.$t('product.material_composition') }}</th>
+                                        <th>{{ this.$t('product.image') }}</th>
                                         <th>{{ this.$t('product.price') }}</th>
                                         <th>{{ this.$t('product.status') }}</th>
                                         <th>{{ this.$t('product.functions') }}</th>
@@ -49,19 +48,20 @@
                                         <td>
                                             <span class="fw-medium">{{ product.name }}</span>
                                         </td>        
-                                        <td>
-                                            <span class="fw-medium">{{ product.manufacturer_country }}</span>
-                                        </td>         
-                                        <td>
-                                            <span class="fw-medium">{{ product.material_composition }}</span>
-                                        </td>        
+                                        <td class="d-flex">
+                                            <div class="me-2" v-for="image in product.images">
+                                                <img width="30px" :src="image">
+                                            </div>
+                                        </td>            
                                         <td>
                                             <span class="fw-medium">{{ product.price }}</span>
-                                        </td>         
+                                        </td>  
                                         <td>
-                                            <span class="fw-medium">{{ product.status }}</span>
-                                        </td>
+                                            <span v-if="product.status == 1" class="badge bg-label-success me-1">Active</span>
+                                            <span v-else-if="product.status == 0" class="badge bg-label-danger me-1">Not Active</span>
+                                        </td>      
                                         <td>
+                                            <router-link :to="'/product/show/'+product.id"><i class="fa fa-eye"></i></router-link>
                                             <router-link :to="'/product/edit/'+product.id" class="ms-3"><i class="fa fa-edit"></i></router-link>
                                             <a class="ms-3" style="color: red;" @click="deleteModal(product.id)"><i class="fa fa-trash"></i></a>
                                         </td>

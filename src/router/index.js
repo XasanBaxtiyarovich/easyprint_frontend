@@ -25,7 +25,10 @@ import SubCategoryEdit from '../views/SubCategory/edit.vue';
 import SubCategoryIndex from '../views/SubCategory/Index.vue';
 import SubCategoryCreate from '../views/SubCategory/create.vue';
 
+import ProductShow from '../views/Products/show.vue';
+import ProductEdit from '../views/Products/edit.vue';
 import ProductIndex from '../views/Products/Index.vue';
+import ProductCreate from '../views/Products/create.vue';
 
 const routes = [
   {
@@ -185,6 +188,30 @@ const routes = [
       return isAuthorized()
     }
   },
+  {
+    path: '/product/create',
+    name: 'product-create',
+    component: ProductCreate,
+    beforeEnter(){
+      return isAuthorized()
+    }
+  },
+  {
+    path: '/product/show/:id',
+    name: 'product-show',
+    component: ProductShow,
+    beforeEnter(){
+      return isAuthorized()
+    }
+  },
+  {
+    path: '/product/edit/:id',
+    name: 'product-edit',
+    component: ProductEdit,
+    beforeEnter(){
+      return isAuthorized()
+    }
+  }
 ]
 
 function isAuthorized () {

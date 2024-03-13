@@ -101,12 +101,23 @@
         "parent": "Select parent category"
     },
     "product": {
+        "title": {
+            "create": "Create product",
+            "edit": "Edit product"
+        },
+        "attributes": "Attributes",
+        "informations": "INFORMATIONS",
         "name": "Name",
+        "image": "Images",
         "manufacturer_country": "Manufacturer country",
         "material_composition": "Material composition",
         "price": "Price",
         "status": "Status",
-        "functions": "Functions"
+        "functions": "Functions",
+        "product_name": "Product name",
+        "product_category": "Product category",
+        "product_sub": "Product sub category",
+        "description": "Description"
     },
     "toast": {
         "company": {
@@ -142,7 +153,8 @@
             "name_already": "Sub category already exists"
         },
         "product": {
-            "deleted": "Product deleted"
+            "deleted": "Product deleted",
+            "created_error": "Enter the details correctly"
         }
     }
 }

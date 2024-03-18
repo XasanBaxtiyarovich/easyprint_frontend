@@ -67,7 +67,7 @@ export default {
       ...mapGetters(['MobileMenu']),  
     },
 
-    methods: {
+     methods: {
         async getSize () {
             const res = await axios.get('http://localhost:8000/api/size/find/'+this.size_id);
 
@@ -76,7 +76,7 @@ export default {
             this.name = this.size.name;
             this.status = this.size.status;
             this.category_id = this.size.category_id;
-        }, 
+        },
 
         async getCategories () {
             try {

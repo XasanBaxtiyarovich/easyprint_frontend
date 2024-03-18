@@ -92,6 +92,10 @@
                     <i class="fa-solid fa-palette me-3"></i>
                     <div data-i18n="Basic" style="margin-left: 5px;">{{ $t('bar.color') }}</div>
                 </router-link>
+                <router-link to="/cupon/index" class="menu-link">
+                    <i class="fa-solid fa-ticket me-3"></i>
+                    <div data-i18n="Basic" style="margin-left: 3px;">{{ $t('bar.cupon') }}</div>
+                </router-link>
             </li>
             </ul>
         </div>

@@ -7,7 +7,8 @@
         "sub-category": "Pastki toifalar",
         "product": "Mahsulotlar",
         "size": "O'lchamlar",
-        "color": "Ranglar"
+        "color": "Ranglar",
+        "cupon": "Kupons"
     },
     "user_menu": {
         "my_profile": "Mening profilim",
@@ -152,6 +153,19 @@
         "created_at": "Yaratilgan sana",
         "color_name": "Rang nomi"
     },
+    "cupon": {
+        "title": {
+            "create": "Kupon yaratish",
+            "update": "Kuponni tahrirlash"
+        },
+        "name": "Nomi",
+        "coupon_quantity": "Kupon miqdori",
+        "min_price": "Minimal narx",
+        "active": "faoligi",
+        "quatity_of_orders": "Buyurtmalar soni",
+        "buyurtmaning_raqami": "Buyurtma soni",
+        "funktsiyalar": "Funksiyalar"
+    },
     "toast": {
         "company": {
             "created": "Kompaniya qoshildi",
@@ -194,6 +208,11 @@
             "updated": "Rang yangilandi",
             "deleted": "Rang o'chirildi",
             "already": "Rang allaqachon mavjud"
+        }, 
+        "cupon": {
+            "created": "Rang yaratilndi",
+            "updated": "Rang yangilandi",
+            "deleted": "Rang o'chirildi"
         }
 }
 }

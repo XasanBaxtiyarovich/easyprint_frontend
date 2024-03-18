@@ -7,7 +7,8 @@
         "sub-category": "Sub Categories",
         "product": "Products",
         "size": "Sizes",
-        "color": "Colors"
+        "color": "Colors",
+        "cupon": "Cupons"
     },
     "table": {
         "email": "Email",
@@ -151,6 +152,19 @@
         "created_at": "Created date",
         "color_name": "Color name"
     },
+    "cupon": {
+        "title": {
+            "create": "Create cupon",
+            "update": "Edite cupon"
+        },
+        "name": "Name",
+        "coupon_quantity": "Coupon quantity",
+        "min_price": "Minimum price",
+        "active": "Active",
+        "quatity_of_orders": "Quantity of orders",
+        "the_number_of_order": "The number of order",
+        "functions": "Functions"
+    },
     "toast": {
         "company": {
             "created": "Company added successfully",
@@ -193,6 +207,11 @@
             "updated": "Color edited",
             "deleted": "Color deleted",
             "already": "Color already exsist"
+        },
+        "cupon": {
+            "create": "Cupon added",
+            "updated": "Cupon edited",
+            "deleted": "Cupon deleted"
         }
     }
 }

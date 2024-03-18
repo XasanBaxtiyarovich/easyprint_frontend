@@ -39,6 +39,11 @@ import ColorEdit from '../views/Colors/edit.vue';
 import ColorsIndex from '../views/Colors/Index.vue';
 import ColorCreate from '../views/Colors/create.vue';
 
+import CuponShow from '../views/Cupons/show.vue';
+import CuponEdit from '../views/Cupons/edit.vue';
+import CuponIndex from '../views/Cupons/Index.vue';
+import CuponCreate from '../views/Cupons/create.vue';
+
 const routes = [
   {
     path: '/',
@@ -273,6 +278,38 @@ const routes = [
     path: '/color/edit/:id',
     name: 'color-edit',
     component: ColorEdit,
+    beforeEnter(){
+      return isAuthorized()
+    }
+  },
+  {
+    path: '/cupon/index',
+    name: 'cupon-index',
+    component: CuponIndex,
+    beforeEnter(){
+      return isAuthorized()
+    }
+  },
+  {
+    path: '/cupon/create',
+    name: 'cupon-create',
+    component: CuponCreate,
+    beforeEnter(){
+      return isAuthorized()
+    }
+  },
+  {
+    path: '/cupon/show/:id',
+    name: 'cupon-show',
+    component: CuponShow,
+    beforeEnter(){
+      return isAuthorized()
+    }
+  },
+  {
+    path: '/cupon/edit/:id',
+    name: 'cupon-edit',
+    component: CuponEdit,
     beforeEnter(){
       return isAuthorized()
     }

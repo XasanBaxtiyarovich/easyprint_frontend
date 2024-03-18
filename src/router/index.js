@@ -35,6 +35,10 @@ import SizeEdit from '../views/Sizes/edit.vue';
 import SizeIndex from '../views/Sizes/Index.vue';
 import SizeCreate from '../views/Sizes/create.vue';
 
+import ColorEdit from '../views/Colors/edit.vue';
+import ColorsIndex from '../views/Colors/Index.vue';
+import ColorCreate from '../views/Colors/create.vue';
+
 const routes = [
   {
     path: '/',
@@ -245,6 +249,30 @@ const routes = [
     path: '/size/edit/:id',
     name: 'size-edit',
     component: SizeEdit,
+    beforeEnter(){
+      return isAuthorized()
+    }
+  },
+  {
+    path: '/color/index',
+    name: 'color-index',
+    component: ColorsIndex,
+    beforeEnter(){
+      return isAuthorized()
+    }
+  },
+  {
+    path: '/color/create',
+    name: 'color-create',
+    component: ColorCreate,
+    beforeEnter(){
+      return isAuthorized()
+    }
+  },
+  {
+    path: '/color/edit/:id',
+    name: 'color-edit',
+    component: ColorEdit,
     beforeEnter(){
       return isAuthorized()
     }

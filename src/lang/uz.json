@@ -6,7 +6,8 @@
         "categories": "Toifalar",
         "sub-category": "Pastki toifalar",
         "product": "Mahsulotlar",
-        "size": "O'lcham"
+        "size": "O'lchamlar",
+        "color": "Ranglar"
     },
     "user_menu": {
         "my_profile": "Mening profilim",
@@ -140,6 +141,17 @@
         "already": "O'lcham allaqachon mavjud",
         "create_error": "Malumotlarni to'g'ri kiriting"
     },
+    "color": {
+        "title": {
+            "create": "Rang yaratish",
+            "update": "Rangni tahrirlash"
+        },
+        "color": "Rang",
+        "name": "Nomi",
+        "code": "Kod",
+        "created_at": "Yaratilgan sana",
+        "color_name": "Rang nomi"
+    },
     "toast": {
         "company": {
             "created": "Kompaniya qoshildi",
@@ -176,6 +188,12 @@
         "product": {
             "deleted": "Product o'chirildi",
             "created_error": "Ma'lumotlarni to'g'ri kiriting"
+        },
+        "color": {
+            "created": "Rang yaratilndi",
+            "updated": "Rang yangilandi",
+            "deleted": "Rang o'chirildi",
+            "already": "Rang allaqachon mavjud"
         }
 }
 }

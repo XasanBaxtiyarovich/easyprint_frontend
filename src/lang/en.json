@@ -6,7 +6,8 @@
         "categories": "Categories",
         "sub-category": "Sub Categories",
         "product": "Products",
-        "size": "Size"
+        "size": "Sizes",
+        "color": "Colors"
     },
     "table": {
         "email": "Email",
@@ -104,7 +105,7 @@
     "product": {
         "title": {
             "create": "Create product",
-            "edit": "Edit product"
+            "edit": "Edite product"
         },
         "attributes": "Attributes",
         "informations": "INFORMATIONS",
@@ -126,7 +127,7 @@
     "size": {
         "title": {
             "create": "Create size data",
-            "update": "Update size data"
+            "update": "Edite size data"
         },
         "name": "Size",
         "category": "Category",
@@ -138,6 +139,17 @@
         "deleted": "Size deleted",
         "already": "Size already exsist",
         "create_error": "Enter the details correctly"
+    },
+    "color": {
+        "title": {
+            "create": "Create color data",
+            "update": "Edite color data"
+        },
+        "color": "Color",
+        "name": "Name",
+        "code": "Code",
+        "created_at": "Created date",
+        "color_name": "Color name"
     },
     "toast": {
         "company": {
@@ -175,6 +187,12 @@
         "product": {
             "deleted": "Product deleted",
             "created_error": "Enter the details correctly"
+        },
+        "color": {
+            "created": "Color added",
+            "updated": "Color edited",
+            "deleted": "Color deleted",
+            "already": "Color already exsist"
         }
     }
 }

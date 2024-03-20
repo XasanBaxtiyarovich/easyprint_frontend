@@ -58,7 +58,7 @@
                                             <span>{{ cupon.min_price }}</span>
                                         </td>
                                         <td>
-                                            <span v-if="cupon.is_active === true" class="badge bg-label-success me-1">Active</span>
+                                            <span v-if="cupon.status == 1" class="badge bg-label-success me-1">Active</span>
                                             <span v-else class="badge bg-label-danger me-1">Not Active</span>
                                         </td>
                                         <td>

@@ -71,8 +71,14 @@
                                             </div>
                                             <div class="mb-3 col-md-6" v-if="role.id == 3">
                                                 <label class="form-label" for="country">{{ $t('edit.role') }}</label>
-                                                <select required v-model="role_id" class="select2 form-select">
+                                                <select required @change="isCompany" v-model="role_id" class="select2 form-select">
                                                     <option v-for="r in roles" :key="r.id" :value="r.id">{{ r.name }}</option>
+                                                </select>
+                                            </div>
+                                            <div v-if="company" class="mb-3">
+                                                <label class="form-label" for="country">{{ $t('company.add') }}</label>
+                                                <select v-model="company_id" class="select2 form-select">
+                                                    <option v-for="c in companies" :key="c.id" :value="c.id">{{ c.name }}</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -136,7 +142,10 @@ export default {
             is_selected_photo: false,
             confirm_deactivate: false,
             formData: new FormData(),
-            user_id: router.currentRoute.value.params.id
+            user_id: router.currentRoute.value.params.id,
+            companies: [],
+            company: false,
+            company_id: null
         }
     },
 
@@ -155,11 +164,40 @@ export default {
             this.role_id = this.user.role.id;
             this.lastname = this.user.lastname;
             this.firstname = this.user.firstname;
+
+            if (this.user.company_id != null) {
+                this.company = true;
+
+                this.company_id = this.user.company_id;
+            }
           
             if (localStorage.getItem('user') !== undefined && localStorage.getItem('user') !== null) {
                 this.my_data = await JSON.parse(localStorage.getItem('user'));
 
                 this.role = this.my_data.role;
+            }
+
+
+        },
+
+        async isCompany() {
+            if (this.role_id && this.role_id == 2 || this.role_id && this.role_id == 4) {
+
+                this.company = true;
+            } else {
+                this.company_id = null;
+
+                this.company = false;
+            }
+        },
+
+        async getCompanies () {
+            try {
+                const res = await axios.get('http://localhost:8000/api/company/findAll')
+
+                this.companies = res.data.companies;
+            } catch (error) {
+                console.log(error);
             }
         },
 
@@ -209,6 +247,8 @@ export default {
             this.image = this.user.image;
             this.lastname = this.user.lastname;
             this.firstname = this.user.firstname;
+
+            this.$router.push('/user/index')
         },
 
         getImage() {
@@ -243,6 +283,7 @@ export default {
     mounted() {
         this.getUser();
         this.getRoles();
+        this.getCompanies();
         this.fileInput = this.$refs.fileInput;
     }
 }

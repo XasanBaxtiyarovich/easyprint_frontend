@@ -163,8 +163,24 @@
         "min_price": "Minimal narx",
         "active": "faoligi",
         "quatity_of_orders": "Buyurtmalar soni",
-        "buyurtmaning_raqami": "Buyurtma soni",
-        "funktsiyalar": "Funksiyalar"
+        "the_number_of_order": "Buyurtma soni",
+        "functions": "Funksiyalar",
+        "type": "Kupon turi",
+        "monetary": "Pul",
+        "percent": "Foiz",
+        "price": "Necha pul?",
+        "parcent": "Necha foiz?",
+        "company": "Kompaniya",
+        "all": "Barcha kompaniyalar",
+        "type_q_n": "Tur",
+        "quantity": "Cheklangan xaridlarga",
+        "number": "Xarid raqami",
+        "cupon_quantity": "Nechta xaridlarga",
+        "cupon_number": "Nechanchi xaridga",
+        "start": "Boshlanish sanasi",
+        "end": "Tugash sanasi",
+        "created_at": "Yaratilgan sana",
+        "updated_at": "O'zgartirilgan sana"
     },
     "toast": {
         "company": {
@@ -210,9 +226,9 @@
             "already": "Rang allaqachon mavjud"
         }, 
         "cupon": {
-            "created": "Rang yaratilndi",
-            "updated": "Rang yangilandi",
-            "deleted": "Rang o'chirildi"
+            "created": "Kupon yaratilndi",
+            "updated": "Kupon yangilandi",
+            "deleted": "Kupon o'chirildi"
         }
 }
 }

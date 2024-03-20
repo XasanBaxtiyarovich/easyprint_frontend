@@ -45,8 +45,14 @@
                                     </div>
                                     <div class="mb-3">
                                         <label class="form-label" for="country">{{ $t('create.role') }}</label>
-                                        <select v-model="role" class="select2 form-select">
+                                        <select  @change="isCompany()" v-model="role" class="select2 form-select">
                                             <option v-for="r in roles" :key="r.id" :value="r.id">{{ r.name }}</option>
+                                        </select>
+                                    </div>
+                                    <div v-if="company" class="mb-3">
+                                        <label class="form-label" for="country">{{ $t('company.add') }}</label>
+                                        <select v-model="company_id" class="select2 form-select">
+                                            <option v-for="c in companies" :key="c.id" :value="c.id">{{ c.name }}</option>
                                         </select>
                                     </div>
                                     <div class="mt-2">
@@ -78,6 +84,9 @@ export default {
             lastname: "",
             firstname: "",
             formData: new FormData(),
+            companies: [],
+            company: false,
+            company_id: null
         }
     },
 
@@ -100,6 +109,26 @@ export default {
             }
         },
 
+        async isCompany() {
+            if (this.role && this.role == 2 || this.role && this.role == 4) {
+                this.company = true;
+            } else {
+                this.company_id = null;
+                
+                this.company = false;
+            }
+        },
+
+        async getCompanies () {
+            try {
+                const res = await axios.get('http://localhost:8000/api/company/findAll')
+
+                this.companies = res.data.companies;
+            } catch (error) {
+                console.log(error);
+            }
+        },
+
         async userCreate (e) {
             e.preventDefault();
 
@@ -108,6 +137,7 @@ export default {
             this.formData.append("lastname", this.lastname);
             this.formData.append("password", this.password);
             this.formData.append("firstname", this.firstname);
+            this.formData.append("company_id", this.company_id);
 
             try {
                 const res = await axios.post('http://localhost:8000/api/users/create',
@@ -140,6 +170,7 @@ export default {
     },
     mounted () {
         this.getRoles();
+        this.getCompanies();
     }
 }
 </script>

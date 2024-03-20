@@ -154,16 +154,32 @@
     },
     "cupon": {
         "title": {
-            "create": "Create cupon",
-            "update": "Edite cupon"
+            "create": "Create coupon",
+            "update": "Edite coupon"
         },
         "name": "Name",
         "coupon_quantity": "Coupon quantity",
         "min_price": "Minimum price",
-        "active": "Active",
+        "active": "Activity",
         "quatity_of_orders": "Quantity of orders",
         "the_number_of_order": "The number of order",
-        "functions": "Functions"
+        "functions": "Functions",
+        "type": "Coupon type",
+        "monetary": "Monetary",
+        "percent": "Percent",
+        "price": "What amount?",
+        "parcent": "Discount percentage?",
+        "company": "Company",
+        "all": "All companies",
+        "type_q_n": "Type",
+        "quantity": "Limited purchases",
+        "number": "Purchase number",
+        "cupon_quantity": "How much for purchase",
+        "cupon_number": "For which purchase",
+        "start": "Start date",
+        "end": "End date",
+        "created_at": "Created date",
+        "updated_at": "Edited date"
     },
     "toast": {
         "company": {

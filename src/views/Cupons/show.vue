@@ -23,48 +23,48 @@
                                 </thead>
                                 <tbody class="table-border-bottom-0" >
                                     <tr>
-                                        <th>Name:</th>
+                                        <th>{{ this.$t('cupon.name') }}:</th>
                                         <td>{{ this.cupon.name }}</td>
                                     </tr>
                                     <tr v-if="this.cupon.price">
-                                        <th>Price:</th>
+                                        <th>{{ this.$t('cupon.price') }}:</th>
                                         <td>{{ this.cupon.price }}</td>
                                     </tr>
                                     <tr v-else-if="this.cupon.parcent">
-                                        <th>Percent:</th>
+                                        <th>{{ this.$t('cupon.percent') }}:</th>
                                         <td>{{ this.cupon.parcent }}</td>
                                     </tr>
                                     <tr>
-                                        <th>Minimum price:</th>
+                                        <th>{{ this.$t('cupon.min_price') }}:</th>
                                         <td>{{ this.cupon.min_price }}</td>
                                     </tr>
                                     <tr>
-                                        <th>Status</th>
+                                        <th>{{ this.$t('cupon.active') }}</th>
                                         <span v-if="cupon.status == 1" class="badge bg-label-success me-1">Active</span>
                                         <span v-else-if="cupon.status == 0" class="badge bg-label-danger me-1">Not Active</span>
                                     </tr>
                                     <tr v-if="this.cupon.type == '0'">
-                                        <th>Quantity of orders:</th>
+                                        <th>{{ this.$t('cupon.quantity') }}:</th>
                                         <td>{{ this.cupon.order_count }}</td>
                                     </tr>
                                     <tr v-else-if="this.cupon.type == '1'">
-                                        <th>The number of order:</th>
+                                        <th>{{ this.$t('cupon.number') }}:</th>
                                         <td>{{ this.cupon.order_count }}</td>
                                     </tr>
                                     <tr>
-                                        <th>Start date:</th>
+                                        <th>{{ this.$t('cupon.start') }}</th>
                                         <td>{{ this.cupon.start_date }}</td>
                                     </tr>
                                     <tr>
-                                        <th>End date:</th>
+                                        <th>{{ this.$t('cupon.end') }}:</th>
                                         <td>{{ this.cupon.end_date }}</td>
                                     </tr>
                                     <tr>
-                                        <th>Created date:</th>
+                                        <th>{{ this.$t('cupon.created_at') }}:</th>
                                         <td>{{ this.cupon.created_at }}</td>
                                     </tr>
                                     <tr>
-                                        <th>Edited date:</th>
+                                        <th>{{ this.$t('cupon.updated_at') }}:</th>
                                         <td>{{ this.cupon.updated_at }}</td>
                                     </tr>
                                 </tbody>

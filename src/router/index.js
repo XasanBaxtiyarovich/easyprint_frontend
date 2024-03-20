@@ -43,6 +43,7 @@ import CuponShow from '../views/Cupons/show.vue';
 import CuponEdit from '../views/Cupons/edit.vue';
 import CuponIndex from '../views/Cupons/Index.vue';
 import CuponCreate from '../views/Cupons/create.vue';
+import axios from 'axios';
 
 const routes = [
   {
@@ -316,8 +317,59 @@ const routes = [
   },
 ]
 
-function isAuthorized () {
+async function isAuthorized () {
   if( localStorage.getItem('token') == null || localStorage.getItem('token') == undefined )  return '/signin';
+
+  try {
+    const res = await axios.get('http://localhost:8000/api/users/find_by_token', {
+      headers: {
+        Authorization: 'Bearer '+localStorage.getItem('token'),
+        Accept: 'application/json'
+      }
+    });
+
+    const currentDate = new Date();
+
+    const expiresInDate = res.data.expiresInDate;
+
+    const isExpired = expiresInDate < currentDate;
+
+    if (isExpired) {
+      localStorage.removeItem('token');
+
+      return '/signin';
+    }
+  } catch (error) {
+    console.log(error);
+
+    return '/signin';
+  }
+}
+
+async function isSuperAdmin () {
+  isAuthorized();
+
+  const res = await axios.get('http://localhost:8000/api/users/find_by_token', {
+    headers: {
+      Authorization: 'Bearer '+localStorage.getItem('token'),
+      Accept: 'application/json'
+    }
+  });
+
+  if (res.data.role.id != 3) return '/signin';
+}
+
+async function isAdmin () {
+  isAuthorized();
+
+  const res = await axios.get('http://localhost:8000/api/users/find_by_token', {
+    headers: {
+      Authorization: 'Bearer '+localStorage.getItem('token'),
+      Accept: 'application/json'
+    }
+  });
+
+  if (res.data.role.id != 2) return '/signin';
 }
 
 const router = createRouter({

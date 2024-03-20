@@ -17,63 +17,63 @@
                                 <form @submit="cuponCreate">
                                     <div class="row">
                                         <div class="col-lg-4 col-sm-4 col-md-4 mb-3">
-                                            <label class="form-label" for="basic-default-fullname">Name</label>
+                                            <label class="form-label" for="basic-default-fullname">{{ this.$t('cupon.name') }}</label>
                                             <input type="text" required class="form-control" v-model="name"/>
                                         </div>          
                                         <div class="col-lg-2 col-sm-4 col-md-4 mb-3">
-                                            <label class="form-label" for="basic-default-fullname">Coupon type</label>
+                                            <label class="form-label" for="basic-default-fullname">{{ this.$t('cupon.type') }}</label>
                                             <select class="form-control" required v-model="cupon_type">
-                                                <option value="price">Price</option>
-                                                <option value="percent">Percent</option>
+                                                <option value="price">{{ this.$t('cupon.monetary') }}</option>
+                                                <option value="percent">{{ this.$t('cupon.percent') }}</option>
                                             </select>
                                         </div>    
                                         <div v-if="cupon_type == 'price'" class="col-lg-2 col-sm-4 col-md-4  mb-3">
-                                            <label class="form-label" for="basic-default-fullname">Coupon price</label>
+                                            <label class="form-label" for="basic-default-fullname">{{ this.$t('cupon.price') }}</label>
                                             <input @change="percent = null" type="text" required class="form-control" v-model="price"/>
                                         </div>        
                                         <div v-else-if="cupon_type == 'percent'" class="col-lg-2 col-sm-4 col-md-4  mb-3">
-                                            <label class="form-label" for="basic-default-fullname">Coupon percent</label>
+                                            <label class="form-label" for="basic-default-fullname">{{ this.$t('cupon.parcent') }}</label>
                                             <input @change="price = null" type="text" required class="form-control" v-model="percent"/>
                                         </div>  
                                         <div class="col-lg-2 col-sm-4 col-md-4  mb-3">
-                                            <label class="form-label" for="basic-default-fullname">Company</label>
+                                            <label class="form-label" for="basic-default-fullname">{{ this.$t('cupon.company') }}</label>
                                             <select v-model="company_id" required class="form-control">
-                                                <option value=null>All companies</option>
+                                                <option value=null>{{ this.$t('cupon.all') }}</option>
                                                 <option v-for="company in companies" :key="company.id" :value="company.id">{{ company.name }}</option>
                                             </select>
                                         </div>     
                                         <div class="col-lg-2 col-sm-4 col-md-4  mb-3">
-                                            <label class="form-label" for="basic-default-fullname">Status</label>
+                                            <label class="form-label" for="basic-default-fullname">{{ this.$t('cupon.active') }}</label>
                                             <select class="form-control" required v-model="status">
                                                 <option value="1">Active</option>
                                                 <option value="0">Not active</option>
                                             </select>
                                         </div> 
                                         <div class="col-lg-4 col-sm-4 col-md-4  mb-3">
-                                            <label class="form-label" for="basic-default-fullname">Minimum price</label>
+                                            <label class="form-label" for="basic-default-fullname">{{ this.$t('cupon.min_price') }}</label>
                                             <input type="text" required class="form-control" v-model="min_prace"/>
                                         </div> 
                                         <div class="col-lg-2 col-sm-4 col-md-4  mb-3">
-                                            <label class="form-label" for="basic-default-fullname">Type</label>
+                                            <label class="form-label" for="basic-default-fullname">{{ this.$t('cupon.type_q_n') }}</label>
                                             <select class="form-control" required v-model="type">
-                                                <option value="0">Quantity</option>
-                                                <option value="1">Number</option>
+                                                <option value="0">{{ this.$t('cupon.quantity') }}</option>
+                                                <option value="1">{{ this.$t('cupon.number') }}</option>
                                             </select>
                                         </div>    
                                         <div v-if="type == 0" class="col-lg-2 col-sm-4 col-md-4  mb-3">
-                                            <label class="form-label" for="basic-default-fullname">Coupon quantity</label>
+                                            <label class="form-label" for="basic-default-fullname">{{ this.$t('cupon.cupon_quantity') }}</label>
                                             <input type="text" required class="form-control" v-model="order_count"/>
                                         </div>        
                                         <div v-else-if="type == 1" class="col-lg-2 col-sm-4 col-md-4  mb-3">
-                                            <label class="form-label" for="basic-default-fullname">Coupon number</label>
+                                            <label class="form-label" for="basic-default-fullname">{{ this.$t('cupon.cupon_number') }}</label>
                                             <input type="text" required class="form-control" v-model="order_count"/>
                                         </div>   
                                         <div class="col-lg-2 col-sm-4 col-md-4  mb-3">
-                                            <label class="form-label" for="basic-default-fullname">Start date</label>
+                                            <label class="form-label" for="basic-default-fullname">{{ this.$t('cupon.start') }}</label>
                                             <input type="date" required class="form-control" v-model="start_date"/>
                                         </div>  
                                         <div class="col-lg-2 col-sm-4 col-md-4  mb-3">
-                                            <label class="form-label" for="basic-default-fullname">End date</label>
+                                            <label class="form-label" for="basic-default-fullname">{{ this.$t('cupon.end') }}</label>
                                             <input type="date" required class="form-control" v-model="end_date"/>
                                         </div>  
                                     </div>
@@ -143,7 +143,7 @@ export default {
                     start_date: this.start_date,
                     end_date: this.end_date,
                     type: this.type,
-                    status: this.status
+                    status: +this.status
                 });
 
                 if (res.data.status == 201) {

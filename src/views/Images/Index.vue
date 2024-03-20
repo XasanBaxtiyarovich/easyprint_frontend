@@ -23,8 +23,8 @@
                 </div>
                 <div class="container" style="margin-top: 90px; padding: 0px 75px;">
                     <div style="display: flex; justify-content: end; width: 100%;">
-                        <router-link to="/cupon/create" class="btn btn-primary">
-                            <span class="fa-solid fa-ticket"></span>
+                        <router-link to="/image/create" class="btn btn-primary">
+                            <span class="fa-solid fa-image"></span>
                             
                             &nbsp;
                             
@@ -36,43 +36,27 @@
                             <table class="table card-table">
                                 <thead>
                                     <tr>
-                                        <th>{{ this.$t('cupon.name') }}</th>
-                                        <th>{{ this.$t('cupon.coupon_quantity') }}</th>
-                                        <th>{{ this.$t('cupon.min_price') }}</th>
+                                        <th>{{ this.$t('product.images') }}</th>
                                         <th>{{ this.$t('product.status') }}</th>
-                                        <th>{{ this.$t('cupon.quatity_of_orders') }}</th>
-                                        <th>{{ this.$t('cupon.the_number_of_order') }}</th>
-                                        <th>{{ this.$t('cupon.functions') }}</th>
+                                        <th>{{ $t('role.date') }}</th>
+                                        <th>{{ $t('role.function') }}</th>
                                     </tr>
                                 </thead>
                                 <tbody class="table-border-bottom-0">
-                                    <tr v-for="cupon in cupons" :key="cupon.id">
+                                    <tr v-for="image in images" :key="image.id">
+                                        <td class="d-flex">
+                                            <img width="30px" :src="image.name">
+                                        </td>     
                                         <td>
-                                            <span>{{ cupon.name }}</span>
+                                            <span v-if="image.status == 1" class="badge bg-label-success me-1">Active</span>
+                                            <span v-else-if="image.status == 0" class="badge bg-label-danger me-1">Not Active</span>
+                                        </td>    
+                                        <td>
+                                            <span>{{ image.created_at.split('T')[0] }}</span>
                                         </td>
                                         <td>
-                                            <span v-if="cupon.price">{{ cupon.price }}</span>
-                                            <span v-else>{{ cupon.parcent }}</span>
-                                        </td>
-                                        <td>
-                                            <span>{{ cupon.min_price }}</span>
-                                        </td>
-                                        <td>
-                                            <span v-if="cupon.status == 1" class="badge bg-label-success me-1">Active</span>
-                                            <span v-else class="badge bg-label-danger me-1">Not Active</span>
-                                        </td>
-                                        <td>
-                                            <span v-if="cupon.type == 0">{{ cupon.order_count }}</span>
-                                            <span v-else> </span>
-                                        </td>
-                                        <td>
-                                            <span v-if="cupon.type == 1">{{ cupon.order_count }}</span>
-                                            <span v-else> </span>
-                                        </td>   
-                                        <td>
-                                            <router-link :to="'/cupon/show/'+cupon.id"><i class="fa fa-eye"></i></router-link>
-                                            <router-link :to="'/cupon/edit/'+cupon.id" class="ms-3"><i class="fa fa-edit"></i></router-link>
-                                            <a class="ms-3" style="color: red;" @click="deleteModal(cupon.id)"><i class="fa fa-trash"></i></a>
+                                            <router-link :to="'/image/edit/'+image.id" class="ms-3"><i class="fa fa-edit"></i></router-link>
+                                            <a class="ms-3" style="color: red;" @click="deleteModal(image.id)"><i class="fa fa-trash"></i></a>
                                         </td>
                                     </tr>
                                 </tbody>
@@ -92,8 +76,8 @@ import {mapMutations, mapGetters} from 'vuex';
 export default {
     data () {
         return {
-            cupons: [],
-            cupon_id: null,
+            images: [],
+            image_id: null,
             delete_modal: false,
         }
     },
@@ -103,11 +87,11 @@ export default {
     },
     
     methods: {
-        async getCupons () {
+        async getImages () {
             try {
-                const res = await axios.get('http://localhost:8000/api/cupon/findAll');
+                const res = await axios.get('http://localhost:8000/api/image/findAll');
                 
-                this.cupons = res.data.cupons;
+                this.images = res.data.images;
             } catch (error) {
                 console.log(error);   
             }
@@ -115,9 +99,9 @@ export default {
 
         async deleteFunc () {
             try {
-                const res = await axios.delete(`http://localhost:8000/api/cupon/delete/${this.cupon_id}`);
+                const res = await axios.delete(`http://localhost:8000/api/image/delete/${this.image_id}`);
 
-                if (res.data == 200) this.$toast.success(this.$t('toast.cupon.deleted'));
+                if (res.data == 200) this.$toast.success(this.$t('image.deleted'));
 
                 if (res.data != 200) this.$toast.error('Internal server error');
 
@@ -132,7 +116,7 @@ export default {
         },
 
         deleteModal (id) {
-            this.cupon_id = id;
+            this.image_id = id;
 
             this.delete_modal = true;
         },
@@ -140,11 +124,12 @@ export default {
         closeModal () {
             this.delete_modal = false;
         },
+
         ...mapMutations(['showSideBar', 'closeSideBar'])
     },
 
     mounted() {
-        this.getCupons();
+        this.getImages();
     }
 }
 </script>

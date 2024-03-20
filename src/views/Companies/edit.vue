@@ -117,7 +117,9 @@ export default {
             this.print = !this.print;
         },
 
-        cancelFunc () {
+        cancelFunc (e) {
+            e.preventDefault();
+            
             this.$router.push('/company/index')
 
         },

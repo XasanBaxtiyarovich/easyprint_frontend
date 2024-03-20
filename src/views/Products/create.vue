@@ -160,7 +160,9 @@ export default {
             }
         },
 
-        cancelFunc () {
+        cancelFunc (e) {
+            e.preventDefault();
+            
             this.$router.push('/product/index')
         },
 

@@ -242,7 +242,9 @@ export default {
             }
         },
 
-        cancelFunc () {
+        cancelFunc (e) {
+            e.preventDefault();
+            
             this.email = this.user.email;
             this.image = this.user.image;
             this.lastname = this.user.lastname;

@@ -104,7 +104,9 @@ export default {
             }
         },
 
-        cancelFunc () {
+        cancelFunc (e) {
+            e.preventDefault();
+            
             this.$router.push('/sub-category/index')
         },
 

@@ -11,16 +11,22 @@
                     <div class="col-xl">
                         <div class="card mb-4">
                             <div class="card-header d-flex justify-content-between align-items-center">
-                                <h5 class="mb-0">{{ $t('role.create') }}</h5>
+                                <h5 class="mb-0">{{ this.$t('image.title.create') }}</h5>
                             </div>
                             <div class="card-body">
-                                <form>
+                                <form @submit="imgCreate">
                                     <div class="mb-3">
-                                        <label class="form-label" for="basic-default-fullname">{{ $t('role.new_name') }}</label>
-                                        <input type="text" class="form-control" v-model="name" placeholder="Admin" />
-                                    </div>          
+                                        <input required class="form-control" type="file" @change="getImage">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label" for="country">{{ this.$t('product.status') }}</label>
+                                        <select required v-model="status" class="select2 form-select">
+                                            <option value="1">Active</option>
+                                            <option value="0">Not active</option>
+                                        </select>
+                                    </div>
                                     <div class="mt-2">
-                                        <button @click="roleCreate" class="btn btn-primary">{{ $t('create.create') }}</button>
+                                        <button type="submit" class="btn btn-primary">{{ $t('create.create') }}</button>
                                         <button @click="cancelFunc" class="btn btn-outline-secondary" style="margin-left: 5px;">{{ $t('edit.cancle_btn') }}</button>
                                     </div>
                                 </form>
@@ -40,7 +46,9 @@ import {mapMutations, mapGetters} from 'vuex';
 export default {
     data () {
         return {
-            name: "",
+            image: "",
+            status: 1,
+            formData: new FormData()
         }
     },
 
@@ -49,25 +57,31 @@ export default {
     },
 
     methods: {
-        async roleCreate (e) {
+        getImage (e) {
+            this.formData.append("image", e.target.files[0]);
+        },
+
+        async imgCreate (e) {
             e.preventDefault();
 
+            this.formData.append("status", +this.status);
+
             try {
-                const res = await axios.post('http://localhost:8000/api/role/create',
+                const res = await axios.post('http://localhost:8000/api/image/create',
+                this.formData, 
                 {
-                    name: this.name
+                    headers: {
+                        'Access-Control-Allow-Origin': '*',
+                        'Content-Type':'application/x-www-form-urlencoded'
+                    }
                 });
 
                 if (res.data.status == 201) {
-                    this.$toast.success(this.$t('toast.role.created'))
+                    this.$toast.success(this.$t('image.created'));
                     setTimeout(() => {
-                        this.$router.push('/role/index')
+                        this.$router.push('/image/index')
                     }, 1100 );
-                } else if (res.data.status == 409) {
-                    this.$toast.error(this.$t('toast.role.name_already'))
-                } else {
-                    this.$toast.error('Internal server error')
-                }
+                } 
             } catch (error) {
                 console.log(error);
             }
@@ -75,8 +89,8 @@ export default {
 
         cancelFunc (e) {
             e.preventDefault();
-            
-            this.$router.push('/role/index')
+
+            this.$router.push('/image/index')
         },
 
         ...mapMutations(['showSideBar', 'closeSideBar'])

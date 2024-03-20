@@ -1,3 +1,4 @@
+import axios from 'axios';
 import { createRouter, createWebHistory } from 'vue-router';
 
 import IndexView from '../views/IndexView.vue'
@@ -43,7 +44,10 @@ import CuponShow from '../views/Cupons/show.vue';
 import CuponEdit from '../views/Cupons/edit.vue';
 import CuponIndex from '../views/Cupons/Index.vue';
 import CuponCreate from '../views/Cupons/create.vue';
-import axios from 'axios';
+
+import ImageEdit from '../views/Images/edit.vue';
+import ImageIndex from '../views/Images/Index.vue';
+import ImageCreate from '../views/Images/create.vue';
 
 const routes = [
   {
@@ -311,6 +315,30 @@ const routes = [
     path: '/cupon/edit/:id',
     name: 'cupon-edit',
     component: CuponEdit,
+    beforeEnter(){
+      return isAuthorized()
+    }
+  },
+  {
+    path: '/image/index',
+    name: 'image-index',
+    component: ImageIndex,
+    beforeEnter(){
+      return isAuthorized()
+    }
+  },
+  {
+    path: '/image/create',
+    name: 'image-create',
+    component: ImageCreate,
+    beforeEnter(){
+      return isAuthorized()
+    }
+  },
+  {
+    path: '/image/edit/:id',
+    name: 'image-edit',
+    component: ImageEdit,
     beforeEnter(){
       return isAuthorized()
     }

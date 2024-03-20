@@ -8,7 +8,8 @@
         "product": "Mahsulotlar",
         "size": "O'lchamlar",
         "color": "Ranglar",
-        "cupon": "Kupons"
+        "cupon": "Kupons",
+        "images": "Rasimlar"
     },
     "user_menu": {
         "my_profile": "Mening profilim",
@@ -124,7 +125,8 @@
         "description": "Tavsif",
         "created": "Mahsulot yaratilindi",
         "updated": "Mahsulot o'zgartirildi",
-        "deleted": "Mahsulot ochirildi"
+        "deleted": "Mahsulot ochirildi",
+        "images": "Rasm"
     },
     "size": {
         "title": {
@@ -181,6 +183,15 @@
         "end": "Tugash sanasi",
         "created_at": "Yaratilgan sana",
         "updated_at": "O'zgartirilgan sana"
+    },
+    "image": {
+        "title": {
+            "create": "Rasm yaratish",
+            "update": "Rasmni tahrirlash"
+        },
+        "created": "Rasm yaratilindi",
+        "updated": "Rasm tahrirlandi",
+        "deleted": "Rasm o'chirildi"
     },
     "toast": {
         "company": {

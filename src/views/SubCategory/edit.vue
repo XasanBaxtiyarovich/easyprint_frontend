@@ -120,7 +120,9 @@ export default {
             }
         },
 
-        cancelFunc () {
+        cancelFunc (e) {
+            e.preventDefault();
+            
             this.name = this.category.name;
 
             this.$router.push('/sub-category/index')

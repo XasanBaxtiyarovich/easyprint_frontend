@@ -99,6 +99,10 @@
                     <i class="fa-solid fa-ticket me-3"></i>
                     <div data-i18n="Basic" style="margin-left: 3px;">{{ $t('bar.cupon') }}</div>
                 </router-link>
+                <router-link to="/image/index" class="menu-link">
+                    <i class="fa-solid fa-image me-3"></i>
+                    <div data-i18n="Basic" style="margin-left: 5px;">{{ $t('bar.images') }}</div>
+                </router-link>
             </li>
             </ul>
         </div>

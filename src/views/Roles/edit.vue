@@ -95,7 +95,9 @@ export default {
             }
         },
 
-        cancelFunc () {
+        cancelFunc (e) {
+            e.preventDefault();
+            
             this.name = this.role.name;
             this.$router.push('/role/index');
 

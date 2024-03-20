@@ -98,7 +98,9 @@ export default {
             this.pickedColor = event.target.value;
         },
 
-        cancelFunc () {
+        cancelFunc (e) {
+            e.preventDefault();
+            
             this.$router.push('/color/index')
         },
 

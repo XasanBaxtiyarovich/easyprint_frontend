@@ -382,64 +382,155 @@ const routes = [
   },
 ]
 
-async function isAuthorized () {
-  if( localStorage.getItem('token') == null || localStorage.getItem('token') == undefined )  return '/signin';
+async function isAuthorized() {
+  const token = localStorage.getItem('token');
+  if (!token) return '/signin';
 
   try {
     const res = await axios.get('http://localhost:8000/api/users/find_by_token', {
       headers: {
-        Authorization: 'Bearer '+localStorage.getItem('token'),
+        Authorization: `Bearer ${token}`,
         Accept: 'application/json'
       }
     });
 
     const currentDate = new Date();
+    const expiresInDate = new Date(res.data.expiresInDate);
 
-    const expiresInDate = res.data.expiresInDate;
-
-    const isExpired = expiresInDate < currentDate;
-
-    if (isExpired) {
+    if (expiresInDate < currentDate) {
       localStorage.removeItem('token');
-
       return '/signin';
     }
+
+    return null; // No redirection needed if authorized
   } catch (error) {
     console.log(error);
-
     return '/signin';
   }
 }
 
-async function isSuperAdmin () {
-  isAuthorized();
+async function isSuperAdmin() {
+  const redirect = await isAuthorized();
+  if (redirect) return redirect;
 
-  const res = await axios.get('http://localhost:8000/api/users/find_by_token', {
-    headers: {
-      Authorization: 'Bearer '+localStorage.getItem('token'),
-      Accept: 'application/json'
-    }
-  });
+  try {
+    const res = await axios.get('http://localhost:8000/api/users/find_by_token', {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem('token')}`,
+        Accept: 'application/json'
+      }
+    });
 
-  if (res.data.role.id != 3) return '/signin';
+    if (res.data.role.id !== 3) return '/signin';
+  } catch (error) {
+    console.log(error);
+    return '/signin';
+  }
 }
 
-async function isAdmin () {
-  isAuthorized();
+async function isAdmin() {
+  const redirect = await isAuthorized();
+  if (redirect) return redirect;
 
-  const res = await axios.get('http://localhost:8000/api/users/find_by_token', {
-    headers: {
-      Authorization: 'Bearer '+localStorage.getItem('token'),
-      Accept: 'application/json'
-    }
-  });
+  try {
+    const res = await axios.get('http://localhost:8000/api/users/find_by_token', {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem('token')}`,
+        Accept: 'application/json'
+      }
+    });
 
-  if (res.data.role.id != 2) return '/signin';
+    if (res.data.role.id !== 2) return '/signin';
+  } catch (error) {
+    console.log(error);
+    return '/signin';
+  }
 }
 
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
   routes
-})
+});
+
+router.beforeEach(async (to, from, next) => {
+  if (to.meta.requiresAuth) {
+    const redirect = await isAuthorized();
+    if (redirect) return next(redirect);
+  }
+
+  if (to.meta.requiresSuperAdmin) {
+    const redirect = await isSuperAdmin();
+    if (redirect) return next(redirect);
+  }
+
+  if (to.meta.requiresAdmin) {
+    const redirect = await isAdmin();
+    if (redirect) return next(redirect);
+  }
+
+  next();
+});
 
 export default router;
+
+
+
+// async function isAuthorized () {
+//   if( localStorage.getItem('token') == null || localStorage.getItem('token') == undefined )  return '/signin';
+
+//   try {
+//     const res = await axios.get('http://localhost:8000/api/users/find_by_token', {
+//       headers: {
+//         Authorization: 'Bearer '+localStorage.getItem('token'),
+//         Accept: 'application/json'
+//       }
+//     });
+
+//     const currentDate = new Date();
+
+//     const expiresInDate = res.data.expiresInDate;
+
+//     const isExpired = expiresInDate < currentDate;
+
+//     if (isExpired) {
+//       localStorage.removeItem('token');
+
+//       return '/signin';
+//     }
+//   } catch (error) {
+//     console.log(error);
+
+//     return '/signin';
+//   }
+// }
+
+// async function isSuperAdmin () {
+//   isAuthorized();
+
+//   const res = await axios.get('http://localhost:8000/api/users/find_by_token', {
+//     headers: {
+//       Authorization: 'Bearer '+localStorage.getItem('token'),
+//       Accept: 'application/json'
+//     }
+//   });
+
+//   if (res.data.role.id != 3) return '/signin';
+// }
+
+// async function isAdmin () {
+//   isAuthorized();
+
+//   const res = await axios.get('http://localhost:8000/api/users/find_by_token', {
+//     headers: {
+//       Authorization: 'Bearer '+localStorage.getItem('token'),
+//       Accept: 'application/json'
+//     }
+//   });
+
+//   if (res.data.role.id != 2) return '/signin';
+// }
+
+// const router = createRouter({
+//   history: createWebHistory(process.env.BASE_URL),
+//   routes
+// })  

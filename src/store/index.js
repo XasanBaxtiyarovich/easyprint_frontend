@@ -2,23 +2,19 @@ import { createStore } from 'vuex'
 
 export default createStore({
   state: {
-    mobile_menu: false
+    mobileMenu: false
   },
   getters: {
-    MobileMenu: function(state) {
-      return state.mobile_menu;
-    }
+    mobileMenu: state => state.mobileMenu
   },
   mutations: {
-    showSideBar (state) {
-      state.mobile_menu = true; 
+    showMobileMenu(state) {
+      state.mobileMenu = true;
     },
-    closeSideBar (state) {
-      state.mobile_menu = false; 
+    closeMobileMenu(state) {
+      state.mobileMenu = false;
     }
   },
-  actions: {
-  },
-  modules: {
-  }
+  actions: {},
+  modules: {}
 })

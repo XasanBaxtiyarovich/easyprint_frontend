@@ -65,7 +65,6 @@ export default {
         getImage (e) {
             this.formData.append("image", e.target.files[0]);
 
-            console.log(e.target.files[0]);
             var oFReader = new FileReader();
             oFReader.readAsDataURL(e.target.files[0]);
             oFReader.onload = function (oFREvent) {

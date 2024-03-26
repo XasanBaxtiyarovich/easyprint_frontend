@@ -103,6 +103,10 @@
                     <i class="fa-solid fa-image me-3"></i>
                     <div data-i18n="Basic" style="margin-left: 5px;">{{ $t('bar.images') }}</div>
                 </router-link>
+                <router-link to="/banner/index" class="menu-link">
+                    <i class="fa-solid fa-sheet-plastic me-3"></i>
+                    <div data-i18n="Basic" style="margin-left: 5px;">{{ $t('bar.banner') }}</div>
+                </router-link>
             </li>
             </ul>
         </div>

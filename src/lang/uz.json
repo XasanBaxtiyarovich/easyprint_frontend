@@ -9,7 +9,8 @@
         "size": "O'lchamlar",
         "color": "Ranglar",
         "cupon": "Kupons",
-        "images": "Rasimlar"
+        "images": "Rasimlar",
+        "banner": "Banner"
     },
     "user_menu": {
         "my_profile": "Mening profilim",
@@ -193,6 +194,17 @@
         "updated": "Rasm tahrirlandi",
         "deleted": "Rasm o'chirildi"
     },
+    "banner": {
+        "title": {
+            "create": "Banner yaratish",
+            "update": "Bannerni tahrirlash"
+        },
+        "main": "Asosiy tasvir",
+        "carousel": "Karusel tasvirlari",
+        "title_baner": "Sarlavha",
+        "description_baner": "Tavsif",
+        "status": "Status"
+    },
     "toast": {
         "company": {
             "created": "Kompaniya qoshildi",
@@ -240,6 +252,11 @@
             "created": "Kupon yaratilndi",
             "updated": "Kupon yangilandi",
             "deleted": "Kupon o'chirildi"
+        },
+        "banner": {
+            "created": "Banner yaratilndi",
+            "updated": "Banner yangilandi",
+            "deleted": "Banner o'chirildi"
         }
 }
 }

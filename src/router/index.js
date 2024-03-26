@@ -49,6 +49,11 @@ import ImageEdit from '../views/Images/edit.vue';
 import ImageIndex from '../views/Images/Index.vue';
 import ImageCreate from '../views/Images/create.vue';
 
+import BannerShow from '../views/Banner/show.vue';
+import BannerEdit from '../views/Banner/edit.vue';
+import BanderIndex from '../views/Banner/Index.vue';
+import BannerCreate from '../views/Banner/create.vue';
+
 const routes = [
   {
     path: '/',
@@ -339,6 +344,38 @@ const routes = [
     path: '/image/edit/:id',
     name: 'image-edit',
     component: ImageEdit,
+    beforeEnter(){
+      return isAuthorized()
+    }
+  },
+  {
+    path: '/banner/index',
+    name: 'banner-index',
+    component: BanderIndex,
+    beforeEnter(){
+      return isAuthorized()
+    }
+  },
+  {
+    path: '/banner/show/:id',
+    name: 'banner-show',
+    component: BannerShow,
+    beforeEnter(){
+      return isAuthorized()
+    }
+  },
+  {
+    path: '/banner/create',
+    name: 'banner-create',
+    component: BannerCreate,
+    beforeEnter(){
+      return isAuthorized()
+    }
+  },
+  {
+    path: '/banner/edit/:id',
+    name: 'banner-edit',
+    component: BannerEdit,
     beforeEnter(){
       return isAuthorized()
     }

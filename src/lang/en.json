@@ -9,7 +9,8 @@
         "size": "Sizes",
         "color": "Colors",
         "cupon": "Cupons",
-        "images": "Images"
+        "images": "Images",
+        "banner": "Banner"
     },
     "table": {
         "email": "Email",
@@ -192,6 +193,17 @@
         "updated": "Image edited",
         "deleted": "Image deleted"
     },
+    "banner": {
+        "title": {
+            "create": "Create banner",
+            "update": "Edite banner"
+        },
+        "main": "Main image",
+        "carousel": "Carousel images",
+        "title_baner": "Title",
+        "description_baner": "Description",
+        "status": "Status"
+    },
     "toast": {
         "company": {
             "created": "Company added successfully",
@@ -239,6 +251,11 @@
             "create": "Cupon added",
             "updated": "Cupon edited",
             "deleted": "Cupon deleted"
+        },
+        "banner": {
+            "create": "Banner added",
+            "updated": "Banner edited",
+            "deleted": "Banner deleted"
         }
     }
 }

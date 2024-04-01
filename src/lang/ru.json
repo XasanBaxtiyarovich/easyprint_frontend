@@ -10,7 +10,8 @@
         "color": "Цветы",
         "cupon": "Купоны",
         "images": "Картинки",
-        "banner": "Баннер"
+        "banner": "Баннер",
+        "discount": "Скидка"
     },
     "table": {
         "firstname": "Имя",
@@ -205,6 +206,23 @@
         "description_baner": "Описание",
         "status": "Статус"
     },
+    "discount": {
+        "title": {
+            "create": "Создать скидку",
+            "update": "Изменить скидку"
+        },
+        "parcent": "Процент",
+        "company": "Компания",
+        "all_company": "Все компании",
+        "category": "Категория",
+        "all_categories": "Все категории",
+        "sub_category": "Подкатегория",
+        "all_sub": "Все подкатегории",
+        "product": "Продукт",
+        "all_products": "Все продукты",
+        "type": "Тип",
+        "number_products": "Количество товаров"
+    },
     "toast": {
             "company": {
                 "created": "Компания добавлена",
@@ -257,6 +275,11 @@
                 "created": "Баннер создан",
                 "updated": "Баннер отредактирован",
                 "deleted": "Баннер удален"
+            },
+            "discount": {
+                "created": "Скидка создан",
+                "updated": "Скидка отредактирован",
+                "deleted": "Скидка удален"
             }
     }
 }

@@ -31,44 +31,173 @@
                             <span class="fa fa-plus"></span>
                         </router-link>
                     </div>
-                    <div class="content-wrapper">
-                        <div class="table-responsive text-nowrap">
-                            <table class="table card-table">
-                                <thead>
-                                    <tr>
-                                        <th>{{ this.$t('product.name') }}</th>
-                                        <th>{{ this.$t('product.image') }}</th>
-                                        <th>{{ this.$t('product.price') }}</th>
-                                        <th>{{ this.$t('product.status') }}</th>
-                                        <th>{{ this.$t('product.functions') }}</th>
-                                    </tr>
-                                </thead>
-                                <tbody class="table-border-bottom-0">
-                                    <tr v-for="product in products" :key="product.id">
-                                        <td>
-                                            <span class="fw-medium">{{ product.name }}</span>
-                                        </td>        
-                                        <td class="d-flex">
-                                            <div class="me-2" v-for="image in product.images">
-                                                <img width="30px" :src="image">
-                                            </div>
-                                        </td>            
-                                        <td>
-                                            <span class="fw-medium">{{ product.price }}</span>
-                                        </td>  
-                                        <td>
-                                            <span v-if="product.status == 1" class="badge bg-label-success me-1">Active</span>
-                                            <span v-else-if="product.status == 0" class="badge bg-label-danger me-1">Not Active</span>
-                                        </td>      
-                                        <td>
-                                            <router-link :to="'/product/show/'+product.id"><i class="fa fa-eye"></i></router-link>
-                                            <router-link :to="'/product/edit/'+product.id" class="ms-3"><i class="fa fa-edit"></i></router-link>
-                                            <a class="ms-3" style="color: red;" @click="deleteModal(product.id)"><i class="fa fa-trash"></i></a>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
+                    <div style="padding-top: 25px;">
+                        <my-tabs @getProduct="getSub">
+                            <template v-slot:tab1>
+                                <div class="content-wrapper">
+                                    <div class="table-responsive text-nowrap">
+                                        <table class="table card-table">
+                                            <thead>
+                                                <tr>
+                                                    <th>{{ this.$t('product.name') }}</th>
+                                                    <th>{{ this.$t('product.image') }}</th>
+                                                    <th>{{ this.$t('product.price') }}</th>
+                                                    <th>{{ this.$t('product.status') }}</th>
+                                                    <th>{{ this.$t('product.functions') }}</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody class="table-border-bottom-0">
+                                                <tr v-for="product in products" :key="product.id">
+                                                    <td>
+                                                        <span class="fw-medium">{{ product.name }}</span>
+                                                    </td>        
+                                                    <td class="d-flex">
+                                                        <div class="me-2" v-for="image in product.images">
+                                                            <img width="30px" :src="image">
+                                                        </div>
+                                                    </td>            
+                                                    <td>
+                                                        <span class="fw-medium">{{ product.price }}</span>
+                                                    </td>  
+                                                    <td>
+                                                        <span v-if="product.status == 1" class="badge bg-label-success me-1">Active</span>
+                                                        <span v-else-if="product.status == 0" class="badge bg-label-danger me-1">Not Active</span>
+                                                    </td>      
+                                                    <td>
+                                                        <router-link :to="'/product/show/'+product.id"><i class="fa fa-eye"></i></router-link>
+                                                        <router-link :to="'/product/edit/'+product.id" class="ms-3"><i class="fa fa-edit"></i></router-link>
+                                                        <a class="ms-3" style="color: red;" @click="deleteModal(product.id)"><i class="fa fa-trash"></i></a>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </template>
+                            <template v-slot:tab2>
+                                <div class="content-wrapper">
+                                    <div class="table-responsive text-nowrap">
+                                        <table class="table card-table">
+                                            <thead>
+                                                <tr>
+                                                    <th>{{ this.$t('product.name') }}</th>
+                                                    <th>{{ this.$t('product.image') }}</th>
+                                                    <th>{{ this.$t('product.price') }}</th>
+                                                    <th>{{ this.$t('product.status') }}</th>
+                                                    <th>{{ this.$t('product.functions') }}</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody class="table-border-bottom-0">
+                                                <tr v-for="product in products" :key="product.id">
+                                                    <td>
+                                                        <span class="fw-medium">{{ product.name }}</span>
+                                                    </td>        
+                                                    <td class="d-flex">
+                                                        <div class="me-2" v-for="image in product.images">
+                                                            <img width="30px" :src="image">
+                                                        </div>
+                                                    </td>            
+                                                    <td>
+                                                        <span class="fw-medium">{{ product.price }}</span>
+                                                    </td>  
+                                                    <td>
+                                                        <span v-if="product.status == 1" class="badge bg-label-success me-1">Active</span>
+                                                        <span v-else-if="product.status == 0" class="badge bg-label-danger me-1">Not Active</span>
+                                                    </td>      
+                                                    <td>
+                                                        <router-link :to="'/product/show/'+product.id"><i class="fa fa-eye"></i></router-link>
+                                                        <router-link :to="'/product/edit/'+product.id" class="ms-3"><i class="fa fa-edit"></i></router-link>
+                                                        <a class="ms-3" style="color: red;" @click="deleteModal(product.id)"><i class="fa fa-trash"></i></a>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </template>
+                            <template v-slot:tab3>
+                                <div class="content-wrapper">
+                                    <div class="table-responsive text-nowrap">
+                                        <table class="table card-table">
+                                            <thead>
+                                                <tr>
+                                                    <th>{{ this.$t('product.name') }}</th>
+                                                    <th>{{ this.$t('product.image') }}</th>
+                                                    <th>{{ this.$t('product.price') }}</th>
+                                                    <th>{{ this.$t('product.status') }}</th>
+                                                    <th>{{ this.$t('product.functions') }}</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody class="table-border-bottom-0">
+                                                <tr v-for="product in products" :key="product.id">
+                                                    <td>
+                                                        <span class="fw-medium">{{ product.name }}</span>
+                                                    </td>        
+                                                    <td class="d-flex">
+                                                        <div class="me-2" v-for="image in product.images">
+                                                            <img width="30px" :src="image">
+                                                        </div>
+                                                    </td>            
+                                                    <td>
+                                                        <span class="fw-medium">{{ product.price }}</span>
+                                                    </td>  
+                                                    <td>
+                                                        <span v-if="product.status == 1" class="badge bg-label-success me-1">Active</span>
+                                                        <span v-else-if="product.status == 0" class="badge bg-label-danger me-1">Not Active</span>
+                                                    </td>      
+                                                    <td>
+                                                        <router-link :to="'/product/show/'+product.id"><i class="fa fa-eye"></i></router-link>
+                                                        <router-link :to="'/product/edit/'+product.id" class="ms-3"><i class="fa fa-edit"></i></router-link>
+                                                        <a class="ms-3" style="color: red;" @click="deleteModal(product.id)"><i class="fa fa-trash"></i></a>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </template>
+                            <template v-slot:tab4>
+                                <div class="content-wrapper">
+                                    <div class="table-responsive text-nowrap">
+                                        <table class="table card-table">
+                                            <thead>
+                                                <tr>
+                                                    <th>{{ this.$t('product.name') }}</th>
+                                                    <th>{{ this.$t('product.image') }}</th>
+                                                    <th>{{ this.$t('product.price') }}</th>
+                                                    <th>{{ this.$t('product.status') }}</th>
+                                                    <th>{{ this.$t('product.functions') }}</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody class="table-border-bottom-0">
+                                                <tr v-for="product in products" :key="product.id">
+                                                    <td>
+                                                        <span class="fw-medium">{{ product.name }}</span>
+                                                    </td>        
+                                                    <td class="d-flex">
+                                                        <div class="me-2" v-for="image in product.images">
+                                                            <img width="30px" :src="image">
+                                                        </div>
+                                                    </td>            
+                                                    <td>
+                                                        <span class="fw-medium">{{ product.price }}</span>
+                                                    </td>  
+                                                    <td>
+                                                        <span v-if="product.status == 1" class="badge bg-label-success me-1">Active</span>
+                                                        <span v-else-if="product.status == 0" class="badge bg-label-danger me-1">Not Active</span>
+                                                    </td>      
+                                                    <td>
+                                                        <router-link :to="'/product/show/'+product.id"><i class="fa fa-eye"></i></router-link>
+                                                        <router-link :to="'/product/edit/'+product.id" class="ms-3"><i class="fa fa-edit"></i></router-link>
+                                                        <a class="ms-3" style="color: red;" @click="deleteModal(product.id)"><i class="fa fa-trash"></i></a>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </template>
+                        </my-tabs>
                     </div>
                 </div>
             </div>
@@ -94,14 +223,11 @@ export default {
     },
     
     methods: {
-        async getProducts () {
-            try {
-                const res = await axios.get('http://localhost:8000/api/product/findAll');
+        async getSub(num) {
+            console.log(num);
+            const res = await axios.get('http://localhost:8000/api/product/findByCategory/'+num);
                 
-                this.products = res.data.products;
-            } catch (error) {
-                console.log(error);   
-            }
+            this.products = res.data.products;
         },
 
         async deleteFunc () {
@@ -135,7 +261,7 @@ export default {
     },
 
     mounted() {
-        this.getProducts();
+        this.getSub(1)
     }
 }
 </script>

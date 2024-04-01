@@ -104,6 +104,10 @@
                     <i class="fa-solid fa-sheet-plastic me-3"></i>
                     <div data-i18n="Basic" style="margin-left: 5px;">{{ $t('bar.banner') }}</div>
                 </router-link>
+                <router-link to="/discount/index" class="menu-link">
+                    <i class="fa-solid fa-percent me-3"></i>
+                    <div data-i18n="Basic" style="margin-left: 5px;">{{ $t('bar.discount') }}</div>
+                </router-link>
             </li>
             </ul>
         </div>

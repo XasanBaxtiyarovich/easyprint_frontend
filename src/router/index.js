@@ -54,6 +54,11 @@ import BannerEdit from '../views/Banner/edit.vue';
 import BanderIndex from '../views/Banner/Index.vue';
 import BannerCreate from '../views/Banner/create.vue';
 
+import DiscountShow from '../views/Discount/show.vue';
+import DiscountEdit from '../views/Discount/edit.vue';
+import DiscountIndex from '../views/Discount/Index.vue';
+import DiscountCreate from '../views/Discount/create.vue';
+
 const routes = [
   {
     path: '/',
@@ -376,6 +381,38 @@ const routes = [
     path: '/banner/edit/:id',
     name: 'banner-edit',
     component: BannerEdit,
+    beforeEnter(){
+      return isAuthorized()
+    }
+  },
+  {
+    path: '/discount/index',
+    name: 'discount-index',
+    component: DiscountIndex,
+    beforeEnter(){
+      return isAuthorized()
+    }
+  },
+  {
+    path: '/discount/show/:id',
+    name: 'discount-show',
+    component: DiscountShow,
+    beforeEnter(){
+      return isAuthorized()
+    }
+  },
+  {
+    path: '/discount/create',
+    name: 'discount-create',
+    component: DiscountCreate,
+    beforeEnter(){
+      return isAuthorized()
+    }
+  },
+  {
+    path: '/discount/edit/:id',
+    name: 'discount-edit',
+    component: DiscountEdit,
     beforeEnter(){
       return isAuthorized()
     }

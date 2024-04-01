@@ -10,7 +10,8 @@
         "color": "Colors",
         "cupon": "Cupons",
         "images": "Images",
-        "banner": "Banner"
+        "banner": "Banner",
+        "discount": "Discount"
     },
     "table": {
         "email": "Email",
@@ -183,6 +184,23 @@
         "end": "End date",
         "created_at": "Created date",
         "updated_at": "Edited date"
+    }, 
+    "discount": { 
+        "title": {
+            "create": "Create discount",
+            "update": "Edite discount"
+        },
+        "parcent": "Parcent",
+        "company": "Company",
+        "all_company": "All companies",
+        "category": "Category",
+        "all_categories": "All categories",
+        "sub_category": "Sub category",
+        "all_sub": "All sub categories",
+        "product": "Product",
+        "all_products": "All products",
+        "type": "Type",
+        "number_products": "Number of products"
     },
     "image": {
         "title": {
@@ -256,6 +274,11 @@
             "create": "Banner added",
             "updated": "Banner edited",
             "deleted": "Banner deleted"
+        },
+        "discount": {
+            "create": "Discount added",
+            "updated": "Discount edited",
+            "deleted": "Discount deleted"
         }
     }
 }

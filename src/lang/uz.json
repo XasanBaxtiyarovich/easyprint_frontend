@@ -10,7 +10,8 @@
         "color": "Ranglar",
         "cupon": "Kupons",
         "images": "Rasimlar",
-        "banner": "Banner"
+        "banner": "Banner",
+        "discount": "Chegirma"
     },
     "user_menu": {
         "my_profile": "Mening profilim",
@@ -205,6 +206,23 @@
         "description_baner": "Tavsif",
         "status": "Status"
     },
+    "discount": {
+        "title": {
+            "create": "Chegirma yaratish",
+            "update": "Chegirmani tahrirlash"
+        },
+        "parcent": "Foiz",
+        "company": "Kompaniya",
+        "all_company": "Barcha kompaniyalar",
+        "category": "Toifa",
+        "all_categories": "Barcha toifalar",
+        "sub_category": "Sub kategoriya",
+        "all_sub": "Barcha pastki toifalar",
+        "product": "Mahsulot",
+        "all_products": "Barcha mahsulotlar",
+        "type": "Tur",
+        "number_products": "Mahsulotlar soni"
+    },
     "toast": {
         "company": {
             "created": "Kompaniya qoshildi",
@@ -257,6 +275,11 @@
             "created": "Banner yaratilndi",
             "updated": "Banner yangilandi",
             "deleted": "Banner o'chirildi"
+        },
+        "discount": {
+            "created": "Chegirma yaratilndi",
+            "updated": "Chegirma yangilandi",
+            "deleted": "Chegirma o'chirildi"
         }
 }
 }

@@ -120,14 +120,14 @@ import { defaultLocale } from '@/lang';
 
 export default {
     name: 'header-main',
-    data() {
+    data () {
         return {
             user: {},
             lang_menu: false,
             mobile_menu: false,
             user_menu_show: false,
             language: localStorage.getItem('lang') || defaultLocale
-        };
+        }
     },
     props: {
         showSideBar: {
@@ -135,53 +135,69 @@ export default {
         }
     },
     methods: {
-        toggleUserMenu() {
+        showUserMenu () {
             this.user_menu_show = !this.user_menu_show;
+
             if (this.user_menu_show) this.lang_menu = false;
         },
 
-        toggleLangMenu() {
+        showLangMenu () {
             this.lang_menu = !this.lang_menu;
+          
             if (this.lang_menu) this.user_menu_show = false;
         },
 
-        signOut() {
-            localStorage.removeItem('token');
-            localStorage.removeItem('user');
+        signOut () {
+            if ( localStorage.getItem('token') != undefined | null) {
+                localStorage.removeItem('token');
+            }             
+            if ( localStorage.getItem('user') != undefined | null) {
+                localStorage.removeItem('user');
+            }
+
             this.$router.push('/signin');
         },
-
-        getUser() {
-            const userJson = localStorage.getItem('user');
-            if (userJson) {
-                this.user = JSON.parse(userJson);
+        
+        getUser () {
+            if ( localStorage.getItem('user') != undefined | null) {
+                this.user = JSON.parse(localStorage.getItem('user'));
             }
         },
 
-        setLanguage(lang) {
-            localStorage.setItem('lang', lang);
-            this.language = lang;
-            this.$i18n.locale = lang;
-            this.lang_menu = false;
-        },
-
         langUz() {
-            this.setLanguage('uz');
+            localStorage.setItem('lang', 'uz');
+
+            this.language = 'uz';
+
+            this.$i18n.locale = 'uz';
+            
+            this.lang_menu = !this.lang_menu;
         },
 
         langRu() {
-            this.setLanguage('ru');
+            localStorage.setItem('lang', 'ru');
+
+            this.language = 'ru';
+
+            this.$i18n.locale = 'ru';
+            
+            this.lang_menu = !this.lang_menu;
         },
 
         langEn() {
-            this.setLanguage('en');
+            localStorage.setItem('lang', 'en');
+
+            this.language = 'en';
+
+            this.$i18n.locale = 'en';
+
+            this.lang_menu = !this.lang_menu;
         }
     },
-    mounted() {
+    mounted () {
         this.getUser();
     }
-};
-
+}   
 </script>
 
 <style>

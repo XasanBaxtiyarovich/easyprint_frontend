@@ -37,6 +37,7 @@
                                 <thead>
                                     <tr>
                                         <th>{{ this.$t('category.name') }}</th>
+                                        <th>Parent category name</th>
                                         <th>{{ this.$t('category.created_at') }}</th>
                                         <th>{{ this.$t('category.updated_at') }}</th>
                                         <th>{{ this.$t('category.functions') }}</th>
@@ -46,6 +47,9 @@
                                     <tr v-for="category in categories" :key="category.id">
                                         <td>
                                             <span class="fw-medium">{{ category.name }}</span>
+                                        </td>
+                                        <td>
+                                            <span class="fw-medium">{{ category.parent.name }}</span>
                                         </td>
                                         <td>
                                             <span>{{ category.created_at.split('T')[0] }}</span>

@@ -30,30 +30,28 @@
                             <table class="table card-table">
                                 <thead>
                                     <tr>
+                                        <th>{{ $t('table.image') }}</th>
                                         <th>{{ $t('table.email') }}</th>
                                         <th>{{ $t('table.firstname') }}</th>
                                         <th>{{ $t('table.lastname') }}</th>
-                                        <th>{{ $t('table.active') }}</th>
+                                        <th>{{ $t('table.phone_number') }}</th>
                                         <th>{{ $t('table.role') }}</th>
                                         <th>{{ $t('table.function') }}</th>
                                     </tr>
                                 </thead>
                                 <tbody class="table-border-bottom-0">
-                                    <tr v-for="user in users" :key="user.id">
+                                    <tr v-for="user in users" :key="user.id" class="products_url" @click="pushInShowPage(user.id)">
+                                        <div v-if="user && user.personal_info && user.personal_info.avatar">
+                                            <img :src="user.personal_info.avatar" alt class="w-px-40 h-auto rounded-circle" />
+                                        </div>
                                         <td>
                                             <span class="fw-medium">{{ user.email }}</span>
                                         </td>
-                                        <td>{{ user.firstname }}</td>
-                                        <td>{{ user.lastname }}</td>
+                                        <td>{{ user.personal_info.first_name }}</td>
+                                        <td>{{ user.personal_info.last_name }}</td>
+                                        <td>{{ user.personal_info.phone_number }}</td>
+                                        <td>{{ user.role.name }}</td>
                                         <td>
-                                            <span v-if="user.is_active === true" class="badge bg-label-success me-1">Active</span>
-                                            <span v-else class="badge bg-label-danger me-1">Not Active</span>
-                                        </td>
-                                        <td>
-                                            {{ user.role.name }}
-                                        </td>
-                                        <td>
-                                            <!-- <router-link :to="'/user/edit/'+user.id" class="ms-1"><i class="fa fa-eye"></i></router-link> -->
                                             <router-link :to="'/user/edit/'+user.id" class="ms-3"><i class="fa fa-edit"></i></router-link>
                                             <a class="ms-3" style="color: red;" @click="deleteModal(user.id)"><i class="fa fa-trash"></i></a>
                                         </td>
@@ -88,6 +86,10 @@ export default {
     },
     
     methods: {
+        async pushInShowPage(id) {
+            this.$router.push(`/user/show/${id}`)
+        },
+
         async getUser () {
             if (localStorage.getItem('user') !== undefined && localStorage.getItem('user') !== null) {
                 this.user = await JSON.parse(localStorage.getItem('user'));
@@ -147,3 +149,13 @@ export default {
     }
 }
 </script>
+
+<style>
+.products_url {
+    transition: 0.5s;
+}
+
+.products_url:hover {
+    background-color: rgb(0, 0, 0, 0.1);
+}
+</style>

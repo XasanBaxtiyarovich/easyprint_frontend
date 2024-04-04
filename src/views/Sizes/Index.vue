@@ -38,24 +38,27 @@
                                     <tr>
                                         <th>{{ this.$t('size.name') }}</th>
                                         <th>{{ this.$t('size.status') }}</th>
-                                        <th>{{ this.$t('size.updated_at') }}</th>
+                                        <th>{{ $t('role.date') }}</th>
+                                        <th>{{ $t('category.updated_at') }}</th>
                                         <th>{{ this.$t('role.function') }}</th>
                                     </tr>
                                 </thead>
                                 <tbody class="table-border-bottom-0">
-                                    <tr v-for="size in sizes" :key="size.id">
+                                    <tr v-for="size in sizes" :key="size.id" class="products_url" @click="pushInShowPage(size.id)">
                                         <td>
                                             <span class="fw-medium">{{ size.name }}</span>
                                         </td>
                                         <td>
                                             <span v-if="size.status == 1" class="badge bg-label-success me-1">Active</span>
                                             <span v-else-if="size.status == 0" class="badge bg-label-danger me-1">Not Active</span>
+                                        </td>
+                                        <td>
+                                            <span>{{ size.created_at.split('T')[0] }}</span>
                                         </td>   
                                         <td>
                                             <span>{{ size.updated_at.split('T')[0] }}</span>
                                         </td>
                                         <td>
-                                            <router-link :to="'/size/show/'+size.id"><i class="fa fa-eye"></i></router-link>
                                             <router-link :to="'/size/edit/'+size.id" class="ms-3"><i class="fa fa-edit"></i></router-link>
                                             <a class="ms-3" style="color: red;" @click="deleteModal(size.id)"><i class="fa fa-trash"></i></a>
                                         </td>
@@ -88,6 +91,10 @@ export default {
     },
     
     methods: {
+        async pushInShowPage(id) {
+            this.$router.push(`/size/show/${id}`)
+        },
+
         async getSizes () {
             try {
                 const res = await axios.get('http://localhost:8000/api/size/findAll');
@@ -133,3 +140,13 @@ export default {
     }
 }
 </script>
+
+<style>
+.products_url {
+    transition: 0.5s;
+}
+
+.products_url:hover {
+    background-color: rgb(0, 0, 0, 0.1);
+}
+</style>

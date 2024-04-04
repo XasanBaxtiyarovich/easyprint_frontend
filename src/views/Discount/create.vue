@@ -165,7 +165,7 @@ export default {
 
                 console.log(res);
                 if (res.data.status == 200) {
-                    this.$toast.success(this.$t('discount.create'))
+                    this.$toast.success(this.$t('toast.discount.create'))
                     setTimeout(() => {
                         this.$router.push('/discount/index')
                     }, 1100 );

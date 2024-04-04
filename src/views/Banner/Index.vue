@@ -45,7 +45,7 @@
                                     </tr>
                                 </thead>
                                 <tbody class="table-border-bottom-0">
-                                    <tr v-for="banner in banners" :key="banner.id">
+                                    <tr v-for="banner in banners" :key="banner.id" class="products_url" @click="pushInShowPage(banner.id)">
                                         <td>
                                             <span class="fw-medium">{{ banner.title }}</span>
                                         </td>        
@@ -65,7 +65,6 @@
                                             <span v-else-if="banner.is_active == 0" class="badge bg-label-danger me-1">Not Active</span>
                                         </td>      
                                         <td>
-                                            <router-link :to="'/banner/show/'+banner.id"><i class="fa fa-eye"></i></router-link>
                                             <router-link :to="'/banner/edit/'+banner.id" class="ms-3"><i class="fa fa-edit"></i></router-link>
                                             <a class="ms-3" style="color: red;" @click="deleteModal(banner.id)"><i class="fa fa-trash"></i></a>
                                         </td>
@@ -98,6 +97,10 @@ export default {
     },
     
     methods: {
+        async pushInShowPage(id) {
+            this.$router.push(`/banner/show/${id}`)
+        },
+
         async getBanners () {
             try {
                 const res = await axios.get('http://localhost:8000/api/banner/findAll');
@@ -143,3 +146,13 @@ export default {
     }
 }
 </script>
+
+<style>
+.products_url {
+    transition: 0.5s;
+}
+
+.products_url:hover {
+    background-color: rgb(0, 0, 0, 0.1);
+}
+</style>

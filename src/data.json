@@ -1,0 +1,15 @@
+{
+    "ROLE": {
+        "id_1": "USER",
+        "id_2": "ADMIN",
+        "id_3": "SUPER ADMIN",
+        "id_4": "MENEJER"
+    },
+
+    "CATEGORY": {
+        "id_1": "T-shirts",
+        "id_2": "Sweatshirts",
+        "id_3": "Hoodies",
+        "id_4": "Accessories"
+    }
+}

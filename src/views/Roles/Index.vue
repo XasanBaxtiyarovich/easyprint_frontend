@@ -38,6 +38,7 @@
                                     <tr>
                                         <th>{{ $t('role.name') }}</th>
                                         <th>{{ $t('role.date') }}</th>
+                                        <th>{{ $t('category.updated_at') }}</th>
                                         <th>{{ $t('role.function') }}</th>
                                     </tr>
                                 </thead>
@@ -48,6 +49,9 @@
                                         </td>
                                         <td>
                                             <span>{{ role.created_at.split('T')[0] }}</span>
+                                        </td>
+                                        <td>
+                                            <span>{{ role.updated_at.split('T')[0] }}</span>
                                         </td>
                                         <td>
                                             <router-link :to="'/role/edit/'+role.id" class="ms-3"><i class="fa fa-edit"></i></router-link>

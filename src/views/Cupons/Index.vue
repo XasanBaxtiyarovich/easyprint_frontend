@@ -46,7 +46,7 @@
                                     </tr>
                                 </thead>
                                 <tbody class="table-border-bottom-0">
-                                    <tr v-for="cupon in cupons" :key="cupon.id">
+                                    <tr v-for="cupon in cupons" :key="cupon.id" class="products_url" @click="pushInShowPage(cupon.id)">
                                         <td>
                                             <span>{{ cupon.name }}</span>
                                         </td>
@@ -70,7 +70,6 @@
                                             <span v-else> </span>
                                         </td>   
                                         <td>
-                                            <router-link :to="'/cupon/show/'+cupon.id"><i class="fa fa-eye"></i></router-link>
                                             <router-link :to="'/cupon/edit/'+cupon.id" class="ms-3"><i class="fa fa-edit"></i></router-link>
                                             <a class="ms-3" style="color: red;" @click="deleteModal(cupon.id)"><i class="fa fa-trash"></i></a>
                                         </td>
@@ -103,6 +102,10 @@ export default {
     },
     
     methods: {
+        async pushInShowPage(id) {
+            this.$router.push(`/cupon/show/${id}`)
+        },
+
         async getCupons () {
             try {
                 const res = await axios.get('http://localhost:8000/api/cupon/findAll');
@@ -148,3 +151,13 @@ export default {
     }
 }
 </script>
+
+<style>
+.products_url {
+    transition: 0.5s;
+}
+
+.products_url:hover {
+    background-color: rgb(0, 0, 0, 0.1);
+}
+</style>

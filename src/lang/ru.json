@@ -11,13 +11,16 @@
         "cupon": "Купоны",
         "images": "Картинки",
         "banner": "Баннер",
-        "discount": "Скидка"
+        "discount": "Скидка",
+        "warehouse": "Склад"
     },
     "table": {
+        "image": "Картинкa",
         "firstname": "Имя",
         "lastname": "Фамилия",
         "email": "Электронная почта",
         "active": "Активность",
+        "phone_number": "Телефон номер",
         "role": "Роль",
         "function": "Функции"
     },
@@ -83,6 +86,7 @@
         "function": "Функции"
     },
     "company": {
+        "company": "Компания",
         "add": "Добавить компанию",
         "name": "Названия компани",
         "delivery_price": "Стоимость доставки",
@@ -223,6 +227,26 @@
         "type": "Тип",
         "number_products": "Количество товаров"
     },
+    "warehouse": {
+        "warehouse": "Склад",
+        "title": {
+            "create": "Создать склад",
+            "update": "Изменить склад"
+        },
+        "product": "Продукт",
+        "price": "Цена",
+        "name": "Имя",
+        "category": "Категория",
+        "size": "Размер",
+        "color": "Цвет",
+        "count": "Счет",
+        "images": "Изображения",
+        "manufacture_country": "Страна-производитель",
+        "material_composition": "Состав материала",
+        "description": "Описание",
+        "status": "Статус",
+        "images_not_found": "Изображения не найдены"
+    },
     "toast": {
             "company": {
                 "created": "Компания добавлена",
@@ -280,6 +304,11 @@
                 "created": "Скидка создан",
                 "updated": "Скидка отредактирован",
                 "deleted": "Скидка удален"
+            },
+            "warehouse": {
+                "created": "Склад создан",
+                "updated": "Склад отредактирован",
+                "deleted": "Склад удален"
             }
     }
 }

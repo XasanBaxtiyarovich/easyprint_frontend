@@ -147,7 +147,13 @@ export default {
 
                     localStorage.setItem("token", res.data.token);
 
-                    this.$router.push('/');
+                    if (res.data.user.role.id == 2 || res.data.user.role.id == 4) {
+                      this.$router.push('/company');
+                    } else if (res.data.user.role.id == 3) {
+                      this.$router.push('/');
+                    } else {
+                      this.$toast.error('Unauthorized !')
+                    }
                 }
             } catch (error) {
                console.log(error); 

@@ -45,7 +45,7 @@
                                     </tr>
                                 </thead>
                                 <tbody class="table-border-bottom-0">
-                                    <tr v-for="discount in discounts" :key="discount.discount.id">
+                                    <tr v-for="discount in discounts" :key="discount.discount.id"  class="products_url" @click="pushInShowPage(discount.discount[0].discount_number)">
                                         <td>
                                             <span class="fw-medium">{{ discount.discount[0].parcent }}%</span>
                                         </td>
@@ -68,7 +68,6 @@
                                             <span>{{ discount.number }}</span>
                                         </td>
                                         <td>
-                                            <router-link :to="'/discount/show/'+discount.discount[0].discount_number"><i class="fa fa-eye"></i></router-link>
                                             <router-link :to="'/discount/edit/'+discount.discount[0].discount_number" class="ms-3"><i class="fa fa-edit"></i></router-link>
                                             <a class="ms-3" style="color: red;" @click="deleteModal(discount.discount[0].discount_number)"><i class="fa fa-trash"></i></a>
                                         </td>
@@ -102,6 +101,10 @@ export default {
     },
     
     methods: {
+        async pushInShowPage(id) {
+            this.$router.push(`/discount/show/${id}`)
+        },
+
         async getDiscounts () {
             try {
                 const res = await axios.get('http://localhost:8000/api/discount/findAll');
@@ -147,3 +150,13 @@ export default {
     }
 }
 </script>
+
+<style>
+.products_url {
+    transition: 0.5s;
+}
+
+.products_url:hover {
+    background-color: rgb(0, 0, 0, 0.1);
+}
+</style>

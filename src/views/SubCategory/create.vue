@@ -54,9 +54,9 @@ export default {
             categories: [],
             parent_id: null,
             sub_categories: [
-                {id: 1, name: 'Unisex'},
-                {id: 2, name: 'Women'},
                 {id: 3, name: 'Men'},
+                {id: 2, name: 'Women'},
+                {id: 1, name: 'Unisex'},
                 {id: 4, name: 'Children'}
             ]
         }

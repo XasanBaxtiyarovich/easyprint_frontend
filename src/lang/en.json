@@ -11,13 +11,16 @@
         "cupon": "Cupons",
         "images": "Images",
         "banner": "Banner",
-        "discount": "Discount"
+        "discount": "Discount",
+        "warehouse": "Warehouse"
     },
     "table": {
+        "image": "Image",
         "email": "Email",
         "firstname": "Name",
         "lastname": "Surname",
         "active": "Activity",
+        "phone_number": "Phone number",
         "role": "Role",
         "function": "Functions"
     },
@@ -83,6 +86,7 @@
         "function": "Functions"
     },
     "company": {
+        "company": "Company",
         "add": "Add company",
         "name": "Company name",
         "delivery_price": "Delivery price",
@@ -222,6 +226,26 @@
         "description_baner": "Description",
         "status": "Status"
     },
+    "warehouse": {
+        "warehouse": "Warehouse",
+        "title": {
+            "create": "Create warehouse",
+            "update": "Edite warehouse"
+        },
+        "product": "Product",
+        "price": "Price",
+        "name": "Name",
+        "category": "Category",
+        "size": "Size",
+        "color": "Color",
+        "count": "Count",
+        "images": "Images",
+        "manufacture_country": "Manufacture country",
+        "material_composition": "Material composition",
+        "description": "Description",
+        "status": "Status",
+        "images_not_found": "Images not found"  
+    },
     "toast": {
         "company": {
             "created": "Company added successfully",
@@ -279,6 +303,11 @@
             "create": "Discount added",
             "updated": "Discount edited",
             "deleted": "Discount deleted"
+        },
+        "warehouse": {
+            "create": "Warehouse added",
+            "updated": "Warehouse edited",
+            "deleted": "Warehouse deleted"
         }
     }
 }

@@ -64,8 +64,8 @@
                     </li>
                     <li class="nav-item navbar dropdown-user dropdown">
                         <a class="nav-link hide-arrow" @click="showUserMenu">
-                            <div class="avatar avatar-online">
-                                <img :src="user.image" alt class="w-px-40 h-auto rounded-circle" />
+                            <div v-if="user && user.personal_info && user.personal_info.avatar" class="avatar avatar-online">
+                                <img :src="user.personal_info.avatar" alt class="w-px-40 h-auto rounded-circle" />
                             </div>
                         </a>
                         <ul class="user_menu" v-if="user_menu_show">
@@ -74,11 +74,11 @@
                                     <div class="d-flex">
                                         <div class="flex-shrink-0 me-3">
                                             <div class="avatar avatar-online">
-                                                <img :src="user.image" alt class="w-px-40 h-auto rounded-circle" />
+                                                <img :src="user.personal_info.avatar" alt class="w-px-40 h-auto rounded-circle" />
                                             </div>
                                         </div>
                                         <div class="flex-grow-1">
-                                            <span class="fw-medium d-block">{{ user.firstname + " " + user.lastname}}</span>
+                                            <span class="fw-medium d-block">{{ user.personal_info.first_name + " " + user.personal_info.last_name}}</span>
                                             <small class="text-muted" style="text-transform: capitalize;">{{ user.role.name }}</small>
                                         </div>
                                     </div>

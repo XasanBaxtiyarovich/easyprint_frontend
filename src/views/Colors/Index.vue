@@ -39,7 +39,8 @@
                                         <th>{{ this.$t('color.color') }}</th>
                                         <th>{{ this.$t('color.name') }}</th>
                                         <th>{{ this.$t('color.code') }}</th>
-                                        <th>{{ this.$t('color.created_at') }}</th>
+                                        <th>{{ $t('role.date') }}</th>
+                                        <th>{{ $t('category.updated_at') }}</th>
                                         <th>{{ this.$t('role.function') }}</th>
                                     </tr>
                                 </thead>
@@ -56,6 +57,9 @@
                                         </td>   
                                         <td>
                                             <span>{{ color.created_at.split('T')[0] }}</span>
+                                        </td>
+                                        <td>
+                                            <span>{{ color.updated_at.split('T')[0] }}</span>
                                         </td>
                                         <td>
                                             <router-link :to="'/color/edit/'+color.id" class="ms-3"><i class="fa fa-edit"></i></router-link>

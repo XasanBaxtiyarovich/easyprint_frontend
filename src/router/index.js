@@ -2,10 +2,12 @@ import axios from 'axios';
 import { createRouter, createWebHistory } from 'vue-router';
 
 import IndexView from '../views/IndexView.vue'
+import Company from '../views/CompanyIndex.vue';
 import LoginView from '../views/LoginView.vue';
 import NotFoundView from '../views/NotFoundView.vue';
 
 import UserEdit from '../views/Users/edit.vue';
+import UserShow from '../views/Users/show.vue';
 import UserINdex from '../views/Users/Index.vue';
 import UserCreate from '../views/Users/create.vue';
 import MyAccount from '../views/Users/myAccount.vue';
@@ -59,6 +61,12 @@ import DiscountEdit from '../views/Discount/edit.vue';
 import DiscountIndex from '../views/Discount/Index.vue';
 import DiscountCreate from '../views/Discount/create.vue';
 
+import WarehouseShow from '../views/Warehouse/show.vue';
+import WarehouseEdit from '../views/Warehouse/edit.vue';
+import WarehouseIndex from '../views/Warehouse/Index.vue';
+import WarehouseCreate from '../views/Warehouse/create.vue';
+import WarehouseProducts from '../views/Warehouse/products.vue';
+
 const routes = [
   {
     path: '/',
@@ -66,6 +74,14 @@ const routes = [
     component: IndexView,
     beforeEnter(){
       return isAuthorized()
+    }
+  },
+  {
+    path: '/company',
+    name: 'company',
+    component: Company,
+    beforeEnter(){
+      return isAdmin()
     }
   },
   {
@@ -78,7 +94,7 @@ const routes = [
     name: 'user-create',
     component: UserCreate,
     beforeEnter(){
-      return isAuthorized()
+      return isSuperAdmin()
     }
   },
   {
@@ -86,7 +102,7 @@ const routes = [
     name: 'user-edit',
     component: UserEdit,
     beforeEnter(){
-      return isAuthorized()
+      return isSuperAdmin()
     }
   },
   {
@@ -94,7 +110,15 @@ const routes = [
     name: 'user-index',
     component: UserINdex,
     beforeEnter(){
-      return isAuthorized()
+      return isSuperAdmin()
+    }
+  },
+  {
+    path: '/user/show/:id',
+    name: 'user-show',
+    component: UserShow,
+    beforeEnter(){
+      return isSuperAdmin()
     }
   },
   {
@@ -110,7 +134,7 @@ const routes = [
     name: 'NotFound',
     component: NotFoundView,
     beforeEnter(){
-      return isAuthorized()
+      return isSuperAdmin()
     }
   },
   {
@@ -118,7 +142,7 @@ const routes = [
     name: 'role-index',
     component: RoleIndex,
     beforeEnter(){
-      return isAuthorized()
+      return isSuperAdmin()
     }
   },
   {
@@ -126,7 +150,7 @@ const routes = [
     name: 'role-create',
     component: RoleCreate,
     beforeEnter(){
-      return isAuthorized()
+      return isSuperAdmin()
     }
   },
   {
@@ -134,7 +158,7 @@ const routes = [
     name: 'role-edit',
     component: RoleEdit,
     beforeEnter(){
-      return isAuthorized()
+      return isSuperAdmin()
     }
   },
   {
@@ -142,7 +166,7 @@ const routes = [
     name: 'company-index',
     component: CompanyIndex,
     beforeEnter(){
-      return isAuthorized()
+      return isSuperAdmin()
     }
   },
   {
@@ -150,7 +174,7 @@ const routes = [
     name: 'company-create',
     component: CompanyCreate,
     beforeEnter(){
-      return isAuthorized()
+      return isSuperAdmin()
     }
   },
   {
@@ -158,7 +182,7 @@ const routes = [
     name: 'company-edit',
     component: CompanyEdit,
     beforeEnter(){
-      return isAuthorized()
+      return isSuperAdmin()
     }
   },
   {
@@ -166,7 +190,7 @@ const routes = [
     name: 'category-index',
     component: CategoryINdex,
     beforeEnter(){
-      return isAuthorized()
+      return isSuperAdmin()
     }
   },
   {
@@ -174,7 +198,7 @@ const routes = [
     name: 'category-create',
     component: CategoryCreate,
     beforeEnter(){
-      return isAuthorized()
+      return isSuperAdmin()
     }
   },
   {
@@ -182,7 +206,7 @@ const routes = [
     name: 'category-edit',
     component: CategoryEdit,
     beforeEnter(){
-      return isAuthorized()
+      return isSuperAdmin()
     }
   },
   {
@@ -190,7 +214,7 @@ const routes = [
     name: 'sub-category-index',
     component: SubCategoryIndex,
     beforeEnter(){
-      return isAuthorized()
+      return isSuperAdmin()
     }
   },
   {
@@ -198,7 +222,7 @@ const routes = [
     name: 'sub-category-create',
     component: SubCategoryCreate,
     beforeEnter(){
-      return isAuthorized()
+      return isSuperAdmin()
     }
   },
   {
@@ -206,7 +230,7 @@ const routes = [
     name: 'sub-category-edit',
     component: SubCategoryEdit,
     beforeEnter(){
-      return isAuthorized()
+      return isSuperAdmin()
     }
   },
   {
@@ -214,7 +238,7 @@ const routes = [
     name: 'product-index',
     component: ProductIndex,
     beforeEnter(){
-      return isAuthorized()
+      return isSuperAdmin()
     }
   },
   {
@@ -222,7 +246,7 @@ const routes = [
     name: 'product-create',
     component: ProductCreate,
     beforeEnter(){
-      return isAuthorized()
+      return isSuperAdmin()
     }
   },
   {
@@ -230,7 +254,7 @@ const routes = [
     name: 'product-show',
     component: ProductShow,
     beforeEnter(){
-      return isAuthorized()
+      return isSuperAdmin()
     }
   },
   {
@@ -238,7 +262,7 @@ const routes = [
     name: 'product-edit',
     component: ProductEdit,
     beforeEnter(){
-      return isAuthorized()
+      return isSuperAdmin()
     }
   },
   {
@@ -246,7 +270,7 @@ const routes = [
     name: 'size-index',
     component: SizeIndex,
     beforeEnter(){
-      return isAuthorized()
+      return isSuperAdmin()
     }
   },
   {
@@ -254,7 +278,7 @@ const routes = [
     name: 'size-show',
     component: SizeShow,
     beforeEnter(){
-      return isAuthorized()
+      return isSuperAdmin()
     }
   },
   {
@@ -262,7 +286,7 @@ const routes = [
     name: 'size-create',
     component: SizeCreate,
     beforeEnter(){
-      return isAuthorized()
+      return isSuperAdmin()
     }
   },
   {
@@ -270,7 +294,7 @@ const routes = [
     name: 'size-edit',
     component: SizeEdit,
     beforeEnter(){
-      return isAuthorized()
+      return isSuperAdmin()
     }
   },
   {
@@ -278,7 +302,7 @@ const routes = [
     name: 'color-index',
     component: ColorsIndex,
     beforeEnter(){
-      return isAuthorized()
+      return isSuperAdmin()
     }
   },
   {
@@ -286,7 +310,7 @@ const routes = [
     name: 'color-create',
     component: ColorCreate,
     beforeEnter(){
-      return isAuthorized()
+      return isSuperAdmin()
     }
   },
   {
@@ -294,7 +318,7 @@ const routes = [
     name: 'color-edit',
     component: ColorEdit,
     beforeEnter(){
-      return isAuthorized()
+      return isSuperAdmin()
     }
   },
   {
@@ -302,7 +326,7 @@ const routes = [
     name: 'cupon-index',
     component: CuponIndex,
     beforeEnter(){
-      return isAuthorized()
+      return isSuperAdmin()
     }
   },
   {
@@ -310,7 +334,7 @@ const routes = [
     name: 'cupon-create',
     component: CuponCreate,
     beforeEnter(){
-      return isAuthorized()
+      return isSuperAdmin()
     }
   },
   {
@@ -318,7 +342,7 @@ const routes = [
     name: 'cupon-show',
     component: CuponShow,
     beforeEnter(){
-      return isAuthorized()
+      return isSuperAdmin()
     }
   },
   {
@@ -326,7 +350,7 @@ const routes = [
     name: 'cupon-edit',
     component: CuponEdit,
     beforeEnter(){
-      return isAuthorized()
+      return isSuperAdmin()
     }
   },
   {
@@ -334,7 +358,7 @@ const routes = [
     name: 'image-index',
     component: ImageIndex,
     beforeEnter(){
-      return isAuthorized()
+      return isSuperAdmin()
     }
   },
   {
@@ -342,7 +366,7 @@ const routes = [
     name: 'image-create',
     component: ImageCreate,
     beforeEnter(){
-      return isAuthorized()
+      return isSuperAdmin()
     }
   },
   {
@@ -350,7 +374,7 @@ const routes = [
     name: 'image-edit',
     component: ImageEdit,
     beforeEnter(){
-      return isAuthorized()
+      return isSuperAdmin()
     }
   },
   {
@@ -358,7 +382,7 @@ const routes = [
     name: 'banner-index',
     component: BanderIndex,
     beforeEnter(){
-      return isAuthorized()
+      return isSuperAdmin()
     }
   },
   {
@@ -366,7 +390,7 @@ const routes = [
     name: 'banner-show',
     component: BannerShow,
     beforeEnter(){
-      return isAuthorized()
+      return isSuperAdmin()
     }
   },
   {
@@ -374,7 +398,7 @@ const routes = [
     name: 'banner-create',
     component: BannerCreate,
     beforeEnter(){
-      return isAuthorized()
+      return isSuperAdmin()
     }
   },
   {
@@ -382,7 +406,7 @@ const routes = [
     name: 'banner-edit',
     component: BannerEdit,
     beforeEnter(){
-      return isAuthorized()
+      return isSuperAdmin()
     }
   },
   {
@@ -390,7 +414,7 @@ const routes = [
     name: 'discount-index',
     component: DiscountIndex,
     beforeEnter(){
-      return isAuthorized()
+      return isSuperAdmin()
     }
   },
   {
@@ -398,7 +422,7 @@ const routes = [
     name: 'discount-show',
     component: DiscountShow,
     beforeEnter(){
-      return isAuthorized()
+      return isSuperAdmin()
     }
   },
   {
@@ -406,13 +430,53 @@ const routes = [
     name: 'discount-create',
     component: DiscountCreate,
     beforeEnter(){
-      return isAuthorized()
+      return isSuperAdmin()
     }
   },
   {
     path: '/discount/edit/:id',
     name: 'discount-edit',
     component: DiscountEdit,
+    beforeEnter(){
+      return isSuperAdmin()
+    }
+  },
+  {
+    path: '/warehouse/products',
+    name: 'warehouse-products',
+    component: WarehouseProducts,
+    beforeEnter(){
+      return isAuthorized()
+    }
+  },
+  {
+    path: '/warehouse/:id',
+    name: 'warehouse',
+    component: WarehouseIndex,
+    beforeEnter(){
+      return isAuthorized()
+    }
+  },
+  {
+    path: '/warehouse/create/:id',
+    name: 'warehouse-create',
+    component: WarehouseCreate,
+    beforeEnter(){
+      return isAuthorized()
+    }
+  },
+  {
+    path: '/warehouse/show/:id',
+    name: 'warehouse-show',
+    component: WarehouseShow,
+    beforeEnter(){
+      return isAuthorized()
+    }
+  },
+  {
+    path: '/warehouse/edit/:id',
+    name: 'warehouse-edit',
+    component: WarehouseEdit,
     beforeEnter(){
       return isAuthorized()
     }
@@ -484,6 +548,25 @@ async function isAdmin() {
   }
 }
 
+async function isManager() {
+  const redirect = await isAuthorized();
+  if (redirect) return redirect;
+
+  try {
+    const res = await axios.get('http://localhost:8000/api/users/find_by_token', {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem('token')}`,
+        Accept: 'application/json'
+      }
+    });
+
+    if (res.data.role.id !== 2) return '/signin';
+  } catch (error) {
+    console.log(error);
+    return '/signin';
+  }
+}
+
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
   routes
@@ -502,6 +585,11 @@ router.beforeEach(async (to, from, next) => {
 
   if (to.meta.requiresAdmin) {
     const redirect = await isAdmin();
+    if (redirect) return next(redirect);
+  }
+
+  if (to.meta.requiresManager) {
+    const redirect = await isManager();
     if (redirect) return next(redirect);
   }
 

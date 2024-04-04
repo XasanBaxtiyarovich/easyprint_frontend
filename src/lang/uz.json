@@ -11,7 +11,8 @@
         "cupon": "Kupons",
         "images": "Rasimlar",
         "banner": "Banner",
-        "discount": "Chegirma"
+        "discount": "Chegirma",
+        "warehouse": "Ombor"
     },
     "user_menu": {
         "my_profile": "Mening profilim",
@@ -19,10 +20,12 @@
         "logout": "Chiqish"
     },
     "table": {
+        "image": "Rasm",
         "firstname": "Ism",
         "lastname": "Familiya",
         "email": "Elektron pochta",
         "active": "Faoligi",
+        "phone_number": "Telefon nomer",
         "role": "Roli",
         "function": "Funksiyalar"
     },
@@ -83,6 +86,7 @@
         "function": "Funksiyalar"
     },
     "company": {
+        "company": "Kompaniya",
         "add": "Kompaniya qo'shish",
         "name": "Kompaniya nomi",
         "delivery_price": "Yetkazib berish narxi",
@@ -223,6 +227,26 @@
         "type": "Tur",
         "number_products": "Mahsulotlar soni"
     },
+    "warehouse": {
+        "warehouse": "Ombor",
+        "title": {
+            "create": "Ombor yaratish",
+            "update": "Omborni tahrirlash"
+        },
+        "product": "Mahsulot",
+        "price": "Narx",
+        "name": "Ism",
+        "category": "Kategoriya",
+        "size": "O'lcham",
+        "color": "Rang",
+        "count": "Soni",
+        "images": "Rasmlar",
+        "manufacture_country": "Ishlab chiqaruvchi mamlakat",
+        "material_composition": "Material tarkibi",
+        "description": "Tavsif",
+        "status": "Status",
+        "images_not_found": "Rasmlar topilmadi"
+    },
     "toast": {
         "company": {
             "created": "Kompaniya qoshildi",
@@ -280,6 +304,11 @@
             "created": "Chegirma yaratilndi",
             "updated": "Chegirma yangilandi",
             "deleted": "Chegirma o'chirildi"
+        },
+        "warehouse": {
+            "created": "Ombor yaratilndi",
+            "updated": "Ombor yangilandi",
+            "deleted": "Ombor o'chirildi"
         }
 }
 }

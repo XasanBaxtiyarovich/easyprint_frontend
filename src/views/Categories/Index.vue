@@ -38,6 +38,7 @@
                                     <tr>
                                         <th>{{ this.$t('category.name') }}</th>
                                         <th>{{ this.$t('category.created_at') }}</th>
+                                        <th>{{ this.$t('category.updated_at') }}</th>
                                         <th>{{ this.$t('category.functions') }}</th>
                                     </tr>
                                 </thead>
@@ -48,6 +49,9 @@
                                         </td>
                                         <td>
                                             <span>{{ category.created_at.split('T')[0] }}</span>
+                                        </td>
+                                        <td>
+                                            <span>{{ category.updated_at.split('T')[0] }}</span>
                                         </td>
                                         <td>
                                             <router-link :to="'/category/edit/'+category.id" class="ms-3"><i class="fa fa-edit"></i></router-link>

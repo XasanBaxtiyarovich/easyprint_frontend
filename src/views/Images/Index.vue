@@ -39,6 +39,7 @@
                                         <th>{{ this.$t('product.images') }}</th>
                                         <th>{{ this.$t('product.status') }}</th>
                                         <th>{{ $t('role.date') }}</th>
+                                        <th>{{ $t('category.updated_at') }}</th>
                                         <th>{{ $t('role.function') }}</th>
                                     </tr>
                                 </thead>
@@ -53,6 +54,9 @@
                                         </td>    
                                         <td>
                                             <span>{{ image.created_at.split('T')[0] }}</span>
+                                        </td>
+                                        <td>
+                                            <span>{{ image.updated_at.split('T')[0] }}</span>
                                         </td>
                                         <td>
                                             <router-link :to="'/image/edit/'+image.id" class="ms-3"><i class="fa fa-edit"></i></router-link>

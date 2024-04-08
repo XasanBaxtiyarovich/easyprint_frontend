@@ -115,9 +115,9 @@ export default {
             try {
                 const res = await axios.delete(`http://localhost:8000/api/banner/delete/${this.banner_id}`);
 
-                if (res.data == 200) this.$toast.success(this.$t('toast.banner.deleted'));
+                if (res.data.status == 200) this.$toast.success(this.$t('toast.banner.deleted'));
 
-                if (res.data != 200) this.$toast.error('Internal server error');
+                if (res.data.status != 200) this.$toast.error('Internal server error');
 
                 setTimeout(() => {
                         location.reload();

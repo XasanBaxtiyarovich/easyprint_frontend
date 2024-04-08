@@ -86,36 +86,33 @@ export default {
         async bannerCreate (e) {
             e.preventDefault();
 
-            this.formData.append("images", this.image);
-
-            for (let i = 0; i < this.images.length; i++) {
-                this.formData.append("images", this.images[i]);
-            }
-            
-            this.formData.append("text", this.text);
-            this.formData.append("title", this.title);
-            this.formData.append("is_active", this.is_active);
-
             try {
-                const res = await axios.post('http://localhost:8000/api/banner/create',
-                this.formData, 
-                {
-                    headers: {
-                        'Access-Control-Allow-Origin': '*',
-                        'Content-Type':'application/x-www-form-urlencoded'
-                    }
-                });
+                const formData = new FormData();
+                formData.append("images", this.image);
+                
+                for (let i = 0; i < this.images.length; i++) {
+                    formData.append("images", this.images[i]);
+                }
+                
+                formData.append("text", this.text);
+                formData.append("title", this.title);
+                formData.append("is_active", this.is_active);
 
-                if (res.status == 201) {
+                const res = await axios.post('http://localhost:8000/api/banner/create', formData);
+
+                if (res.status === 201) {
                     this.$toast.success(this.$t('toast.banner.create'));
                     setTimeout(() => {
-                        this.$router.push('/banner/index')
+                        this.$router.push('/banner/index');
                     }, 1100 );
                 } 
             } catch (error) {
-               if (error.response.data.statusCode == 400) this.$toast.error('Validate error');
-                
-                console.log(error);
+                if (error.response && error.response.data && error.response.data.statusCode === 400) {
+                    this.$toast.error('Validate error');
+                } else {
+                    console.error('Error during banner creation:', error);
+                    this.$toast.error('An unexpected error occurred');
+                }
             }
         },
 

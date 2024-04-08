@@ -32,7 +32,7 @@
                         </router-link>
                     </div>
                     <div style="padding-top: 25px;">
-                        <my-tabs @getProduct="getSub">
+                        <my-tabs @getProduct="fetchProductsByCategory">
                             <template v-slot:tab1>
                                 <div class="content-wrapper">
                                     <div class="table-responsive text-nowrap">
@@ -223,11 +223,13 @@ export default {
             this.$router.push(`/product/show/${id}`)
         },
 
-        async getSub(num) {
-            console.log(num);
-            const res = await axios.get('http://localhost:8000/api/product/findByCategory/'+num);
-                
-            this.products = res.data.products;
+        async fetchProductsByCategory(num) {
+            try {
+                const res = await axios.get(`http://localhost:8000/api/product/findByCategory/${num}`);
+                this.products = res.data.products;
+            } catch (error) {
+                console.error('Failed to fetch products:', error);
+            }
         },
 
         async deleteFunc () {
@@ -261,7 +263,7 @@ export default {
     },
 
     mounted() {
-        this.getSub(1)
+        this.fetchProductsByCategory(1)
     }
 }
 </script>

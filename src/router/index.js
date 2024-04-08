@@ -12,6 +12,11 @@ import UserINdex from '../views/Users/Index.vue';
 import UserCreate from '../views/Users/create.vue';
 import MyAccount from '../views/Users/myAccount.vue';
 
+import CompanyUserEdit from '../views/CompanyUsers/edit.vue';
+import CompanyUserShow from '../views/CompanyUsers/show.vue';
+import CompanyUserINdex from '../views/CompanyUsers/Index.vue';
+import CompanyUserCreate from '../views/CompanyUsers/create.vue';
+
 import RoleEdit from '../views/Roles/edit.vue';
 import RoleIndex from '../views/Roles/Index.vue';
 import RoleCreate from '../views/Roles/create.vue';
@@ -122,6 +127,38 @@ const routes = [
     }
   },
   {
+    path: '/company/user/create',
+    name: 'company-user-create',
+    component: CompanyUserCreate,
+    beforeEnter(){
+      return isAuthorized()
+    }
+  },
+  {
+    path: '/company/user/edit/:id',
+    name: 'company-user-edit',
+    component: CompanyUserEdit,
+    beforeEnter(){
+      return isAuthorized()
+    }
+  },
+  {
+    path: '/company/user/index',
+    name: 'company-user-index',
+    component: CompanyUserINdex,
+    beforeEnter(){
+      return isAuthorized()
+    }
+  },
+  {
+    path: '/company/user/show/:id',
+    name: 'company-user-show',
+    component: CompanyUserShow,
+    beforeEnter(){
+      return isAuthorized()
+    }
+  },
+  {
     path: '/accountsettings/account',
     name: 'account-settings',
     component: MyAccount,
@@ -134,7 +171,7 @@ const routes = [
     name: 'NotFound',
     component: NotFoundView,
     beforeEnter(){
-      return isSuperAdmin()
+      return isAuthorized()
     }
   },
   {

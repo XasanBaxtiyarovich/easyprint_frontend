@@ -65,8 +65,8 @@
                                             <span v-else-if="banner.is_active == 0" class="badge bg-label-danger me-1">Not Active</span>
                                         </td>      
                                         <td>
-                                            <router-link :to="'/banner/edit/'+banner.id" class="ms-3"><i class="fa fa-edit"></i></router-link>
-                                            <a class="ms-3" style="color: red;" @click="deleteModal(banner.id)"><i class="fa fa-trash"></i></a>
+                                            <router-link :to="'/banner/edit/'+banner.id" class="ms-3" @click.stop><i class="fa fa-edit"></i></router-link>
+                                            <a class="ms-3" style="color: red;" @click="deleteModal(banner.id)" @click.stop><i class="fa fa-trash"></i></a>
                                         </td>
                                     </tr>
                                 </tbody>

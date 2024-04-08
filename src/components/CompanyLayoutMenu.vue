@@ -60,7 +60,7 @@
 
             <ul class="menu-inner py-1">
             <li class="menu-item">
-                <router-link to="/user/index" class="menu-link">
+                <router-link to="/company/user/index" class="menu-link">
                     <i class="fa fa-users me-3"></i>
                     <div data-i18n="Basic">{{ $t('bar.users') }}</div>
                 </router-link>

@@ -52,8 +52,8 @@
                                         <td>{{ user.personal_info.phone_number }}</td>
                                         <td>{{ user.role.name }}</td>
                                         <td>
-                                            <router-link :to="'/user/edit/'+user.id" class="ms-3"><i class="fa fa-edit"></i></router-link>
-                                            <a class="ms-3" style="color: red;" @click="deleteModal(user.id)"><i class="fa fa-trash"></i></a>
+                                            <router-link :to="'/user/edit/'+user.id" class="ms-3" @click.stop><i class="fa fa-edit"></i></router-link>
+                                            <a class="ms-3" style="color: red;" @click="deleteModal(user.id)" @click.stop><i class="fa fa-trash"></i></a>
                                         </td>
                                     </tr>
                                 </tbody>

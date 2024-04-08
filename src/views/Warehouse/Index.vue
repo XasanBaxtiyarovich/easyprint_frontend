@@ -52,7 +52,7 @@
                                     </tr>
                                 </thead>
                                 <tbody class="table-border-bottom-0">
-                                    <tr v-for="warehouse in warehouses" :key="warehouse.id">
+                                    <tr v-for="warehouse in warehouses" :key="warehouse.id" class="products_url" @click="pushInShowPage(warehouse.id)">
                                         <td v-if="warehouse.name">
                                             <span class="fw-medium">{{ warehouse.name }}</span>
                                         </td>
@@ -83,9 +83,8 @@
                                             <span>{{ warehouse.updated_at.split('T')[0] }}</span>
                                         </td>
                                         <td>
-                                            <router-link :to="'/warehouse/show/'+warehouse.id"><i class="fa fa-eye"></i></router-link>
-                                            <router-link :to="'/warehouse/edit/'+warehouse.id" class="ms-3"><i class="fa fa-edit"></i></router-link>
-                                            <a class="ms-3" style="color: red;" @click="deleteModal(warehouse.id)"><i class="fa fa-trash"></i></a>
+                                            <router-link :to="'/warehouse/edit/'+warehouse.id" class="ms-3" @click.stop><i class="fa fa-edit"></i></router-link>
+                                            <a class="ms-3" style="color: red;" @click="deleteModal(warehouse.id)" @click.stop><i class="fa fa-trash"></i></a>
                                         </td>
                                     </tr>
                                 </tbody>
@@ -118,6 +117,10 @@ export default {
     },
     
     methods: {
+        async pushInShowPage(id) {
+            this.$router.push(`/warehouse/show/${id}`)
+        },
+
         async getWarehouses () {
             try {
                 const res = await axios.post('http://localhost:8000/api/warehouse/findByProduct/',
@@ -172,5 +175,13 @@ export default {
 .color_back {
     width: 50px;
     height: 30px;
+}
+
+.products_url {
+    transition: 0.5s;
+}
+
+.products_url:hover {
+    background-color: rgb(0, 0, 0, 0.1);
 }
 </style>

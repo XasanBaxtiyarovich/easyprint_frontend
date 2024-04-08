@@ -2,9 +2,9 @@
     <div v-if="delete_modal" class="background-transparent" @click="closeModal" style="position: absolute; background-color: rgb(0, 0, 0, 0.5); width: 100%; height: 100%; z-index: 20;"></div>
     <div class="layout-wrapper layout-content-navbar">
         <div class="layout-container">
-            <layout-menu/>
+            <company-layout-menu/>
             <div v-if="MobileMenu">
-                <layout-menu-mobile :closeSideBar="closeSideBar"></layout-menu-mobile>
+                <company-layout-menu-mobile :closeSideBar="closeSideBar"></company-layout-menu-mobile>
             </div>
             <div class="layout-page">
                 <header-main :showSideBar="showSideBar"/>
@@ -23,55 +23,37 @@
                 </div>
                 <div class="container" style="margin-top: 90px; padding: 0px 75px;">
                     <div style="display: flex; justify-content: end; width: 100%;">
-                        <router-link to="/cupon/create" class="btn btn-primary">
-                            <span class="fa-solid fa-ticket"></span>
-                            
-                            &nbsp;
-                            
-                            <span class="fa fa-plus"></span>
-                        </router-link>
+                        <router-link to="/company/user/create" class="btn btn-primary"><span class="fa fa-users"></span>&nbsp;&nbsp<span class="fa fa-plus"></span></router-link>
                     </div>
                     <div class="content-wrapper">
                         <div class="table-responsive text-nowrap">
                             <table class="table card-table">
                                 <thead>
                                     <tr>
-                                        <th>{{ this.$t('cupon.name') }}</th>
-                                        <th>{{ this.$t('cupon.coupon_quantity') }}</th>
-                                        <th>{{ this.$t('cupon.min_price') }}</th>
-                                        <th>{{ this.$t('product.status') }}</th>
-                                        <th>{{ this.$t('cupon.quatity_of_orders') }}</th>
-                                        <th>{{ this.$t('cupon.the_number_of_order') }}</th>
-                                        <th>{{ this.$t('cupon.functions') }}</th>
+                                        <th>{{ $t('table.image') }}</th>
+                                        <th>{{ $t('table.email') }}</th>
+                                        <th>{{ $t('table.firstname') }}</th>
+                                        <th>{{ $t('table.lastname') }}</th>
+                                        <th>{{ $t('table.phone_number') }}</th>
+                                        <th>{{ $t('table.role') }}</th>
+                                        <th>{{ $t('table.function') }}</th>
                                     </tr>
                                 </thead>
                                 <tbody class="table-border-bottom-0">
-                                    <tr v-for="cupon in cupons" :key="cupon.id" class="products_url" @click="pushInShowPage(cupon.id)">
+                                    <tr v-for="user in users" :key="user.id" class="products_url" @click="pushInShowPage(user.id)">
+                                        <div v-if="user && user.personal_info && user.personal_info.avatar">
+                                            <img :src="user.personal_info.avatar" alt class="w-px-40 h-auto rounded-circle" />
+                                        </div>
                                         <td>
-                                            <span>{{ cupon.name }}</span>
+                                            <span class="fw-medium">{{ user.email }}</span>
                                         </td>
+                                        <td>{{ user.personal_info.first_name }}</td>
+                                        <td>{{ user.personal_info.last_name }}</td>
+                                        <td>{{ user.personal_info.phone_number }}</td>
+                                        <td>{{ user.role.name }}</td>
                                         <td>
-                                            <span v-if="cupon.price">{{ cupon.price }}</span>
-                                            <span v-else>{{ cupon.parcent }}</span>
-                                        </td>
-                                        <td>
-                                            <span>{{ cupon.min_price }}</span>
-                                        </td>
-                                        <td>
-                                            <span v-if="cupon.status == 1" class="badge bg-label-success me-1">Active</span>
-                                            <span v-else class="badge bg-label-danger me-1">Not Active</span>
-                                        </td>
-                                        <td>
-                                            <span v-if="cupon.type == 0">{{ cupon.order_count }}</span>
-                                            <span v-else> </span>
-                                        </td>
-                                        <td>
-                                            <span v-if="cupon.type == 1">{{ cupon.order_count }}</span>
-                                            <span v-else> </span>
-                                        </td>   
-                                        <td>
-                                            <router-link :to="'/cupon/edit/'+cupon.id" class="ms-3" @click.stop><i class="fa fa-edit"></i></router-link>
-                                            <a class="ms-3" style="color: red;" @click="deleteModal(cupon.id)" @click.stop><i class="fa fa-trash"></i></a>
+                                            <router-link :to="'/company/user/edit/'+user.id" class="ms-3" @click.stop><i class="fa fa-edit"></i></router-link>
+                                            <a class="ms-3" style="color: red;" @click="deleteModal(user.id)" @click.stop><i class="fa fa-trash"></i></a>
                                         </td>
                                     </tr>
                                 </tbody>
@@ -91,9 +73,12 @@ import {mapMutations, mapGetters} from 'vuex';
 export default {
     data () {
         return {
-            cupons: [],
-            cupon_id: null,
+            user: {},
+            role: {},
+            users: [],
+            user_id: null,
             delete_modal: false,
+            company_id: null
         }
     },
 
@@ -103,14 +88,28 @@ export default {
     
     methods: {
         async pushInShowPage(id) {
-            this.$router.push(`/cupon/show/${id}`)
+            this.$router.push(`/company/user/show/${id}`)
         },
 
-        async getCupons () {
+        async getUser () {
+            if (localStorage.getItem('user') !== undefined && localStorage.getItem('user') !== null) {
+                this.user = await JSON.parse(localStorage.getItem('user'));
+
+                this.company_id = this.user.company_id;
+
+                this.role = this.user.role;
+            }
+        },
+
+        async getUsers () {
             try {
-                const res = await axios.get('http://localhost:8000/api/cupon/findAll');
+                const res = await axios.get('http://localhost:8000/api/users/findAll/company/'+this.company_id);
                 
-                this.cupons = res.data.cupons;
+                this.users = res.data.users;
+
+                const eventUsers = this.users.filter(userFl => userFl.id != this.user.id);
+
+                this.users = eventUsers;
             } catch (error) {
                 console.log(error);   
             }
@@ -118,9 +117,9 @@ export default {
 
         async deleteFunc () {
             try {
-                const res = await axios.delete(`http://localhost:8000/api/cupon/delete/${this.cupon_id}`);
+                const res = await axios.delete(`http://localhost:8000/api/users/delete/${this.user_id}`);
 
-                if (res.data == 200) this.$toast.success(this.$t('toast.cupon.deleted'));
+                if (res.data == 200) this.$toast.success(this.$t('toast.user.deleted'));
 
                 if (res.data != 200) this.$toast.error('Internal server error');
 
@@ -135,7 +134,7 @@ export default {
         },
 
         deleteModal (id) {
-            this.cupon_id = id;
+            this.user_id = id;
 
             this.delete_modal = true;
         },
@@ -143,11 +142,15 @@ export default {
         closeModal () {
             this.delete_modal = false;
         },
+
         ...mapMutations(['showSideBar', 'closeSideBar'])
     },
 
     mounted() {
-        this.getCupons();
+        this.getUser();
+        setTimeout(() =>  {
+            this.getUsers();
+        }, 100)
     }
 }
 </script>

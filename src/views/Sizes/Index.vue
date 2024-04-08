@@ -59,8 +59,8 @@
                                             <span>{{ size.updated_at.split('T')[0] }}</span>
                                         </td>
                                         <td>
-                                            <router-link :to="'/size/edit/'+size.id" class="ms-3"><i class="fa fa-edit"></i></router-link>
-                                            <a class="ms-3" style="color: red;" @click="deleteModal(size.id)"><i class="fa fa-trash"></i></a>
+                                            <router-link :to="'/size/edit/'+size.id" class="ms-3"><i class="fa fa-edit" @click.stop></i></router-link>
+                                            <a class="ms-3" style="color: red;" @click="deleteModal(size.id)"><i class="fa fa-trash" @click.stop></i></a>
                                         </td>
                                     </tr>
                                 </tbody>

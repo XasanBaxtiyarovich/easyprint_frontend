@@ -64,8 +64,8 @@
                                                         <span v-else-if="product.status == 0" class="badge bg-label-danger me-1">Not Active</span>
                                                     </td>      
                                                     <td>
-                                                        <router-link :to="'/product/edit/'+product.id" class="ms-3"><i class="fa fa-edit"></i></router-link>
-                                                        <a class="ms-3" style="color: red;" @click="deleteModal(product.id)"><i class="fa fa-trash"></i></a>
+                                                        <router-link :to="'/product/edit/'+product.id" class="ms-3" @click.stop><i class="fa fa-edit"></i></router-link>
+                                                        <a class="ms-3" style="color: red;" @click="deleteModal(product.id)" @click.stop><i class="fa fa-trash"></i></a>
                                                     </td>
                                                 </tr>
                                             </tbody>
@@ -104,8 +104,8 @@
                                                         <span v-else-if="product.status == 0" class="badge bg-label-danger me-1">Not Active</span>
                                                     </td>      
                                                     <td>
-                                                        <router-link :to="'/product/edit/'+product.id" class="ms-3"><i class="fa fa-edit"></i></router-link>
-                                                        <a class="ms-3" style="color: red;" @click="deleteModal(product.id)"><i class="fa fa-trash"></i></a>
+                                                        <router-link :to="'/product/edit/'+product.id" class="ms-3"><i class="fa fa-edit" @click.stop></i></router-link>
+                                                        <a class="ms-3" style="color: red;" @click="deleteModal(product.id)"><i class="fa fa-trash" @click.stop></i></a>
                                                     </td>
                                                 </tr>
                                             </tbody>
@@ -144,8 +144,8 @@
                                                         <span v-else-if="product.status == 0" class="badge bg-label-danger me-1">Not Active</span>
                                                     </td>      
                                                     <td>
-                                                        <router-link :to="'/product/edit/'+product.id" class="ms-3"><i class="fa fa-edit"></i></router-link>
-                                                        <a class="ms-3" style="color: red;" @click="deleteModal(product.id)"><i class="fa fa-trash"></i></a>
+                                                        <router-link :to="'/product/edit/'+product.id" class="ms-3" @click.stop><i class="fa fa-edit"></i></router-link>
+                                                        <a class="ms-3" style="color: red;" @click="deleteModal(product.id)" @click.stop><i class="fa fa-trash"></i></a>
                                                     </td>
                                                 </tr>
                                             </tbody>
@@ -184,8 +184,8 @@
                                                         <span v-else-if="product.status == 0" class="badge bg-label-danger me-1">Not Active</span>
                                                     </td>      
                                                     <td>
-                                                        <router-link :to="'/product/edit/'+product.id" class="ms-3"><i class="fa fa-edit"></i></router-link>
-                                                        <a class="ms-3" style="color: red;" @click="deleteModal(product.id)"><i class="fa fa-trash"></i></a>
+                                                        <router-link :to="'/product/edit/'+product.id" class="ms-3" @click.stop><i class="fa fa-edit"></i></router-link>
+                                                        <a class="ms-3" style="color: red;" @click="deleteModal(product.id)" @click.stop><i class="fa fa-trash"></i></a>
                                                     </td>
                                                 </tr>
                                             </tbody>

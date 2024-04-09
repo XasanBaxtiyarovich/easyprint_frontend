@@ -98,7 +98,7 @@ export default {
     methods: {
         async getCuponInfo () {
             try {
-                const res = await axios.get('http://localhost:8000/api/cupon/find/'+this.company_id);
+                const res = await axios.get(process.env.VUE_APP_LOCAL+'/cupon/find/'+this.company_id);
                 
                 this.cupon = res.data.cupon;
                 console.log(this.cupon);

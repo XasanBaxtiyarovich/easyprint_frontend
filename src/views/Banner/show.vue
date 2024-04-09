@@ -59,11 +59,12 @@
 
 <script>
 import axios from 'axios';
-import router from '@/router';
-import {mapMutations, mapGetters} from 'vuex';
+import { mapMutations, mapGetters } from 'vuex';
 
 export default {
     data () {
+        const router = this.$router;
+
         return {
             banner: {},
             delete_modal: false,
@@ -76,22 +77,20 @@ export default {
     },
     
     methods: {
-        async getBanner () {
+        async getBanner() {
             try {
-
-                const res = await axios.get('http://localhost:8000/api/banner/find/'+this.banner_id);
-
+                const res = await axios.get(process.env.VUE_APP_LOCAL+`/banner/find/${this.banner_id}`);
                 this.banner = res.data.parsedBanners[0];
-                console.log(this.banner.images[0].banner);
             } catch (error) {
-                console.log(error);   
+                console.error('Error while fetching banner:', error);
+                // Handle error gracefully, such as displaying a message to the user
+                // For example: this.$toast.error('An error occurred while fetching the banner');
             }
         },
-
         ...mapMutations(['showSideBar', 'closeSideBar'])
     },
 
-    mounted() {                console.log(this.banner_id);
+    mounted() {
         this.getBanner();
     }
 }

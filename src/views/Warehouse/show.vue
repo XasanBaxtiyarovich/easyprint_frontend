@@ -114,7 +114,7 @@ export default {
     methods: {
         async getWarehouse () {
             try {
-                const res = await axios.get('http://localhost:8000/api/warehouse/find/'+this.warehouse_id);
+                const res = await axios.get(process.env.VUE_APP_LOCAL+'/warehouse/find/'+this.warehouse_id);
                 
                 this.warehouse = res.data.warehouse;
                 this.category_name = res.data.category[0].name;

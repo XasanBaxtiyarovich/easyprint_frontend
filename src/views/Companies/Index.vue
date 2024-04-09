@@ -89,7 +89,7 @@ export default {
     methods: {
         async getCompanies () {
             try {
-                const res = await axios.get('http://localhost:8000/api/company/findAll');
+                const res = await axios.get(process.env.VUE_APP_LOCAL+'/company/findAll');
                 
                 this.companies = res.data.companies;
             } catch (error) {
@@ -99,7 +99,7 @@ export default {
 
         async deleteFunc () {
             try {
-                const res = await axios.delete(`http://localhost:8000/api/company/remove/${this.company_id}`);
+                const res = await axios.delete(process.env.VUE_APP_LOCAL+`/company/remove/${this.company_id}`);
 
                 if (res.data == 200) this.$toast.success(this.$t('toast.company.deleted'));
 

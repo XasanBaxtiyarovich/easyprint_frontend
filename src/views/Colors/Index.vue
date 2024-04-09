@@ -96,7 +96,7 @@ export default {
     methods: {
         async getColors () {
             try {
-                const res = await axios.get('http://localhost:8000/api/color/findAll');
+                const res = await axios.get(process.env.VUE_APP_LOCAL+'/color/findAll');
                 
                 this.colors = res.data.colors;
             } catch (error) {
@@ -106,7 +106,7 @@ export default {
 
         async deleteFunc () {
             try {
-                const res = await axios.delete(`http://localhost:8000/api/color/delete/${this.color_id}`);
+                const res = await axios.delete(process.env.VUE_APP_LOCAL+`/color/delete/${this.color_id}`);
 
                 if (res.data == 200) this.$toast.success(this.$t('toast.color.deleted'));
 

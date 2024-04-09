@@ -61,7 +61,7 @@ export default {
 
     methods: {
         async getColor() {
-            const res = await axios.get(`http://localhost:8000/api/color/find/${this.color_id}`);
+            const res = await axios.get(process.env.VUE_APP_LOCAL+`/color/find/${this.color_id}`);
 
             this.color = res.data.color;
 
@@ -73,7 +73,7 @@ export default {
             e.preventDefault();
 
             try {
-                const res = await axios.post('http://localhost:8000/api/color/update/'+this.color_id,
+                const res = await axios.post(process.env.VUE_APP_LOCAL+'/color/update/'+this.color_id,
                 {
                     name: this.name,
                     code: this.pickedColor

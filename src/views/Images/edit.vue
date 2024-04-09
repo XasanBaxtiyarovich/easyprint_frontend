@@ -73,7 +73,7 @@ export default {
         },
 
         async findImage () {
-            const res = await axios.get('http://localhost:8000/api/image/find/'+this.image_id);
+            const res = await axios.get(process.env.VUE_APP_LOCAL+'/image/find/'+this.image_id);
 
             this.status = res.data.image.status;
             this.image = res.data.image.name;
@@ -85,7 +85,7 @@ export default {
             this.formData.append("status", this.status);
 
             try {
-                const res = await axios.post('http://localhost:8000/api/image/update/'+this.image_id,
+                const res = await axios.post(process.env.VUE_APP_LOCAL+'/image/update/'+this.image_id,
                 this.formData, 
                 {
                     headers: {

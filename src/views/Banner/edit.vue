@@ -56,20 +56,21 @@
 
 <script>
 import axios from 'axios';
-import router from '@/router';
-import {mapMutations, mapGetters} from 'vuex';
+import { mapMutations, mapGetters } from 'vuex';
 
 export default {
-    data () {
+    data() {
+    const router = this.$router;
+
         return {
-            image: {},
+            image: null,
             images: [],
             text: "",
             title: "",
             is_active: null,
             formData: new FormData(),
             banner_id: router.currentRoute.value.params.id,
-        }
+        };
     },
 
     computed: {
@@ -85,48 +86,65 @@ export default {
             this.images = e.target.files;
         },
 
-        async findBanner () {
-            const res = await axios.get('http://localhost:8000/api/banner/find/'+this.banner_id);
+        async fetchBanner() {
+            try {
+                const res = await axios.get(process.env.VUE_APP_LOCAL+`/banner/find/${this.banner_id}`);
 
-            this.text = res.data.parsedBanners[0].text;
-            this.title = res.data.parsedBanners[0].title;
-            this.is_active = res.data.parsedBanners[0].is_active;
+                const parsedBanner = res.data.parsedBanners[0];
+                if (parsedBanner) {
+                    const { text, title, is_active } = parsedBanner;
+                    this.text = text;
+                    this.title = title;
+                    this.is_active = is_active;
+                }
+            } catch (error) {
+                console.error('Error while fetching banner:', error);
+                this.$toast.error('An unexpected error occurred while fetching banner data');
+            }
         },
 
-        async bannerUpdate (e) {
-            e.preventDefault();
-
-            this.formData.append("images", this.image);
-
-            console.log({'i':this.images});
-            for (let i = 0; i < this.images.length; i++) {
-                this.formData.append("images", this.images[i]);
-            }
-            
-            this.formData.append("text", this.text);
-            this.formData.append("title", this.title);
-            this.formData.append("is_active", this.is_active);
-
+        async bannerUpdate(e) {
             try {
-                const res = await axios.post('http://localhost:8000/api/banner/update/'+this.banner_id,
-                this.formData, 
-                {
-                    headers: {
-                        'Access-Control-Allow-Origin': '*',
-                        'Content-Type':'application/x-www-form-urlencoded'
-                    }
-                });
+                e.preventDefault();
 
-                if (res.status == 201) {
+                const formData = new FormData();
+                formData.append("text", this.text);
+                formData.append("title", this.title);
+                formData.append("is_active", this.is_active);
+
+                // Append single image
+                if (this.image) {
+                    formData.append("images", this.image);
+                }
+
+                // Append multiple images
+                for (const image of this.images) {
+                    formData.append("images", image);
+                }
+
+                const res = await axios.post(
+                    process.env.VUE_APP_LOCAL+`/banner/update/${this.banner_id}`,
+                    formData,
+                    {
+                        headers: {
+                            'Content-Type': 'multipart/form-data'
+                        }
+                    }
+                );
+
+                if (res.status === 201) {
                     this.$toast.success(this.$t('toast.banner.updated'));
                     setTimeout(() => {
-                        this.$router.push('/banner/index')
-                    }, 1100 );
-                } 
+                        this.$router.push('/banner/index');
+                    }, 1100);
+                }
             } catch (error) {
-               if (error.response.data.statusCode == 400) this.$toast.error('Validate error');
-                
-                console.log(error);
+                if (error.response && error.response.data && error.response.data.statusCode === 400) {
+                    this.$toast.error('Validate error');
+                } else {
+                    console.error('Error during banner update:', error);
+                    this.$toast.error('An unexpected error occurred');
+                }
             }
         },
 
@@ -140,7 +158,7 @@ export default {
     },
 
     mounted () {
-        this.findBanner();
+        this.fetchBanner();
     }
 }
 </script>

@@ -56,7 +56,7 @@ export default {
     methods: {
         async getCategory() {
             try {
-                const res = await axios.get(`http://localhost:8000/api/category/find/${this.category_id}`);
+                const res = await axios.get(process.env.VUE_APP_LOCAL+`/category/find/${this.category_id}`);
 
                 this.category = res.data.category;
 
@@ -70,7 +70,7 @@ export default {
             e.preventDefault();
 
             try {
-                const res = await axios.post(`http://localhost:8000/api/category/update/${this.category_id}`, 
+                const res = await axios.post(process.env.VUE_APP_LOCAL+`/category/update/${this.category_id}`, 
                 {
                     name: this.name,
                 });

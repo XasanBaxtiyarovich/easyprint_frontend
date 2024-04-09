@@ -105,7 +105,7 @@ export default {
     methods: {
         async getCompanies () {
             try {
-                const res = await axios.get('http://localhost:8000/api/company/findAll');
+                const res = await axios.get(process.env.VUE_APP_LOCAL+'/company/findAll');
                 
                 this.companies = res.data.companies;
             } catch (error) {
@@ -115,7 +115,7 @@ export default {
 
         async getCategories () {
             try {
-                const res = await axios.get('http://localhost:8000/api/category/findAllCategory');
+                const res = await axios.get(process.env.VUE_APP_LOCAL+'/category/findAllCategory');
 
                 this.categories = res.data.categories;
             } catch (error) {
@@ -125,7 +125,7 @@ export default {
 
         async getSubCategory () {
             if (this.category_id != 0) {
-                const res = await axios.get('http://localhost:8000/api/category/find-parent/'+this.category_id);
+                const res = await axios.get(process.env.VUE_APP_LOCAL+'/category/find-parent/'+this.category_id);
                 
                 this.sub_categories = res.data.categories;
                 this.sub = true;
@@ -138,7 +138,7 @@ export default {
 
         async getProduct () {
             if (this.sub_category_id != 0) {
-                const res = await axios.get('http://localhost:8000/api/product/findByCategoryId/'+this.sub_category_id);
+                const res = await axios.get(process.env.VUE_APP_LOCAL+'/product/findByCategoryId/'+this.sub_category_id);
                 
                 this.products = res.data.products;
                 this.produ = true;
@@ -152,7 +152,7 @@ export default {
             e.preventDefault();
 
             try {
-                const res = await axios.post('http://localhost:8000/api/discount/create',
+                const res = await axios.post(process.env.VUE_APP_LOCAL+'/discount/create',
                 {
                     parcent: this.parcent,
                     company_id: this.company_id,

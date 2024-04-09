@@ -82,7 +82,7 @@ export default {
     methods: {
         async getProduct () {
             try {
-                const res = await axios.get('http://localhost:8000/api/product/find/'+this.product_id);
+                const res = await axios.get(process.env.VUE_APP_LOCAL+'/product/find/'+this.product_id);
                 
                 this.product = res.data.product;
             } catch (error) {

@@ -53,7 +53,7 @@ export default {
             e.preventDefault();
 
             try {
-                const res = await axios.post('http://localhost:8000/api/category/create',
+                const res = await axios.post(process.env.VUE_APP_LOCAL+'/category/create',
                 {
                     name: this.name,
                 });

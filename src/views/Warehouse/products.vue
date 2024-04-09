@@ -214,7 +214,7 @@ export default {
         },
 
         async getSub(num) {
-            const res = await axios.get('http://localhost:8000/api/product/findByCategory/'+num);
+            const res = await axios.get(process.env.VUE_APP_LOCAL+'/product/findByCategory/'+num);
                 
             this.products = res.data.products;
             console.log(this.products);

@@ -128,7 +128,7 @@ export default {
 
         async getProducts () {
             try {
-                const res = await axios.get('http://localhost:8000/api/product/findAll');
+                const res = await axios.get(process.env.VUE_APP_LOCAL+'/product/findAll');
                 
                 this.products = res.data.products;
             } catch (error) {
@@ -138,7 +138,7 @@ export default {
 
         async getProduct () {
     try {
-        const res = await axios.get('http://localhost:8000/api/warehouse/find/'+this.product_id);
+        const res = await axios.get(process.env.VUE_APP_LOCAL+'/warehouse/find/'+this.product_id);
 
         this.created_product_id = router.currentRoute.value.params.id;
         this.name = res.data.warehouse.name;
@@ -158,7 +158,7 @@ export default {
 
         async getCategories () {
             try {
-                const res = await axios.get('http://localhost:8000/api/category/findAllSubCategory');
+                const res = await axios.get(process.env.VUE_APP_LOCAL+'/category/findAllSubCategory');
 
                 this.categories = res.data.categories;
             } catch (error) {
@@ -168,7 +168,7 @@ export default {
 
         async getSizes () {
             try {
-                const res = await axios.get('http://localhost:8000/api/size/findAll');
+                const res = await axios.get(process.env.VUE_APP_LOCAL+'/size/findAll');
 
                 this.sizes = res.data.sizes;
             } catch (error) {
@@ -178,7 +178,7 @@ export default {
 
         async getColors () {
             try {
-                const res = await axios.get('http://localhost:8000/api/color/findAll');
+                const res = await axios.get(process.env.VUE_APP_LOCAL+'/color/findAll');
 
                 this.colors = res.data.colors;
             } catch (error) {
@@ -200,7 +200,7 @@ export default {
             this.formData.append("manufacture_country", this.manufacture_country);
 
             try {
-                const res = await axios.post('http://localhost:8000/api/warehouse/update/'+this.product_id,
+                const res = await axios.post(process.env.VUE_APP_LOCAL+'/warehouse/update/'+this.product_id,
                 this.formData, 
                 {
                     headers: {

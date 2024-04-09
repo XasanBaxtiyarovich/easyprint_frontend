@@ -225,7 +225,7 @@ export default {
 
         async fetchProductsByCategory(num) {
             try {
-                const res = await axios.get(`http://localhost:8000/api/product/findByCategory/${num}`);
+                const res = await axios.get(process.env.VUE_APP_LOCAL+`/product/findByCategory/${num}`);
                 this.products = res.data.products;
             } catch (error) {
                 console.error('Failed to fetch products:', error);
@@ -234,7 +234,7 @@ export default {
 
         async deleteFunc () {
             try {
-                const res = await axios.delete(`http://localhost:8000/api/product/remove/${this.product_id}`);
+                const res = await axios.delete(process.env.VUE_APP_LOCAL+`/product/remove/${this.product_id}`);
 
                 if (res.data == 200) this.$toast.success(this.$t('toast.product.deleted'));
 

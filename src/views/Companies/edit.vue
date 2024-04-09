@@ -74,7 +74,7 @@ export default {
     methods: {
         async getCompany() {
             try {
-                const res = await axios.get(`http://localhost:8000/api/company/find/${this.company_id}`);
+                const res = await axios.get(process.env.VUE_APP_LOCAL+`/company/find/${this.company_id}`);
 
                 this.company = res.data.company;
 
@@ -90,7 +90,7 @@ export default {
             e.preventDefault();
 
             try {
-                const res = await axios.post(`http://localhost:8000/api/company/update/${this.company_id}`, 
+                const res = await axios.post(process.env.VUE_APP_LOCAL+`/company/update/${this.company_id}`, 
                 {
                     name: this.name,
                     print: this.print,

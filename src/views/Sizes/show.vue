@@ -75,11 +75,11 @@ export default {
     methods: {
         async getSizeInfo () {
             try {
-                const res_size = await axios.get('http://localhost:8000/api/size/find/'+this.size_id);
+                const res_size = await axios.get(process.env.VUE_APP_LOCAL+'/size/find/'+this.size_id);
                 
                 this.size = res_size.data.size;
 
-                const res_catygory = await axios.get('http://localhost:8000/api/category/find/'+this.size.category_id);
+                const res_catygory = await axios.get(process.env.VUE_APP_LOCAL+'/category/find/'+this.size.category_id);
 
                 this.type_name = res_catygory.data.category.name;
             } catch (error) {

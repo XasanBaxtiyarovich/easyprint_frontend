@@ -62,7 +62,7 @@ export default {
             e.preventDefault();
 
             try {
-                const res = await axios.post('http://localhost:8000/api/color/create',
+                const res = await axios.post(process.env.VUE_APP_LOCAL+'/color/create',
                 {
                     name: this.name,
                     code: this.pickedColor

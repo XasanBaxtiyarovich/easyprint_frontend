@@ -88,7 +88,7 @@ export default {
     methods: {
         async getRoles () {
             try {
-                const res = await axios.get('http://localhost:8000/api/role/findAll');
+                const res = await axios.get(process.env.VUE_APP_LOCAL+'/role/findAll');
                 
                 this.roles = res.data.roles;
             } catch (error) {
@@ -98,7 +98,7 @@ export default {
 
         async deleteFunc () {
             try {
-                const res = await axios.delete(`http://localhost:8000/api/role/delete/${this.role_id}`);
+                const res = await axios.delete(process.env.VUE_APP_LOCAL+`/role/delete/${this.role_id}`);
 
                 if (res.data == 200) this.$toast.success(this.$t('toast.role.deleted'));
 

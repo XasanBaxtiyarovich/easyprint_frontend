@@ -72,7 +72,7 @@ export default {
     methods: {
         async getCategory() {
             try {
-                const res = await axios.get(`http://localhost:8000/api/category/find/${this.category_id}`);
+                const res = await axios.get(process.env.VUE_APP_LOCAL+`/category/find/${this.category_id}`);
 
                 this.category = res.data.category;
 
@@ -85,7 +85,7 @@ export default {
 
         async getCategories () {
             try {
-                const res = await axios.get('http://localhost:8000/api/category/findAllCategory');
+                const res = await axios.get(process.env.VUE_APP_LOCAL+'/category/findAllCategory');
 
                 this.categories = res.data.categories; 
             } catch (error) {
@@ -97,7 +97,7 @@ export default {
             e.preventDefault();
 
             try {
-                const res = await axios.post(`http://localhost:8000/api/category/sub-update/${this.category_id}`, 
+                const res = await axios.post(process.env.VUE_APP_LOCAL+`/category/sub-update/${this.category_id}`, 
                 {
                     name: this.name,
                     parent_id: this.parent_id

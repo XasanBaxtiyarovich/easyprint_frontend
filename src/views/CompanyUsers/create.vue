@@ -128,7 +128,7 @@ export default {
 
         async getRoles () {
             try {
-                const res = await axios.get('http://localhost:8000/api/role/findAll');
+                const res = await axios.get(process.env.VUE_APP_LOCAL+'/role/findAll');
 
                 this.roles = res.data.roles; 
             } catch (error) {
@@ -148,7 +148,7 @@ export default {
 
         async getCompanies () {
             try {
-                const res = await axios.get('http://localhost:8000/api/company/findAll')
+                const res = await axios.get(process.env.VUE_APP_LOCAL+'/company/findAll')
 
                 this.companies = res.data.companies;
             } catch (error) {
@@ -171,7 +171,7 @@ export default {
             this.formData.append("phone_number", this.phone_number);
 
             try {
-                const res = await axios.post('http://localhost:8000/api/users/create',
+                const res = await axios.post(process.env.VUE_APP_LOCAL+'/users/create',
                 this.formData, 
                 {
                     headers: {

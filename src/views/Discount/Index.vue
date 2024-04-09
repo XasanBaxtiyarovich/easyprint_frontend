@@ -107,7 +107,7 @@ export default {
 
         async getDiscounts () {
             try {
-                const res = await axios.get('http://localhost:8000/api/discount/findAll');
+                const res = await axios.get(process.env.VUE_APP_LOCAL+'/discount/findAll');
                 
                 this.discounts = res.data.discounts;
             } catch (error) {
@@ -117,7 +117,7 @@ export default {
 
         async deleteFunc () {
             try {
-                const res = await axios.delete(`http://localhost:8000/api/discount/delete/${this.discount_id}`);
+                const res = await axios.delete(process.env.VUE_APP_LOCAL+`/discount/delete/${this.discount_id}`);
 
                 if (res.data.status == 200) this.$toast.success(this.$t('discount.deleted'));
 

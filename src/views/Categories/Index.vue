@@ -88,7 +88,7 @@ export default {
     methods: {
         async getCategories () {
             try {
-                const res = await axios.get('http://localhost:8000/api/category/findAllCategory');
+                const res = await axios.get(process.env.VUE_APP_LOCAL+'/category/findAllCategory');
                 
                 this.categories = res.data.categories;
             } catch (error) {
@@ -98,7 +98,7 @@ export default {
 
         async deleteFunc () {
             try {
-                const res = await axios.delete(`http://localhost:8000/api/category/remove/${this.category_id}`);
+                const res = await axios.delete(process.env.VUE_APP_LOCAL+`/category/remove/${this.category_id}`);
 
                 if (res.data == 200) this.$toast.success(this.$t('toast.category.deleted'));
 

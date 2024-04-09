@@ -70,7 +70,7 @@ export default {
             e.preventDefault();
 
             try {
-                const res = await axios.post('http://localhost:8000/api/company/create',
+                const res = await axios.post(process.env.VUE_APP_LOCAL+'/company/create',
                 {
                     name: this.name,
                     delivery_price: this.delivery_price,

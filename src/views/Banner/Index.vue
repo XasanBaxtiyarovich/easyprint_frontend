@@ -101,31 +101,32 @@ export default {
             this.$router.push(`/banner/show/${id}`)
         },
 
-        async getBanners () {
+        async getBanners() {
             try {
-                const res = await axios.get('http://localhost:8000/api/banner/findAll');
-                
+                const res = await axios.get(process.env.VUE_APP_LOCAL+'/banner/findAll');
                 this.banners = res.data.parsedBanners;
             } catch (error) {
-                console.log(error);   
+                console.error('Error while fetching banners:', error);
+                // Handle error gracefully, such as displaying a message to the user
+                this.$toast.error('An error occurred while fetching banners');
             }
         },
 
-        async deleteFunc () {
+        async deleteFunc() {
             try {
-                const res = await axios.delete(`http://localhost:8000/api/banner/delete/${this.banner_id}`);
+                const res = await axios.delete(process.env.VUE_APP_LOCAL+`/banner/delete/${this.banner_id}`);
 
-                if (res.data.status == 200) this.$toast.success(this.$t('toast.banner.deleted'));
-
-                if (res.data.status != 200) this.$toast.error('Internal server error');
-
-                setTimeout(() => {
+                if (res.data.status === 200) {
+                    this.$toast.success(this.$t('toast.banner.deleted'));
+                    setTimeout(() => {
                         location.reload();
-                }, 1000 );
+                    }, 1000);
+                } else {
+                    this.$toast.error('Internal server error');
+                }
             } catch (error) {
-                if (error.response.data.message) this.$toast.error('Internal server error');
-
-                console.log(error);
+                console.error('Error occurred while deleting banner:', error);
+                this.$toast.error('Internal server error');
             }
         },
 

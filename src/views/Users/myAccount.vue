@@ -259,7 +259,7 @@ export default {
             this.formData.append('phone_number', parseInt(this.phone_number));
 
             try {
-                const res = await axios.post(`http://localhost:8000/api/users/update/${this.user.id}`, 
+                const res = await axios.post(process.env.VUE_APP_LOCAL+`/users/update/${this.user.id}`, 
                 this.formData,
                 {
                     headers: {
@@ -310,7 +310,7 @@ export default {
 
         async resetPassFunc() {
             try {
-                const res = await axios.post('http://localhost:8000/api/users/update-pass', 
+                const res = await axios.post(process.env.VUE_APP_LOCAL+'/users/update-pass', 
                 {
                     password: this.password, 
                     new_password: this.new_password,
@@ -345,7 +345,7 @@ export default {
                 const token = localStorage.getItem('token');
 
                 try {
-                    const res = await axios.get(`http://localhost:8000/api/users/delete/${this.user.id}`);
+                    const res = await axios.get(process.env.VUE_APP_LOCAL+`/users/delete/${this.user.id}`);
 
                     if (res.data == 200) {
                         localStorage.removeItem('user');
@@ -374,7 +374,7 @@ export default {
 
         async getRoles () {
             try {
-                const res = await axios.get('http://localhost:8000/api/role/findAll');
+                const res = await axios.get(process.env.VUE_APP_LOCAL+'/role/findAll');
 
                 this.roles = res.data.roles; 
             } catch (error) {
@@ -384,7 +384,7 @@ export default {
 
         async getCompanies () {
             try {
-                const res = await axios.get('http://localhost:8000/api/company/findAll')
+                const res = await axios.get(process.env.VUE_APP_LOCAL+'/company/findAll')
 
                 this.companies = res.data.companies;
             } catch (error) {

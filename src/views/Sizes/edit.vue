@@ -69,7 +69,7 @@ export default {
 
      methods: {
         async getSize () {
-            const res = await axios.get('http://localhost:8000/api/size/find/'+this.size_id);
+            const res = await axios.get(process.env.VUE_APP_LOCAL+'/size/find/'+this.size_id);
 
             this.size = res.data.size;
 
@@ -80,7 +80,7 @@ export default {
 
         async getCategories () {
             try {
-                const res = await axios.get('http://localhost:8000/api/category/findAllCategory');
+                const res = await axios.get(process.env.VUE_APP_LOCAL+'/category/findAllCategory');
 
                 this.categories = res.data.categories; 
             } catch (error) {
@@ -92,7 +92,7 @@ export default {
             e.preventDefault();
 
             try {
-                const res = await axios.post('http://localhost:8000/api/size/update/'+this.size_id,
+                const res = await axios.post(process.env.VUE_APP_LOCAL+'/size/update/'+this.size_id,
                 {
                     name: this.name,
                     status: +this.status,

@@ -111,11 +111,11 @@ export default {
         },
 
         async getProduct() {
-            const res_product = await axios.get(`http://localhost:8000/api/product/find/${this.product_id}`);
+            const res_product = await axios.get(process.env.VUE_APP_LOCAL+`/product/find/${this.product_id}`);
 
             this.product = res_product.data.product;
 
-            const res_category = await axios.get('http://localhost:8000/api/category/find/'+this.product.category_id)
+            const res_category = await axios.get(process.env.VUE_APP_LOCAL+'/category/find/'+this.product.category_id)
 
             this.category = res_category.data.category;
      
@@ -132,7 +132,7 @@ export default {
 
         async getCategories () {
             try {
-                const res = await axios.get('http://localhost:8000/api/category/findAllCategory');
+                const res = await axios.get(process.env.VUE_APP_LOCAL+'/category/findAllCategory');
 
                 this.categories = res.data.categories; 
             } catch (error) {
@@ -142,7 +142,7 @@ export default {
         
         async getSubCategory () {
             try {
-                const res = await axios.get('http://localhost:8000/api/category/find-parent/'+this.parent_id);
+                const res = await axios.get(process.env.VUE_APP_LOCAL+'/category/find-parent/'+this.parent_id);
 
                 this.sub_catregories = res.data.categories; 
             } catch (error) {
@@ -162,7 +162,7 @@ export default {
             this.formData.append("manufacturer_country", this.manufacturer_country);
 
             try {
-                const res = await axios.post('http://localhost:8000/api/product/update/'+this.product_id,
+                const res = await axios.post(process.env.VUE_APP_LOCAL+'/product/update/'+this.product_id,
                 this.formData, 
                 {
                     headers: {

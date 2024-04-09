@@ -56,18 +56,18 @@
 
 <script>
 import axios from 'axios';
-import {mapMutations, mapGetters} from 'vuex';
+import { mapMutations, mapGetters } from 'vuex';
 
 export default {
-    data () {
+    data() {
         return {
-            image: {},
+            image: null,
             images: [],
             text: "",
             title: "",
             is_active: null,
             formData: new FormData(),
-        }
+        };
     },
 
     computed: {
@@ -83,28 +83,32 @@ export default {
             this.images = e.target.files;
         },
 
-        async bannerCreate (e) {
-            e.preventDefault();
-
+        async bannerCreate(e) {
             try {
+                e.preventDefault();
+                
                 const formData = new FormData();
-                formData.append("images", this.image);
-                
-                for (let i = 0; i < this.images.length; i++) {
-                    formData.append("images", this.images[i]);
-                }
-                
                 formData.append("text", this.text);
                 formData.append("title", this.title);
                 formData.append("is_active", this.is_active);
-
-                const res = await axios.post('http://localhost:8000/api/banner/create', formData);
+                
+                // Append single image
+                if (this.image) {
+                    formData.append("images", this.image);
+                }
+                
+                // Append multiple images
+                for (const image of this.images) {
+                    formData.append("images", image);
+                }
+                
+                const res = await axios.post(process.env.VUE_APP_LOCAL+'/banner/create', formData);
 
                 if (res.status === 201) {
                     this.$toast.success(this.$t('toast.banner.create'));
                     setTimeout(() => {
                         this.$router.push('/banner/index');
-                    }, 1100 );
+                    }, 1100);
                 } 
             } catch (error) {
                 if (error.response && error.response.data && error.response.data.statusCode === 400) {

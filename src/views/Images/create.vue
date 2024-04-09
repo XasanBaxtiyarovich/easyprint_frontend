@@ -67,7 +67,7 @@ export default {
             this.formData.append("status", +this.status);
 
             try {
-                const res = await axios.post('http://localhost:8000/api/image/create',
+                const res = await axios.post(process.env.VUE_APP_LOCAL+'/image/create',
                 this.formData, 
                 {
                     headers: {

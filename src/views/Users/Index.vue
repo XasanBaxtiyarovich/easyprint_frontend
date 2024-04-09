@@ -100,7 +100,7 @@ export default {
 
         async getUsers () {
             try {
-                const res = await axios.get('http://localhost:8000/api/users/findAll');
+                const res = await axios.get(process.env.VUE_APP_LOCAL+'/users/findAll');
                 
                 this.users = res.data.users;
 
@@ -114,7 +114,7 @@ export default {
 
         async deleteFunc () {
             try {
-                const res = await axios.delete(`http://localhost:8000/api/users/delete/${this.user_id}`);
+                const res = await axios.delete(process.env.VUE_APP_LOCAL+`/users/delete/${this.user_id}`);
 
                 if (res.data == 200) this.$toast.success(this.$t('toast.user.deleted'));
 

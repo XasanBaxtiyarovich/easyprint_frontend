@@ -97,7 +97,7 @@ export default {
 
         async getSizes () {
             try {
-                const res = await axios.get('http://localhost:8000/api/size/findAll');
+                const res = await axios.get(process.env.VUE_APP_LOCAL+'/size/findAll');
                 
                 this.sizes = res.data.sizes;
             } catch (error) {
@@ -107,7 +107,7 @@ export default {
 
         async deleteFunc () {
             try {
-                const res = await axios.delete(`http://localhost:8000/api/size/delete/${this.size_id}`);
+                const res = await axios.delete(process.env.VUE_APP_LOCAL+`/size/delete/${this.size_id}`);
 
                 if (res.data == 200) this.$toast.success(this.$t('size.deleted'));
 

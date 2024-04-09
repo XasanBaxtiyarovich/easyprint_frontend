@@ -108,7 +108,7 @@ export default {
 
         async getCupons () {
             try {
-                const res = await axios.get('http://localhost:8000/api/cupon/findAll');
+                const res = await axios.get(process.env.VUE_APP_LOCAL+'/cupon/findAll');
                 
                 this.cupons = res.data.cupons;
             } catch (error) {
@@ -118,7 +118,7 @@ export default {
 
         async deleteFunc () {
             try {
-                const res = await axios.delete(`http://localhost:8000/api/cupon/delete/${this.cupon_id}`);
+                const res = await axios.delete(process.env.VUE_APP_LOCAL+`/cupon/delete/${this.cupon_id}`);
 
                 if (res.data == 200) this.$toast.success(this.$t('toast.cupon.deleted'));
 

@@ -123,7 +123,7 @@ export default {
 
         async getWarehouses () {
             try {
-                const res = await axios.post('http://localhost:8000/api/warehouse/findByProduct/',
+                const res = await axios.post(process.env.VUE_APP_LOCAL+'/warehouse/findByProduct/',
                 {
                     product_id: this.product_id,
                     company_id: JSON.parse(localStorage.getItem('user')).company_id
@@ -137,7 +137,7 @@ export default {
 
         async deleteFunc () {
             try {
-                const res = await axios.delete(`http://localhost:8000/api/warehouse/remove/${this.warehouse_id}`);
+                const res = await axios.delete(process.env.VUE_APP_LOCAL+`/warehouse/remove/${this.warehouse_id}`);
 
                 if (res.data == 200) this.$toast.success(this.$t('toast.warehouse.deleted'));
 

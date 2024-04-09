@@ -122,7 +122,7 @@ export default {
 
     methods: {
         async getCupon () {
-            const res = await axios.get('http://localhost:8000/api/cupon/find/'+this.cupon_id);
+            const res = await axios.get(process.env.VUE_APP_LOCAL+'/cupon/find/'+this.cupon_id);
 
             this.cupon = res.data.cupon;
 
@@ -144,7 +144,7 @@ export default {
 
         async getCompanies () {
             try {
-                const res = await axios.get('http://localhost:8000/api/company/findAll');
+                const res = await axios.get(process.env.VUE_APP_LOCAL+'/company/findAll');
                 
                 this.companies = res.data.companies;
             } catch (error) {
@@ -156,7 +156,7 @@ export default {
             e.preventDefault();
 
             try {
-                const res = await axios.post('http://localhost:8000/api/cupon/update/'+this.cupon_id,
+                const res = await axios.post(process.env.VUE_APP_LOCAL+'/cupon/update/'+this.cupon_id,
                 {
                     name: this.name,
                     price: this.price,

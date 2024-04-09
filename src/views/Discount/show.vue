@@ -91,7 +91,7 @@ export default {
     methods: {
         async getDiscounts () {
             try {
-                const res = await axios.get('http://localhost:8000/api/discount/find/'+this.discount_number);
+                const res = await axios.get(process.env.VUE_APP_LOCAL+'/discount/find/'+this.discount_number);
 
                 this.number = res.data.number;
                 this.discounts = res.data.discounts;

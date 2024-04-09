@@ -91,7 +91,7 @@ export default {
     methods: {
         async getUser () {
             try {
-                const res = await axios.get('http://localhost:8000/api/users/find/'+this.user_id);
+                const res = await axios.get(process.env.VUE_APP_LOCAL+'/users/find/'+this.user_id);
                 
                 this.user = res.data.user;
                 console.log(this.user);

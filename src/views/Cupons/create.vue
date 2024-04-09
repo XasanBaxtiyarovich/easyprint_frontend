@@ -120,7 +120,7 @@ export default {
     methods: {
         async getCompanies () {
             try {
-                const res = await axios.get('http://localhost:8000/api/company/findAll');
+                const res = await axios.get(process.env.VUE_APP_LOCAL+'/company/findAll');
                 
                 this.companies = res.data.companies;
             } catch (error) {
@@ -132,7 +132,7 @@ export default {
             e.preventDefault();
 
             try {
-                const res = await axios.post('http://localhost:8000/api/cupon/create',
+                const res = await axios.post(process.env.VUE_APP_LOCAL+'/cupon/create',
                 {
                     name: this.name,
                     price: this.price,

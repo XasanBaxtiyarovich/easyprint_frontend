@@ -60,7 +60,7 @@ export default {
 
     methods: {
         async getRole() {
-            const res = await axios.get(`http://localhost:8000/api/role/find/${this.role_id}`);
+            const res = await axios.get(process.env.VUE_APP_LOCAL+`/role/find/${this.role_id}`);
 
             this.role = res.data.role;
 
@@ -71,7 +71,7 @@ export default {
             e.preventDefault();
 
             try {
-                const res = await axios.post(`http://localhost:8000/api/role/update/${this.role_id}`, 
+                const res = await axios.post(process.env.VUE_APP_LOCAL+`/role/update/${this.role_id}`, 
                 {
                     name: this.name
                 });

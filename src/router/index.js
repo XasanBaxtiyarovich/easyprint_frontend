@@ -525,7 +525,7 @@ async function isAuthorized() {
   if (!token) return '/signin';
 
   try {
-    const res = await axios.get('http://localhost:8000/api/users/find_by_token', {
+    const res = await axios.get(process.env.VUE_APP_LOCAL+'/users/find_by_token', {
       headers: {
         Authorization: `Bearer ${token}`,
         Accept: 'application/json'
@@ -552,7 +552,7 @@ async function isSuperAdmin() {
   if (redirect) return redirect;
 
   try {
-    const res = await axios.get('http://localhost:8000/api/users/find_by_token', {
+    const res = await axios.get(process.env.VUE_APP_LOCAL+'/users/find_by_token', {
       headers: {
         Authorization: `Bearer ${localStorage.getItem('token')}`,
         Accept: 'application/json'
@@ -571,7 +571,7 @@ async function isAdmin() {
   if (redirect) return redirect;
 
   try {
-    const res = await axios.get('http://localhost:8000/api/users/find_by_token', {
+    const res = await axios.get(process.env.VUE_APP_LOCAL+'/users/find_by_token', {
       headers: {
         Authorization: `Bearer ${localStorage.getItem('token')}`,
         Accept: 'application/json'
@@ -590,7 +590,7 @@ async function isManager() {
   if (redirect) return redirect;
 
   try {
-    const res = await axios.get('http://localhost:8000/api/users/find_by_token', {
+    const res = await axios.get(process.env.VUE_APP_LOCAL+'/users/find_by_token', {
       headers: {
         Authorization: `Bearer ${localStorage.getItem('token')}`,
         Accept: 'application/json'
@@ -641,7 +641,7 @@ export default router;
 //   if( localStorage.getItem('token') == null || localStorage.getItem('token') == undefined )  return '/signin';
 
 //   try {
-//     const res = await axios.get('http://localhost:8000/api/users/find_by_token', {
+//     const res = await axios.get(process.env.VUE_APP_LOCAL+'/users/find_by_token', {
 //       headers: {
 //         Authorization: 'Bearer '+localStorage.getItem('token'),
 //         Accept: 'application/json'
@@ -669,7 +669,7 @@ export default router;
 // async function isSuperAdmin () {
 //   isAuthorized();
 
-//   const res = await axios.get('http://localhost:8000/api/users/find_by_token', {
+//   const res = await axios.get(process.env.VUE_APP_LOCAL+'/users/find_by_token', {
 //     headers: {
 //       Authorization: 'Bearer '+localStorage.getItem('token'),
 //       Accept: 'application/json'
@@ -682,7 +682,7 @@ export default router;
 // async function isAdmin () {
 //   isAuthorized();
 
-//   const res = await axios.get('http://localhost:8000/api/users/find_by_token', {
+//   const res = await axios.get(process.env.VUE_APP_LOCAL+'/users/find_by_token', {
 //     headers: {
 //       Authorization: 'Bearer '+localStorage.getItem('token'),
 //       Accept: 'application/json'

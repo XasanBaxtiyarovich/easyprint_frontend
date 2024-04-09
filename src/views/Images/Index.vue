@@ -93,7 +93,7 @@ export default {
     methods: {
         async getImages () {
             try {
-                const res = await axios.get('http://localhost:8000/api/image/findAll');
+                const res = await axios.get(process.env.VUE_APP_LOCAL+'/image/findAll');
                 
                 this.images = res.data.images;
             } catch (error) {
@@ -103,7 +103,7 @@ export default {
 
         async deleteFunc () {
             try {
-                const res = await axios.delete(`http://localhost:8000/api/image/delete/${this.image_id}`);
+                const res = await axios.delete(process.env.VUE_APP_LOCAL+`/image/delete/${this.image_id}`);
 
                 if (res.data == 200) this.$toast.success(this.$t('image.deleted'));
 

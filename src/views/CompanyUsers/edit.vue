@@ -146,7 +146,7 @@ export default {
 
     methods: {
         async getUser() {
-            const res = await axios.get(`http://localhost:8000/api/users/find/${this.user_id}`);
+            const res = await axios.get(process.env.VUE_APP_LOCAL+`/users/find/${this.user_id}`);
 
             this.user = res.data.user;
             
@@ -177,7 +177,7 @@ export default {
 
         async getCompanies () {
             try {
-                const res = await axios.get('http://localhost:8000/api/company/findAll')
+                const res = await axios.get(process.env.VUE_APP_LOCAL+'/company/findAll')
 
                 this.companies = res.data.companies;
             } catch (error) {
@@ -187,7 +187,7 @@ export default {
 
         async getRoles () {
             try {
-                const res = await axios.get('http://localhost:8000/api/role/findAll');
+                const res = await axios.get(process.env.VUE_APP_LOCAL+'/role/findAll');
 
                 this.roles = res.data.roles; 
             } catch (error) {
@@ -209,7 +209,7 @@ export default {
             this.formData.append('phone_number', parseInt(this.phone_number));
 
             try {
-                const res = await axios.post(`http://localhost:8000/api/users/update/${this.user_id}`, 
+                const res = await axios.post(process.env.VUE_APP_LOCAL+`/users/update/${this.user_id}`, 
                 this.formData,
                 {
                     headers: {

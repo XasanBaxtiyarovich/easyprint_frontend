@@ -3,7 +3,8 @@
         <div class="layout-container">
             <layout-menu/>
             <div v-if="MobileMenu">
-                <layout-menu-mobile :closeSideBar="closeSideBar"></layout-menu-mobile>
+                <layout-menu-mobile v-if="user.role.id == 3" :closeSideBar="closeSideBar"></layout-menu-mobile>
+                <company-mobile-layout-menu v-else :closeSideBar="closeSideBar"></company-mobile-layout-menu>
             </div>
             <div class="layout-page">
                 <header-main :showSideBar="showSideBar"/>
@@ -24,6 +25,11 @@ import Chart from 'chart.js/auto';
 import {mapGetters, mapMutations} from 'vuex';
 
 export default {
+    data() {
+        return {
+            user: JSON.parse(localStorage.getItem('user'))
+        }
+    },
     computed: {
         ...mapGetters(['MobileMenu'])
     },

@@ -13,6 +13,7 @@ export default createStore({
     showSideBar (state) {
       state.mobile_menu = true; 
     },
+    
     closeSideBar (state) {
       state.mobile_menu = false; 
     }

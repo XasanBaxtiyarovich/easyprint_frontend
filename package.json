@@ -7,11 +7,16 @@
     "build": "vue-cli-service build"
   },
   "dependencies": {
+    "@coreui/icons": "^3.0.1",
+    "@coreui/icons-vue": "^2.0.0",
+    "@coreui/vue": "^5.0.0",
     "@fortawesome/fontawesome-free": "^6.5.1",
     "@k90mirzaei/vue-toast": "^1.0.3",
     "axios": "^1.6.7",
     "chart.js": "^4.4.2",
     "core-js": "^3.8.3",
+    "install": "^0.13.0",
+    "npm": "^10.5.2",
     "vue": "^3.2.13",
     "vue-i18n": "^9.10.1",
     "vue-router": "^4.0.3",

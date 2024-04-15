@@ -86,25 +86,21 @@
                             </li>
                             <hr class="hr">
                             <li>
-                                <router-link class="align-middle" style="color: #697A8D;" to="/accountsettings/account">
-                                    <a class="dropdown-item" href="#">
-                                        <i class="fa fa-cogs me-2" style="padding-left: 4px;"></i>
-                                        <span>{{ $t('user_menu.my_profile') }}</span>
-                                    </a>
+                                <router-link to="/accountsettings/account" class="dropdown-item menu-link">
+                                    <i class="fa-solid fa-user menu-icon"></i>
+                                    <span style="padding-left: 5px;" >{{ $t('user_menu.my_profile') }}</span>
                                 </router-link>
                             </li>
                             <li>
-                                <router-link class="align-middle" style="color: #697A8D;" to="/accountsettings/account">
-                                    <a class="dropdown-item" href="#">
-                                        <i class="fa fa-cogs me-2"></i>
-                                        <span>{{ $t('user_menu.settings') }}</span>
-                                    </a>
+                                <router-link to="/accountsettings/account" class="dropdown-item menu-link">
+                                    <i class="fa fa-cogs menu-icon"></i>
+                                    <span>{{ $t('user_menu.settings') }}</span>
                                 </router-link>
                             </li>
                             <li>
-                                <a class="dropdown-item" @click="signOut">
-                                    <i class="fa fa-sign-out me-2" style="padding-left: 5px;"></i>
-                                    <span class="align-middle">{{ $t('user_menu.logout') }}</span>
+                                <a @click="signOut" class="dropdown-item menu-link">
+                                    <i class="fa fa-sign-out menu-icon"></i>
+                                    <span style="padding-left: 5px;">{{ $t('user_menu.logout') }}</span>
                                 </a>
                             </li>
                         </ul>
@@ -255,5 +251,31 @@ export default {
 .lang-btn:hover {
     transform: scale(1.004);
     background-color: rgb(0, 0, 0, 0.1);
+}
+
+/* Общие стили для меню */
+.menu-link {
+    display: flex;
+    align-items: center;
+    padding: 10px 15px;
+    color: #697A8D;
+    text-decoration: none;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.menu-link:hover {
+    background-color: #f5f5f5;
+    color: #333;
+}
+
+/* Стили для иконок */
+.menu-icon {
+    margin-right: 8px;
+}
+
+/* Активное состояние */
+.menu-link.active {
+    background-color: #dcdcdc;
+    color: #333;
 }
 </style>

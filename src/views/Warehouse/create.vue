@@ -3,7 +3,7 @@
         <div class="layout-container">
             <company-layout-menu/>
             <div v-if="MobileMenu">
-                <company-layout-menu-mobile :closeSideBar="closeSideBar"></company-layout-menu-mobile>
+                <company-mobile-layout-menu :closeSideBar="closeSideBar"></company-mobile-layout-menu>
             </div>
             <div class="layout-page">
                 <header-main :showSideBar="showSideBar"/>

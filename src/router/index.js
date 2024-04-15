@@ -78,7 +78,7 @@ const routes = [
     name: 'index',
     component: IndexView,
     beforeEnter(){
-      return isAuthorized()
+      return isSuperAdmin()
     }
   },
   {

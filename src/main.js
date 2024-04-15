@@ -7,6 +7,7 @@ import componentsUi from './components/UI';
 
 import '@fortawesome/fontawesome-free/js/all.js';
 import '@fortawesome/fontawesome-free/css/all.css';
+import '@coreui/coreui/dist/css/coreui.min.css';
 
 import './assets/vendor/css/core.css';
 import './assets/vendor/css/theme-default.css'

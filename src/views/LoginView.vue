@@ -57,11 +57,11 @@
                       </g>
                     </svg>
                   </span>
-                  <span class="app-brand-text demo text-body fw-bold">Sneat</span>
+                  <span class="app-brand-text demo text-body fw-bold">Easy print</span>
                 </a>
               </div>
               <!-- /Logo -->
-              <h4 class="mb-2">Welcome to Sneat! 👋</h4>
+              <h4 class="mb-2">Welcome to Easy print! 👋</h4>
               <p class="mb-4">Please sign-in to your account and start the adventure</p>
 
               <form class="mb-3">
@@ -141,7 +141,7 @@ export default {
                 );
 
                 if (res.data.status === 404) {
-                    this.$toast.error('Email or password wrong!')
+                  this.$toast.error('Email or password wrong!')
                 } else if (res.data.status === 200) {
                     localStorage.setItem("user", JSON.stringify(res.data.user));
 
@@ -156,6 +156,9 @@ export default {
                     }
                 }
             } catch (error) {
+              if (error.message === 'Request failed with status code 400') {
+                this.$toast.error('Email or password wrong!')
+              }
                console.log(error); 
             }
         }

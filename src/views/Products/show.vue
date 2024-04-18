@@ -46,8 +46,12 @@
                                     <tr>
                                         <th>{{ this.$t('product.image') }}:</th>
                                         <td class="row">
-                                            <div class="me-2 col-lg-3 col-md-4 col-sm-6" v-for="image in product.images">
-                                                <img class="img-fluid" width="250px" height="250px" :src="image" alt="Product Image">
+                                            <div class="container-fluid" style="width: 500px; height: 500px;">
+                                                <CCarousel controls indicators v-if="product && product.images">
+                                                    <CCarouselItem v-for="(image, index) in product.images" :key="index">
+                                                    <img class="img-fluid w-100" :src="image" :alt="`слайд ${index + 1}`" />
+                                                    </CCarouselItem>
+                                                </CCarousel>
                                             </div>
                                         </td>
                                     </tr>
@@ -65,6 +69,7 @@
 import axios from 'axios';
 import router from '@/router';
 import {mapMutations, mapGetters} from 'vuex';
+import { CCarousel, CCarouselItem, CCarouselCaption } from '@coreui/vue';
 
 export default {
     data () {
@@ -73,6 +78,12 @@ export default {
             delete_modal: false,
             product_id: router.currentRoute.value.params.id
         }
+    },
+
+    components: {
+        CCarousel,
+        CCarouselItem,
+        CCarouselCaption
     },
 
     computed: {

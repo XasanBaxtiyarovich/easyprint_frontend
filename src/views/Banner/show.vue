@@ -26,15 +26,19 @@
                                         <th>{{ $t('banner.title_baner') }}:</th>
                                         <td>{{ banner.title }}</td>
                                     </tr>   
-                                    <tr v-if="Object.keys(banner).length >0">
+                                    <tr v-if="Object.keys(banner).length > 0">
                                         <th>{{ $t('banner.main') }}:</th>
                                         <img width="200px" :src="this.banner.images[0].banner">
                                     </tr>
                                     <tr>
                                         <th>{{ $t('banner.carousel') }}:</th>
-                                        <td class="row" v-if="Object.keys(banner).length >0">
-                                            <div class="me-2 col-lg-3 col-md-4 col-sm-6" v-for="image in banner.images[1].carousel">
-                                                <img class="img-fluid" width="150px" height="150px" :src="image">
+                                        <td class="row">
+                                            <div class="mb-4 mt-2 col-lg-3 col-md-4 col-sm-6" style="width: 200px; height: 200px;">
+                                                <CCarousel controls indicators  v-if="Object.keys(banner).length >0">
+                                                    <CCarouselItem  v-for="image in banner.images[1].carousel">
+                                                        <img class="d-block w-100" :src="image"/>
+                                                    </CCarouselItem>
+                                                </CCarousel>
                                             </div>
                                         </td>
                                     </tr>
@@ -60,6 +64,7 @@
 <script>
 import axios from 'axios';
 import { mapMutations, mapGetters } from 'vuex';
+import { CCarousel, CCarouselItem, CCarouselCaption } from '@coreui/vue';
 
 export default {
     data () {
@@ -70,6 +75,12 @@ export default {
             delete_modal: false,
             banner_id: router.currentRoute.value.params.id
         }
+    },
+
+    components: {
+        CCarousel,
+        CCarouselItem,
+        CCarouselCaption
     },
 
     computed: {
@@ -83,8 +94,6 @@ export default {
                 this.banner = res.data.parsedBanners[0];
             } catch (error) {
                 console.error('Error while fetching banner:', error);
-                // Handle error gracefully, such as displaying a message to the user
-                // For example: this.$toast.error('An error occurred while fetching the banner');
             }
         },
         ...mapMutations(['showSideBar', 'closeSideBar'])
